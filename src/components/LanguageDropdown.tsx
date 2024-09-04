@@ -18,7 +18,7 @@ const LanguageDropdown = () => {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className=" text-indigo-600 py-2 px-3 rounded-full flex items-center gap-2"
+        className=" text-indigo-600 rounded-full flex items-center gap-2"
       >
         {i18n.language === "en" ? (
           <img

@@ -9,10 +9,10 @@ const Header = ({ openLoginModal }: HeaderProps) => {
 
   return (
     <header className="sticky top-0 left-0 w-full bg-headerBg text-headerText flex justify-between items-center p-4 shadow-md">
-      <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide">
+      <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide max-w-[150px] md:max-w-full">
         {t("home.header")}
       </h1>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center justify-between">
         {user ? (
           <div className="flex items-center gap-2">
             {user.profilePicture && typeof user.profilePicture === "string" ? (
