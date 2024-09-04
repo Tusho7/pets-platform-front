@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import { getUser } from "../services/api/getUser";
 import { useUser } from "../contexts/UseUser";
 import { loginUser } from "../services/api/auth";
@@ -6,6 +7,7 @@ import Loading from "../components/Loading";
 import { LoginProps } from "../types/Login-Register";
 
 const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const { setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
       onClose();
     } catch (error) {
       console.log(error);
-      setError("Invalid email or password.");
+      setError(t("login.error") || "Invalid email or password."); // Use translated error message
     } finally {
       setLoading(false);
     }
@@ -62,14 +64,16 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
             />
           </svg>
         </button>
-        <h2 className="text-3xl font-bold text-center text-gray-900">შესვლა</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900">
+          {t("login.title")}
+        </h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="relative">
             <label
               htmlFor="username"
               className="block text-sm font-medium text-gray-700"
             >
-              ელ-ფოსტა
+              {t("login.email")}
             </label>
             <input
               id="username"
@@ -78,7 +82,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
               autoComplete="username"
               required
               className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="ელ-ფოსტა"
+              placeholder={t("login.emailPlaceholder")}
             />
           </div>
           <div className="relative">
@@ -86,7 +90,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
               htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
-              პაროლი
+              {t("login.password")}
             </label>
             <input
               id="password"
@@ -95,7 +99,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
               autoComplete="current-password"
               required
               className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="პაროლი"
+              placeholder={t("login.passwordPlaceholder")}
             />
           </div>
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
@@ -103,7 +107,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
             type="submit"
             className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            შესვლა
+            {t("login.submitButton")}
           </button>
         </form>
 
@@ -112,7 +116,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">ან</span>
+            <span className="px-2 bg-white text-gray-500">{t("login.or")}</span>
           </div>
         </div>
         <div className="text-center">
@@ -120,7 +124,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
             className="text-indigo-600 hover:underline cursor-pointer text-sm mt-4"
             onClick={onOpenRegistration}
           >
-            რეგისტრაცია
+            {t("login.register")}
           </p>
         </div>
       </div>
