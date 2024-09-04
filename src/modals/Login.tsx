@@ -31,7 +31,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
       onClose();
     } catch (error) {
       console.log(error);
-      setError(t("login.error") || "Invalid email or password."); // Use translated error message
+      setError(t("login.error") || "Invalid email or password.");
     } finally {
       setLoading(false);
     }

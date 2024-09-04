@@ -16,7 +16,8 @@
     "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
     "submitButton": "შესვლა",
     "or": "ან",
-    "register": "რეგისტრაცია"
+    "register": "რეგისტრაცია",
+    "error": "არასწორი ელ-ფოსტა ან პაროლი."
   },
   "registration": {
     "title": "რეგისტრაცია",
@@ -31,5 +32,11 @@
     "profilePicture": "პროფილის ფოტო",
     "submitButton": "რეგისტრაცია",
     "haveAccount": "გაქვთ ექაუნთი?"
+  },
+  "profile": {
+    "viewProfile": "პროფილის ნახვა",
+    "settings": "პარამეტრები",
+    "logout": "გასვლა",
+    "support": "დახმარება"
   }
 }

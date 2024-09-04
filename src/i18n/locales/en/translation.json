@@ -16,7 +16,8 @@
     "passwordPlaceholder": "Enter your password",
     "submitButton": "Login",
     "or": "or",
-    "register": "Register"
+    "register": "Register",
+    "error": "Invalid email or password."
   },
   "registration": {
     "title": "Registration",
@@ -31,5 +32,11 @@
     "profilePicture": "Profile Picture",
     "submitButton": "Register",
     "haveAccount": "Already have an account?"
+  },
+  "profile": {
+    "viewProfile": "View Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "support": "Support"
   }
 }
