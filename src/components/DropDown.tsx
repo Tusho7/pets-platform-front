@@ -7,10 +7,21 @@ import {
   faLifeRing,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { logoutUser } from "../services/api/auth";
 
 const DropDown = () => {
   const { t } = useTranslation();
   const { user } = useUser();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      window.location.href = "/";
+      localStorage.removeItem("isLogin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="absolute right-0 mt-80 w-64 bg-white border border-gray-200 text-gray-700 rounded-lg shadow-xl z-10 profile-dropdown">
@@ -44,7 +55,10 @@ const DropDown = () => {
           <hr className="my-2 border-gray-200" />
         </li>
         <li>
-          <button className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-red-100 hover:text-red-700 rounded-md transition-all duration-200">
+          <button
+            className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-red-100 hover:text-red-700 rounded-md transition-all duration-200"
+            onClick={handleLogout}
+          >
             <FontAwesomeIcon
               icon={faSignOutAlt}
               className="mr-3 text-red-600"

@@ -11,3 +11,7 @@ export const forgotPassword = async (email: string) => {
 export const loginUser = async (email: string, password: string) => {
   return await axiosInstance.post("/api/auth/login", { email, password });
 };
+
+export const logoutUser = async () => {
+  return await axiosInstance.post("/api/auth/logout");
+};
