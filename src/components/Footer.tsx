@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="dark:bg-gray-900 w-full">
       <div className="p-4 py-6 lg:py-8 mx-auto w-full max-w-[1200px]">
-        <div className="md:flex md:justify-between">
+        <div className="md:flex md:justify-between items-center">
           <div className="flex justify-center gap-2 items-center">
             <img src={PetLogo} className="h-8 " alt="Pet Logo" />
             <span className="text-2xl font-semibold dark:text-white">
