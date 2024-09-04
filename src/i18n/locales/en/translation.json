@@ -1,0 +1,12 @@
+{
+    "home": {
+      "header": "Pets Platform",
+      "welcome": "Welcome to the Pets Platform",
+      "description": "Your ultimate destination to connect with pet lovers and find the perfect companion.",
+      "lostPets": "Lost Pets",
+      "streetPets": "Street Pets",
+      "login": "Login",
+      "footer": "All rights reserved."
+    }
+}
+  
