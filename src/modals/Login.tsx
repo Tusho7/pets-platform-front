@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getUser } from "../services/api/getUser";
 import { useUser } from "../contexts/UseUser";
 import { loginUser } from "../services/api/auth";
@@ -8,7 +7,6 @@ import { LoginProps } from "../types/Login-Register";
 
 const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
   const { setUser } = useUser();
-  const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +26,7 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
       localStorage.setItem("isLogin", "true");
       const { data } = await getUser();
       setUser(data);
-      navigate("/");
+      onClose();
     } catch (error) {
       console.log(error);
       setError("Invalid email or password.");
