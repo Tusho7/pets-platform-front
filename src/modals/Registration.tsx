@@ -4,8 +4,10 @@ import { registerUser } from "../services/api/auth";
 import { ErrorResponse } from "../types/Error";
 import Loading from "../components/Loading";
 import { RegisterProps } from "../types/Login-Register";
+import { useTranslation } from "react-i18next";
 
 const Registration = ({ onClose, openLogin }: RegisterProps) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -90,12 +92,12 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
         </button>
         {loading && <Loading />}
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
-          რეგისტრაცია
+          {t("registration.title")}
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label htmlFor="email" className="sr-only">
-              ელ-ფოსტა
+              {t("registration.email")}
             </label>
             <input
               id="email"
@@ -106,12 +108,12 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="ელ-ფოსტა"
+              placeholder={t("registration.emailPlaceholder")}
             />
           </div>
           <div className="space-y-2">
             <label htmlFor="password" className="sr-only">
-              პაროლი
+              {t("registration.password")}
             </label>
             <input
               id="password"
@@ -121,13 +123,13 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500               text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="პაროლი"
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder={t("registration.passwordPlaceholder")}
             />
           </div>
           <div className="space-y-2">
             <label htmlFor="firstName" className="sr-only">
-              სახელი
+              {t("registration.firstName")}
             </label>
             <input
               id="firstName"
@@ -138,12 +140,12 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="სახელი"
+              placeholder={t("registration.firstNamePlaceholder")}
             />
           </div>
           <div className="space-y-2">
             <label htmlFor="lastName" className="sr-only">
-              გვარი
+              {t("registration.lastName")}
             </label>
             <input
               id="lastName"
@@ -154,7 +156,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="გვარი"
+              placeholder={t("registration.lastNamePlaceholder")}
             />
           </div>
 
@@ -162,7 +164,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
             <div className="relative w-24 h-24">
               <img
                 src={fileURL}
-                alt="Uploaded preview"
+                alt={t("registration.profilePicture")}
                 className="w-full h-full object-cover rounded-full border-2 border-gray-300"
               />
               <button
@@ -192,7 +194,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
                 htmlFor="profilePicture"
                 className="block text-sm font-medium text-gray-700"
               >
-                პროფილის ფოტო
+                {t("registration.profilePicture")}
               </label>
               <input
                 id="profilePicture"
@@ -209,14 +211,14 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
             type="submit"
             className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            რეგისტრაცია
+            {t("registration.submitButton")}
           </button>
           <div className="mt-4 text-sm text-center">
             <button
               onClick={openLogin}
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              გაქვთ ექაუნთი ?
+              {t("registration.haveAccount")}
             </button>
           </div>
         </form>

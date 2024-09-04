@@ -17,5 +17,19 @@
     "submitButton": "Login",
     "or": "or",
     "register": "Register"
+  },
+  "registration": {
+    "title": "Registration",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNamePlaceholder": "Enter your last name",
+    "profilePicture": "Profile Picture",
+    "submitButton": "Register",
+    "haveAccount": "Already have an account?"
   }
 }

@@ -17,5 +17,19 @@
     "submitButton": "შესვლა",
     "or": "ან",
     "register": "რეგისტრაცია"
+  },
+  "registration": {
+    "title": "რეგისტრაცია",
+    "email": "ელ-ფოსტა",
+    "password": "პაროლი",
+    "firstName": "სახელი",
+    "lastName": "გვარი",
+    "emailPlaceholder": "შეიყვანეთ თქვენი ელ-ფოსტა",
+    "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
+    "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
+    "lastNamePlaceholder": "შეიყვანეთ თქვენი გვარი",
+    "profilePicture": "პროფილის ფოტო",
+    "submitButton": "რეგისტრაცია",
+    "haveAccount": "გაქვთ ექაუნთი?"
   }
 }
