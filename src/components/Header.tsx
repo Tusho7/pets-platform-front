@@ -5,6 +5,7 @@ import { HeaderProps } from "../types/Header";
 import { useUser } from "../contexts/UseUser";
 import DropDown from "./DropDown";
 import { Link } from "react-router-dom";
+import PetLogo from "/pet-logo.png";
 
 const Header = ({ openLoginModal }: HeaderProps) => {
   const { t } = useTranslation();
@@ -37,14 +38,18 @@ const Header = ({ openLoginModal }: HeaderProps) => {
   }, [dropdownOpen]);
 
   return (
-    <header className="sticky top-0 left-0 w-full bg-headerBg text-headerText flex justify-between items-center p-4 shadow-md">
+    <header className="sticky top-0 left-0 w-full dark:bg-gray-900 text-headerText flex justify-between items-center p-4 shadow-md">
       <div className="max-w-[1200px] mx-auto flex justify-between w-full">
-        <Link
-          to="/"
-          className="text-2xl md:text-3xl font-extrabold tracking-wide max-w-[150px] md:max-w-full"
-        >
-          {t("home.header")}
-        </Link>
+        <div className="flex gap-2 items-center justify-center">
+          <img src={PetLogo} className="h-9" alt="Pet Logo" />
+          <Link
+            to="/"
+            className="text-2xl md:text-3xl font-extrabold tracking-wide max-w-[150px] md:max-w-full"
+          >
+            {t("home.header")}
+          </Link>
+        </div>
+
         <div className="flex gap-2 items-center justify-between relative">
           {user ? (
             <div className="flex items-center gap-2">

@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import PetLogo from "/pet-logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -8,17 +9,11 @@ const Footer = () => {
     <footer className="dark:bg-gray-900 w-full">
       <div className="p-4 py-6 lg:py-8 mx-auto w-full max-w-[1200px]">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="h-8 me-3"
-                alt="FlowBite Logo"
-              />
-              <span className="text-2xl font-semibold dark:text-white">
-                {t("home.header")}
-              </span>
-            </a>
+          <div className="flex justify-center gap-2 items-center">
+            <img src={PetLogo} className="h-8 " alt="Pet Logo" />
+            <span className="text-2xl font-semibold dark:text-white">
+              {t("home.header")}
+            </span>
           </div>
           <div>
             <ul className="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:flex-row justify-between gap-5">
