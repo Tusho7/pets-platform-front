@@ -8,10 +8,9 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { logoutUser } from "../services/api/auth";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DropDown = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useUser();
 
@@ -45,16 +44,16 @@ const DropDown = () => {
           </button>
         </li>
         <li>
-          <button
+          <Link
+            to="/support"
             className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200"
-            onClick={() => navigate("/support")}
           >
             <FontAwesomeIcon
               icon={faLifeRing}
               className="mr-3 text-indigo-600"
             />
             {t("profile.support")}
-          </button>
+          </Link>
         </li>
         <li>
           <hr className="my-2 border-gray-200" />
