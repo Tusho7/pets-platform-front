@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import EnglishFlag from "../../public/usa-flag.webp";
-import GeorgiaFlag from "../../public/georgia-flag.svg";
+import EnglishFlag from "/usa-flag.webp";
+import GeorgiaFlag from "/georgia-flag.svg";
 
 const LanguageDropdown = () => {
   const { i18n } = useTranslation();
