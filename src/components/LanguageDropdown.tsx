@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import EnglishFlag from "../../public/usa-flag.webp";
+import GeorgiaFlag from "../../public/georgia-flag.svg";
 
 const LanguageDropdown = () => {
   const { i18n } = useTranslation();
@@ -16,14 +18,22 @@ const LanguageDropdown = () => {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="bg-white text-indigo-600 py-2 px-4 rounded-full shadow-lg flex items-center gap-2"
+        className=" text-indigo-600 py-2 px-3 rounded-full flex items-center gap-2"
       >
-        <span className="md:hidden">
-          {i18n.language === "en" ? "EN" : "GE"}
-        </span>
-        <span className="hidden md:flex">
-          {i18n.language === "en" ? "English" : "ქართული"}
-        </span>
+        {i18n.language === "en" ? (
+          <img
+            src={EnglishFlag}
+            className="w-5 h-5 rounded-md"
+            onClick={() => handleChangeLanguage("en")}
+          />
+        ) : (
+          <img
+            src={GeorgiaFlag}
+            className="w-5 h-5 rounded-md"
+            onClick={() => handleChangeLanguage("ge")}
+          />
+        )}
+
         <svg
           className="w-4 h-4"
           fill="none"
@@ -41,18 +51,20 @@ const LanguageDropdown = () => {
       </button>
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white text-indigo-600 rounded-lg shadow-lg">
-          <button
+          <section
+            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-200  rounded-lg cursor-pointer"
             onClick={() => handleChangeLanguage("en")}
-            className=" w-full rounded-lg text-left px-4 py-2 hover:bg-gray-200"
           >
-            English
-          </button>
-          <button
+            <img src={EnglishFlag} className="w-5 h-5 rounded-md" />
+            <p>English</p>
+          </section>
+          <section
+            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-200  rounded-lg cursor-pointer"
             onClick={() => handleChangeLanguage("ge")}
-            className="w-full rounded-lg text-left px-4 py-2 hover:bg-gray-200"
           >
-            ქართული
-          </button>
+            <img src={GeorgiaFlag} className="w-5 h-5 rounded-md" />
+            <p> ქართული</p>
+          </section>
         </div>
       )}
     </div>

@@ -13,7 +13,6 @@ const Header = ({ openLoginModal }: HeaderProps) => {
         {t("home.header")}
       </h1>
       <div className="flex gap-2 items-center">
-        <LanguageDropdown />
         {user ? (
           <div className="flex items-center gap-2">
             {user.profilePicture && typeof user.profilePicture === "string" ? (
@@ -37,6 +36,7 @@ const Header = ({ openLoginModal }: HeaderProps) => {
             {t("home.login")}
           </button>
         )}
+        <LanguageDropdown />
       </div>
     </header>
   );
