@@ -28,15 +28,18 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
       formData.append("lastName", lastName);
 
       if (file) {
-        formData.append("profilePicture", file);
+        formData.append("profile-pictures", file);
       }
 
       await registerUser(formData);
       Swal.fire({
         icon: "success",
         title: "წარმატება",
-        text: "გთხოვთ შეამოწმოთ ელ-ფოსტა!",
+        text: "რეგისტრაცია წარმატებით დასრულდა.",
+        timer: 2000,
       });
+      onClose();
+      openLogin();
     } catch (error: unknown) {
       console.error("Registration failed:", error);
       const errorMessage =
@@ -47,6 +50,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
         icon: "error",
         title: "შეცდომა",
         text: errorMessage,
+        timer: 2000,
       });
     } finally {
       setLoading(false);
@@ -198,7 +202,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               </label>
               <input
                 id="profilePicture"
-                name="profilePicture"
+                name="profile-pictures"
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 onChange={handleFileChange}
