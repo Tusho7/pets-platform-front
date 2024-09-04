@@ -5,8 +5,7 @@
     "description": "Your ultimate destination to connect with pet lovers and find the perfect companion.",
     "lostPets": "Lost Pets",
     "streetPets": "Street Pets",
-    "login": "Login",
-    "footer": "All rights reserved."
+    "login": "Login"
   },
   "login": {
     "title": "Login",
@@ -52,5 +51,12 @@
   },
   "faq": {
     "title": "Frequently Asked Questions"
+  },
+  "footer": {
+    "faqs": "Faqs",
+    "about_us": "About Us",
+    "support": "Support",
+    "terms_conditions": "Terms & Conditions",
+    "all_rights_reserved": "All Rights Reserved."
   }
 }
