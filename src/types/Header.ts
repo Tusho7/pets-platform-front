@@ -1,3 +1,3 @@
 export type HeaderProps = {
-  openLoginModal: () => void;
+  openLoginModal?: () => void;
 };

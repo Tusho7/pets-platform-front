@@ -38,5 +38,21 @@
     "settings": "პარამეტრები",
     "logout": "გასვლა",
     "support": "დახმარება"
+  },
+  "support": {
+    "title": "დახმარება",
+    "contactUs": "კონტაქტი",
+    "name": "სახელი",
+    "email": "ელ-ფოსტა",
+    "message": "შეტყობინება",
+    "namePlaceholder": "შეიყვანეთ სახელი",
+    "emailPlaceholder": "შეიყვანეთ ელ-ფოსტა",
+    "messagePlaceholder": "დაწერეთ შეტყობინება",
+    "submit": "გაგზავნა"
+  },
+  
+  "faq": {
+    "title": "ხშირად დასმული კითხვები"
   }
+
 }

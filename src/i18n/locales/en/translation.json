@@ -38,5 +38,19 @@
     "settings": "Settings",
     "logout": "Logout",
     "support": "Support"
+  },
+  "support": {
+    "title": "Support",
+    "contactUs": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "messagePlaceholder": "Enter your message",
+    "submit": "Submit"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
   }
 }
