@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAdmin } from "../../../contexts/UseAdmin";
 import DropDown from "./DropDown";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { admin } = useAdmin();
@@ -11,7 +12,9 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4 shadow-md">
       <div className="max-w-[1200px] w-full mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold">{t("adminDashboard.title")}</h1>
+        <Link to="/admin_dashboard" className="text-3xl font-bold">
+          {t("adminDashboard.title")}
+        </Link>
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
