@@ -66,6 +66,19 @@
     "foundingStory": "Founding Story",
     "features": "Features",
     "howItWorks": "How It Works"
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "profile": "Profile",
+    "logoutButton": "Logout",
+    "overviewTitle": "Overview",
+    "overviewDescription": "Welcome to the Admin Dashboard. Manage your application, view statistics, and configure settings.",
+    "manageUsersButton": "Manage Users",
+    "manageContentTitle": "Manage Content",
+    "manageContentDescription": "Edit content, manage About Us and FAQs sections, and more.",
+    "manageContentButton": "Manage Content",
+    "settingsTitle": "Settings",
+    "settingsDescription": "Configure general settings and preferences for the application.",
+    "settingsButton": "General Settings"
   }
-  
 }

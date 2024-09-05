@@ -67,6 +67,20 @@
     "foundingStory": "დამფუძნებლების ისტორია",
     "features": "მახასიათებლები",
     "howItWorks": "როგორ მუშაობს"
+  },
+  "adminDashboard": {
+    "title": "ადმინისტრატორის პანელი",
+    "profile": "პროფილი",
+    "logoutButton": "გამოსვლა",
+    "overviewTitle": "მიმოხილვა",
+    "overviewDescription": "კეთილი იყოს თქვენი მობრძანება ადმინისტრატორის პანელში. მართეთ თქვენი აპლიკაცია, გადახედეთ სტატისტიკას და დაარეგულირეთ პარამეტრები.",
+    "manageUsersButton": "მომხმარებლების მართვა",
+    "manageContentTitle": "კონტენტის მართვა",
+    "manageContentDescription": "გაასწორეთ კონტენტი, მართეთ About Us და FAQs განყოფილებები და სხვა.",
+    "manageContentButton": "კონტენტის მართვა",
+    "settingsTitle": "პარამეტრები",
+    "settingsDescription": "კონფიგურაციები და ზოგადი პარამეტრების დაყენება აპლიკაციისთვის.",
+    "settingsButton": "ზოგადი პარამეტრები"
   }
   
 }

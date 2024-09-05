@@ -1,6 +1,9 @@
 export interface Admin {
   id: number;
   email: string;
+  profilePicture: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface AdminContextType {
