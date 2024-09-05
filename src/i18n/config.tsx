@@ -10,7 +10,8 @@ const config = {
       translation: geTranslation,
     },
   },
-  fallbackLng: "en",
+  lng: "ge",
+  fallbackLng: "ge",
   debug: false,
   interpolation: {
     escapeValue: false,
