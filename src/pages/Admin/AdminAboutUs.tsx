@@ -6,18 +6,18 @@ import { AboutUsData } from "../../types/AboutUs";
 import PencilIcon from "/pencil-icon.png";
 import Swal from "sweetalert2";
 
-const containsIncorrectLanguage = (text: string, language: string) => {
-  if (text.trim() === "") {
-    return false;
-  }
+const containsIncorrectLanguage = (text: string, language: string): boolean => {
+  const englishRegex = /[a-zA-Z]/;
+  const georgianRegex = /[\u10A0-\u10FF]/;
 
-  const englishRegex = /^[a-zA-Z\s]*$/;
-  const georgianRegex = /^[\u10A0-\u10FF\s]*$/;
+  const containsEnglish = englishRegex.test(text);
+  const containsGeorgian = georgianRegex.test(text);
 
-  if (language === "en" && georgianRegex.test(text)) {
+  // Check if the text contains characters from both languages
+  if (language === "en" && containsGeorgian) {
     return true;
   }
-  if (language === "ge" && englishRegex.test(text)) {
+  if (language === "ge" && containsEnglish) {
     return true;
   }
   return false;
@@ -128,9 +128,9 @@ const AdminAboutUs = () => {
 
       Swal.fire({
         icon: "success",
-        title: "Success!",
-        text: "About Us data has been updated successfully.",
-        confirmButtonText: "OK",
+        title: t("success.title"),
+        text: t("success.text"),
+        confirmButtonText: t("success.button"),
       });
 
       setEditMode(false);
@@ -140,9 +140,9 @@ const AdminAboutUs = () => {
 
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Something went wrong while updating About Us data.",
-        confirmButtonText: "OK",
+        title: t("error.title"),
+        text: t("error.text"),
+        confirmButtonText: t("error.button"),
       });
     } finally {
       setLoading(false);

@@ -90,5 +90,15 @@
   },
   "warning": {
     "title": "Warning"
+  },
+  "success": {
+    "title": "Success!",
+    "text": "About Us data has been updated successfully.",
+    "button": "OK"
+  },
+  "error": {
+    "title": "Oops...",
+    "text": "Something went wrong while updating About Us data.",
+    "button": "OK"
   }
 }
