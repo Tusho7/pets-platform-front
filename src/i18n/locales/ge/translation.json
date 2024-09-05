@@ -59,5 +59,14 @@
     "support": "დახმარება",
     "terms_conditions": "წესები და პირობები",
     "all_rights_reserved": "ყველა უფლება დაცულია."
+  },
+  "about_us": {
+    "introductionOverview": "შესავლელი მიმოხილვა",
+    "missionStatement": "მისია",
+    "historyBackground": "ისტორია და ფონური ინფორმაცია",
+    "foundingStory": "დამფუძნებლების ისტორია",
+    "features": "მახასიათებლები",
+    "howItWorks": "როგორ მუშაობს"
   }
+  
 }

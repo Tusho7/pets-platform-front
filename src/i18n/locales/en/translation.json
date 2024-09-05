@@ -58,5 +58,14 @@
     "support": "Support",
     "terms_conditions": "Terms & Conditions",
     "all_rights_reserved": "All Rights Reserved."
+  },
+  "about_us": {
+    "introductionOverview": "Introduction Overview",
+    "missionStatement": "Mission Statement",
+    "historyBackground": "History & Background",
+    "foundingStory": "Founding Story",
+    "features": "Features",
+    "howItWorks": "How It Works"
   }
+  
 }
