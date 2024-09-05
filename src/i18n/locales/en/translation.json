@@ -66,7 +66,8 @@
     "foundingStory": "Founding Story",
     "features": "Features",
     "howItWorks": "How It Works",
-    "saveChanges": "Save Cahnges"
+    "saveChanges": "Save Cahnges",
+    "validationError": "All fields must be filled out and features cannot be empty."
   },
   "adminDashboard": {
     "title": "Admin Dashboard",
@@ -81,5 +82,13 @@
     "settingsTitle": "Settings",
     "settingsDescription": "Configure general settings and preferences for the application.",
     "settingsButton": "General Settings"
+  },
+  "languageAlert": {
+    "title": "Language Alert",
+    "text": "Please type in English.",
+    "button": "Submit"
+  },
+  "warning": {
+    "title": "Warning"
   }
 }

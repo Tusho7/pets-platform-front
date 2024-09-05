@@ -1,9 +1,27 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getAboutUs } from "../../services/admin/about_us";
+import { getAboutUs, updateAboutUs } from "../../services/admin/about_us";
 import Header from "./components/Header";
 import { AboutUsData } from "../../types/AboutUs";
 import PencilIcon from "/pencil-icon.png";
+import Swal from "sweetalert2";
+
+const containsIncorrectLanguage = (text: string, language: string) => {
+  if (text.trim() === "") {
+    return false;
+  }
+
+  const englishRegex = /^[a-zA-Z\s]*$/;
+  const georgianRegex = /^[\u10A0-\u10FF\s]*$/;
+
+  if (language === "en" && georgianRegex.test(text)) {
+    return true;
+  }
+  if (language === "ge" && englishRegex.test(text)) {
+    return true;
+  }
+  return false;
+};
 
 const AdminAboutUs = () => {
   const { t, i18n } = useTranslation();
@@ -36,12 +54,34 @@ const AdminAboutUs = () => {
   };
 
   const handleInputChange = (index: number, field: string, value: string) => {
+    const language = i18n.language;
+
+    if (containsIncorrectLanguage(value, language)) {
+      Swal.fire({
+        icon: "warning",
+        title: t("languageAlert.title"),
+        text: t("languageAlert.text"),
+        confirmButtonText: t("languageAlert.button"),
+      });
+    }
+
     const updatedData = [...formData];
     updatedData[index] = { ...updatedData[index], [field]: value };
     setFormData(updatedData);
   };
 
   const handleFeaturesChange = (index: number, value: string) => {
+    const language = i18n.language;
+
+    if (containsIncorrectLanguage(value, language)) {
+      Swal.fire({
+        icon: "warning",
+        title: t("languageAlert.title"),
+        text: t("languageAlert.text"),
+        confirmButtonText: t("languageAlert.button"),
+      });
+    }
+
     const updatedData = [...formData];
     updatedData[index] = {
       ...updatedData[index],
@@ -50,8 +90,63 @@ const AdminAboutUs = () => {
     setFormData(updatedData);
   };
 
-  const handleSubmit = () => {
-    console.log("Submit", formData);
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      for (const item of formData) {
+        if (
+          !item.title ||
+          !item.introductionOverview ||
+          !item.missionStatement ||
+          !item.historyBackground ||
+          !item.foundingStory ||
+          !item.features.length ||
+          !item.howItWorks
+        ) {
+          Swal.fire({
+            icon: "warning",
+            title: t("warning.title"),
+            text: t("about_us.validationError"),
+            confirmButtonText: t("languageAlert.button"),
+          });
+          return;
+        }
+
+        await updateAboutUs(item.id, {
+          title: item.title,
+          introductionOverview: item.introductionOverview,
+          missionStatement: item.missionStatement,
+          historyBackground: item.historyBackground,
+          foundingStory: item.foundingStory,
+          features: item.features,
+          howItWorks: item.howItWorks,
+          languageCode: i18n.language,
+        });
+      }
+
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "About Us data has been updated successfully.",
+        confirmButtonText: "OK",
+      });
+
+      setEditMode(false);
+    } catch (error) {
+      console.error("Error updating About Us data:", error);
+      setError("Failed to update About Us data.");
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong while updating About Us data.",
+        confirmButtonText: "OK",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -72,17 +167,30 @@ const AdminAboutUs = () => {
                 key={index}
                 className="bg-white shadow-lg rounded-lg p-8 mb-12 border border-gray-200"
               >
-                <div className="flex gap-2 items-center mb-7">
+                <div className="flex gap-2 justify-between items-center mb-7">
                   <h1 className="text-4xl font-extrabold text-gray-900">
                     {item.title}
                   </h1>
-                  <button
-                    type="button"
-                    onClick={handleEditClick}
-                    className="ml-4 text-gray-600 hover:text-gray-800"
-                  >
-                    <img src={PencilIcon} className="w-8 h-10" alt="Edit" />
-                  </button>
+                  <div className="flex gap-3 items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={handleEditClick}
+                      className="ml-4 text-gray-600 hover:text-gray-800"
+                    >
+                      <img src={PencilIcon} className="w-8 h-10" alt="Edit" />
+                    </button>
+                    {editMode && (
+                      <div className="flex justify-center py-4">
+                        <button
+                          type="button"
+                          onClick={handleSubmit}
+                          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                        >
+                          {t("about_us.saveChanges")}
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="bg-gray-600 w-full h-[1px] mb-10"></div>
@@ -185,7 +293,7 @@ const AdminAboutUs = () => {
                   </section>
                 )}
 
-                {item.features && item.features.length > 0 && (
+                {item.features && (
                   <section className="mb-8">
                     <h2 className="text-3xl font-semibold text-gray-800 mb-3">
                       {t("about_us.features")}
@@ -200,9 +308,11 @@ const AdminAboutUs = () => {
                         }
                       />
                     ) : (
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                      <ul className="list-disc list-inside">
                         {item.features.map((feature, featureIndex) => (
-                          <li key={featureIndex}>{feature}</li>
+                          <li key={featureIndex} className="text-gray-700">
+                            {feature}
+                          </li>
                         ))}
                       </ul>
                     )}
@@ -210,7 +320,7 @@ const AdminAboutUs = () => {
                 )}
 
                 {item.howItWorks && (
-                  <section>
+                  <section className="mb-8">
                     <h2 className="text-3xl font-semibold text-gray-800 mb-3">
                       {t("about_us.howItWorks")}
                     </h2>
@@ -227,18 +337,6 @@ const AdminAboutUs = () => {
                       <p className="text-gray-700">{item.howItWorks}</p>
                     )}
                   </section>
-                )}
-
-                {editMode && (
-                  <div className="flex justify-end mt-6">
-                    <button
-                      type="button"
-                      onClick={handleSubmit}
-                      className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md"
-                    >
-                      {t("about_us.saveChanges")}
-                    </button>
-                  </div>
                 )}
               </div>
             ))

@@ -38,9 +38,9 @@ const DropDown = () => {
           </button>
         </li>
         <li>
-          <button className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
+          <div className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
             <LanguageDropdown />
-          </button>
+          </div>
         </li>
         <li>
           <hr className="my-2 border-gray-200" />

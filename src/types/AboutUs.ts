@@ -1,4 +1,5 @@
 export interface AboutUsData {
+  id: string;
   title: string;
   introductionOverview: string;
   missionStatement: string;
