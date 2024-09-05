@@ -66,7 +66,8 @@
     "historyBackground": "ისტორია და ფონური ინფორმაცია",
     "foundingStory": "დამფუძნებლების ისტორია",
     "features": "მახასიათებლები",
-    "howItWorks": "როგორ მუშაობს"
+    "howItWorks": "როგორ მუშაობს",
+    "saveChanges": "შეინახე ცვლილებები"
   },
   "adminDashboard": {
     "title": "ადმინისტრატორის პანელი",

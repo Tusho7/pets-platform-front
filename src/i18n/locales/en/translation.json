@@ -65,7 +65,8 @@
     "historyBackground": "History & Background",
     "foundingStory": "Founding Story",
     "features": "Features",
-    "howItWorks": "How It Works"
+    "howItWorks": "How It Works",
+    "saveChanges": "Save Cahnges"
   },
   "adminDashboard": {
     "title": "Admin Dashboard",

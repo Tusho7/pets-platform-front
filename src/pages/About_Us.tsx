@@ -3,16 +3,7 @@ import { getAboutUs } from "../services/about_us";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
-
-interface AboutUsData {
-  title: string;
-  introductionOverview: string;
-  missionStatement: string;
-  historyBackground: string;
-  foundingStory: string;
-  features: string[];
-  howItWorks: string;
-}
+import { AboutUsData } from "../types/AboutUs";
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
@@ -58,6 +49,7 @@ const AboutUs = () => {
                 <h1 className="text-4xl font-extrabold text-gray-900 mb-6">
                   {item.title}
                 </h1>
+                <div className="bg-gray-600 w-full h-[1px] mb-10"></div>
                 <section className="mb-8">
                   <h2 className="text-3xl font-semibold text-gray-800 mb-3">
                     {t("about_us.introductionOverview")}

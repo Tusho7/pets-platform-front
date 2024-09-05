@@ -1,10 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
+import { useState } from "react";
+import Content from "./modals/Content";
 
 const AdminDashboard = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const [isContentModalOpen, setIsContentModalOpen] = useState(false);
+
+  const handleCloseContentModal = () => {
+    setIsContentModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -34,7 +42,7 @@ const AdminDashboard = () => {
               {t("adminDashboard.manageContentDescription")}
             </p>
             <button
-              onClick={() => navigate("/admin/content")}
+              onClick={() => setIsContentModalOpen(true)}
               className="mt-4 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-semibold transition duration-300"
             >
               {t("adminDashboard.manageContentButton")}
@@ -56,6 +64,8 @@ const AdminDashboard = () => {
             </button>
           </div>
         </div>
+
+        {isContentModalOpen && <Content onClose={handleCloseContentModal} />}
       </main>
     </div>
   );
