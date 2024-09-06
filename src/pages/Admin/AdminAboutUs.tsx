@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { AboutUsData } from "../../types/AboutUs";
 import PencilIcon from "/pencil-icon.png";
 import Swal from "sweetalert2";
+import Loading from "../../components/Loading";
 
 const containsIncorrectLanguage = (text: string, language: string): boolean => {
   const englishRegex = /[a-zA-Z]/;
@@ -149,7 +150,12 @@ const AdminAboutUs = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   return (
