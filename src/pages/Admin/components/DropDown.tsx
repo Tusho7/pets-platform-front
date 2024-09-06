@@ -20,7 +20,7 @@ const DropDown = () => {
   };
 
   return (
-    <div className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg border border-gray-300">
+    <div className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg border border-gray-300 z-50">
       <div className="p-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-lg">
         <p className="font-bold text-lg">{t("adminDashboard.title")}</p>
       </div>
