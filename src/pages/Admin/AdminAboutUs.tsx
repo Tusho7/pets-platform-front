@@ -56,13 +56,25 @@ const AdminAboutUs = () => {
   const handleInputChange = (index: number, field: string, value: string) => {
     const language = i18n.language;
 
-    if (containsIncorrectLanguage(value, language)) {
+    if (language === "ge" && containsIncorrectLanguage(value, "ge")) {
       Swal.fire({
         icon: "warning",
         title: t("languageAlert.title"),
         text: t("languageAlert.text"),
         confirmButtonText: t("languageAlert.button"),
       });
+      return;
+    } else if (
+      i18n.language === "en" &&
+      containsIncorrectLanguage(value, "en")
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: t("languageAlert.title"),
+        text: t("languageAlert.text"),
+        confirmButtonText: t("languageAlert.button"),
+      });
+      return;
     }
 
     const updatedData = [...formData];
@@ -73,15 +85,26 @@ const AdminAboutUs = () => {
   const handleFeaturesChange = (index: number, value: string) => {
     const language = i18n.language;
 
-    if (containsIncorrectLanguage(value, language)) {
+    if (language === "ge" && containsIncorrectLanguage(value, "ge")) {
       Swal.fire({
         icon: "warning",
         title: t("languageAlert.title"),
         text: t("languageAlert.text"),
         confirmButtonText: t("languageAlert.button"),
       });
+      return;
+    } else if (
+      i18n.language === "en" &&
+      containsIncorrectLanguage(value, "en")
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: t("languageAlert.title"),
+        text: t("languageAlert.text"),
+        confirmButtonText: t("languageAlert.button"),
+      });
+      return;
     }
-
     const updatedData = [...formData];
     updatedData[index] = {
       ...updatedData[index],
