@@ -3,3 +3,9 @@ export type FaqProps = {
   question: string;
   answer: string;
 };
+
+export type FaqPropsForUpdate = {
+  question: string;
+  answer: string;
+  languageCode: string;
+};

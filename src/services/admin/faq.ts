@@ -1,4 +1,5 @@
 import axiosInstance from "../../plugins/axios/index";
+import { FaqPropsForUpdate } from "../../types/Faq";
 
 export const getFaqs = async (language: string) => {
   return await axiosInstance.get(`/api/admin-auth/faq`, {
@@ -6,7 +7,7 @@ export const getFaqs = async (language: string) => {
   });
 };
 
-export const updateFaq = async (id: number, data: any) => {
+export const updateFaq = async (id: number, data: FaqPropsForUpdate) => {
   return await axiosInstance.put(`/api/admin-auth/update-faq/${id}`, data);
 };
 
