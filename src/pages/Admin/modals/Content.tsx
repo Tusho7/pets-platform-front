@@ -33,6 +33,9 @@ const Content = ({ onClose }: ContentProps) => {
         <Link to="/admin_faqs">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">FAQ</h2>
         </Link>
+        <Link to="/admin_terms">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">Terms</h2>
+        </Link>
       </div>
     </div>
   );

@@ -93,22 +93,26 @@
   },
   "success": {
     "title": "Success!",
-    "text": "About Us data has been updated successfully.",
+    "text": "Data has been updated successfully.",
     "button": "OK"
   },
   "error": {
     "title": "Oops...",
-    "text": "Something went wrong while updating About Us data.",
+    "text": "Something went wrong.",
     "button": "OK"
   },
   "deleteAlert": {
     "title": "Are you sure?",
-    "text": "Do you really want to delete this FAQ? This action cannot be undone.",
+    "text": "Do you really want to delete this? This action cannot be undone.",
     "confirm": "Yes, delete it!",
     "cancel": "Cancel"
   },
   "deleteSuccess": {
     "title": "Deleted!",
-    "text": "The FAQ has been successfully deleted."
+    "text": "Successfully deleted."
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "noTerms": "No terms and conditions available."
   }
 }
