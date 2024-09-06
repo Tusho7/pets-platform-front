@@ -18,9 +18,7 @@ const Footer = () => {
           <div>
             <ul className="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:flex-row justify-between gap-5">
               <Link to="/faqs" className="hover:underline">
-                <a href="#" className="hover:underline">
-                  {t("footer.faqs")}
-                </a>
+                {t("footer.faqs")}
               </Link>
               <li>
                 <Link to="/about_us" className="hover:underline">
