@@ -7,7 +7,7 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import PrivateAdminRoute from "./components/PrivateAdminRoute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminAboutUs from "./pages/Admin/AdminAboutUs";
-import Faq from "./pages/Admin/Faq";
+import Faq from "./pages/Admin/AdminFaq";
 
 function App() {
   return (

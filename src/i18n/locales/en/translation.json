@@ -100,5 +100,15 @@
     "title": "Oops...",
     "text": "Something went wrong while updating About Us data.",
     "button": "OK"
+  },
+  "deleteAlert": {
+    "title": "Are you sure?",
+    "text": "Do you really want to delete this FAQ? This action cannot be undone.",
+    "confirm": "Yes, delete it!",
+    "cancel": "Cancel"
+  },
+  "deleteSuccess": {
+    "title": "Deleted!",
+    "text": "The FAQ has been successfully deleted."
   }
 }
