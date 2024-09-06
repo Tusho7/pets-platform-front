@@ -14,7 +14,6 @@ const containsIncorrectLanguage = (text: string, language: string): boolean => {
   const containsEnglish = englishRegex.test(text);
   const containsGeorgian = georgianRegex.test(text);
 
-  // Check if the text contains characters from both languages
   if (language === "en" && containsGeorgian) {
     return true;
   }
