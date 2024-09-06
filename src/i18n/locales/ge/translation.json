@@ -115,5 +115,17 @@
   "terms": {
     "title": "წესები და პირობები",
     "noTerms": "წესი და პირობა არ არის."
-  }
+  },
+    "settings": {
+      "title": "პარამეტრები",
+      "email": "ელ-ფოსტა",
+      "password": "პაროლი",
+      "firstName": "სახელი",
+      "lastName": "გვარი",
+      "emailPlaceholder": "შეიყვანეთ თქვენი ელ-ფოსტა",
+      "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
+      "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
+      "lastNamePlaceholder": "შეიყვანეთ თქვენი გვარი",
+      "save": "შენახვა"
+    }
 }

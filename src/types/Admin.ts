@@ -11,8 +11,9 @@ export interface AdminContextType {
   setAdmin: React.Dispatch<React.SetStateAction<Admin | null>>;
 }
 
-export interface AdminUpdate {
-  currentPassword: string;
-  newPassword: string;
-  newEmail: string;
+export interface UpdateAdminData {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
 }

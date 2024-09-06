@@ -114,5 +114,17 @@
   "terms": {
     "title": "Terms & Conditions",
     "noTerms": "No terms and conditions available."
-  }
+  },
+    "settings": {
+      "title": "Settings",
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastNamePlaceholder": "Enter your last name",
+      "save": "Save"
+  }  
 }

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
 import { useState } from "react";
@@ -56,12 +56,12 @@ const AdminDashboard = () => {
             <p className="text-gray-700">
               {t("adminDashboard.settingsDescription")}
             </p>
-            <button
-              onClick={() => navigate("/admin/settings")}
+            <Link
               className="mt-4 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-semibold transition duration-300"
+              to="/admin_settings"
             >
               {t("adminDashboard.settingsButton")}
-            </button>
+            </Link>
           </div>
         </div>
 

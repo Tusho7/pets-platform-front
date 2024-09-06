@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminAboutUs from "./pages/Admin/AdminAboutUs";
 import Faq from "./pages/Admin/AdminFaq";
 import AdminTerms from "./pages/Admin/AdminTerms";
+import AdminSettings from "./pages/Admin/AdminSettings";
 
 function App() {
   return (
@@ -53,6 +54,15 @@ function App() {
           element={
             <PrivateAdminRoute>
               <AdminTerms />
+            </PrivateAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin_settings"
+          element={
+            <PrivateAdminRoute>
+              <AdminSettings />
             </PrivateAdminRoute>
           }
         />
