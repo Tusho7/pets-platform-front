@@ -6,22 +6,7 @@ import { AboutUsData } from "../../types/AboutUs";
 import PencilIcon from "/pencil-icon.png";
 import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
-
-const containsIncorrectLanguage = (text: string, language: string): boolean => {
-  const englishRegex = /[a-zA-Z]/;
-  const georgianRegex = /[\u10A0-\u10FF]/;
-
-  const containsEnglish = englishRegex.test(text);
-  const containsGeorgian = georgianRegex.test(text);
-
-  if (language === "en" && containsGeorgian) {
-    return true;
-  }
-  if (language === "ge" && containsEnglish) {
-    return true;
-  }
-  return false;
-};
+import { containsIncorrectLanguage } from "../../utils/languageValidator";
 
 const AdminAboutUs = () => {
   const { t, i18n } = useTranslation();
