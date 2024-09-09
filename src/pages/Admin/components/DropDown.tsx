@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 import { logoutAdmin } from "../../../services/api/adminAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LanguageDropdown from "../../../components/LanguageDropdown";
 
 const DropDown = () => {
@@ -32,10 +32,13 @@ const DropDown = () => {
           </button>
         </li>
         <li>
-          <button className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
+          <Link
+            to="/admin_settings"
+            className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200"
+          >
             <FontAwesomeIcon icon={faCog} className="mr-3 text-indigo-600" />
             {t("adminDashboard.settingsTitle")}
-          </button>
+          </Link>
         </li>
         <li>
           <div className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
