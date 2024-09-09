@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAdmin } from "../../../contexts/UseAdmin";
 import DropDown from "./DropDown";
@@ -7,7 +7,28 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { admin } = useAdmin();
   const { t } = useTranslation();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4 shadow-md">
@@ -15,11 +36,8 @@ const Header = () => {
         <Link to="/admin_dashboard" className="text-3xl font-bold">
           {t("adminDashboard.title")}
         </Link>
-        <div className="relative">
-          <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2"
-          >
+        <div className="relative" ref={dropdownRef}>
+          <button onClick={toggleDropdown} className="flex items-center gap-2">
             {admin ? (
               <>
                 {admin.profilePicture ? (
@@ -45,7 +63,7 @@ const Header = () => {
               <span className="text-lg text-gray-300">Admin</span>
             )}
           </button>
-          {dropdownOpen && <DropDown />}
+          {isOpen && <DropDown />}
         </div>
       </div>
     </header>
