@@ -80,6 +80,10 @@
     "manageContentTitle": "კონტენტის მართვა",
     "manageContentDescription": "გაასწორეთ კონტენტი, მართეთ About Us და FAQs განყოფილებები და სხვა.",
     "manageContentButton": "კონტენტის მართვა",
+    "aboutUs": "ჩვენ შესახებ",
+    "faqs": "ხშირად დასმული კითხვები",
+    "termsConditions": "წესები და პირობები",
+    "users": "მომხმარებლები",
     "settingsTitle": "პარამეტრები",
     "settingsDescription": "კონფიგურაციები და ზოგადი პარამეტრების დაყენება აპლიკაციისთვის.",
     "settingsButton": "ზოგადი პარამეტრები"

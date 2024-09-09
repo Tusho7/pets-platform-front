@@ -79,6 +79,10 @@
     "manageContentTitle": "Manage Content",
     "manageContentDescription": "Edit content, manage About Us and FAQs sections, and more.",
     "manageContentButton": "Manage Content",
+    "aboutUs": "About Us",
+    "faqs": "FAQs",
+    "termsConditions": "Terms & Conditions",
+    "users": "Users",
     "settingsTitle": "Settings",
     "settingsDescription": "Configure general settings and preferences for the application.",
     "settingsButton": "General Settings"
