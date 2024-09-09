@@ -148,6 +148,7 @@
     "active": "Active",
     "unblock": "Unblock",
     "block": "Block",
-    "delete": "Delete"
+    "delete": "Delete",
+    "searchPlaceholder": "Search users..."
   }
 }

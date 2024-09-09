@@ -16,6 +16,7 @@ const AdminUsers = () => {
     top: number;
     left: number;
   } | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -39,9 +40,6 @@ const AdminUsers = () => {
             prevUsers.map((u) =>
               u.id === user.id ? { ...u, isBlocked: !u.isBlocked } : u
             )
-          );
-          console.log(
-            `User ${user.id} ${user.isBlocked ? "unblocked" : "blocked"}`
           );
         } catch (error) {
           console.error("Error toggling user block status:", error);
@@ -98,6 +96,23 @@ const AdminUsers = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredUsers = users.filter((user) => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      user.firstName.toLowerCase().includes(searchLower) ||
+      user.lastName.toLowerCase().includes(searchLower) ||
+      user.phoneNumber?.toLowerCase().includes(searchLower) ||
+      user.email.toLowerCase().includes(searchLower) ||
+      (user.isBlocked ? "blocked" : "active")
+        .toLowerCase()
+        .includes(searchLower)
+    );
+  });
+
   return (
     <div>
       <Header />
@@ -105,8 +120,16 @@ const AdminUsers = () => {
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           {t("adminUsers.title")}
         </h1>
-
-        {users.length === 0 ? (
+        <div className="mb-4">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder={t("adminUsers.searchPlaceholder")}
+            className="p-2 border border-gray-300 rounded w-full"
+          />
+        </div>
+        {filteredUsers.length === 0 ? (
           <p className="text-center text-gray-600">{t("adminUsers.noUsers")}</p>
         ) : (
           <div className="overflow-x-auto">
@@ -137,7 +160,7 @@ const AdminUsers = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600">
-                {users.map((user: User) => (
+                {filteredUsers.map((user: User) => (
                   <tr
                     key={user.id}
                     className="border-b border-gray-200 hover:bg-gray-50 relative"
