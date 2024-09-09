@@ -140,8 +140,8 @@ const Faq = () => {
         console.error("Error deleting FAQ:", error);
         Swal.fire({
           icon: "error",
-          title: t("deleteError.title"),
-          text: t("deleteError.text"),
+          title: t("error.title"),
+          text: t("error.text"),
         });
       }
     }

@@ -7,3 +7,7 @@ export const getUsers = async () => {
 export const toggleUserBlock = async (id: number) => {
   return await axiosInstance.patch(`/api/admin-auth/toggle_block_user/${id}`);
 };
+
+export const deleteUserById = async (id: number) => {
+  return await axiosInstance.delete(`/api/admin-auth/delete_user/${id}`);
+};

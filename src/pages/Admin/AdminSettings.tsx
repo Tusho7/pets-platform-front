@@ -54,8 +54,7 @@ const AdminSettings = () => {
       await updateAdmin(adminId, updatedFields);
       setSuccess(t("settings.success"));
       window.location.reload();
-    } catch (err) {
-      console.log(err);
+    } catch {
       setError(t("settings.errorUpdate"));
     } finally {
       setLoading(false);
