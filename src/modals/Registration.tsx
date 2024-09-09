@@ -12,6 +12,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [fileURL, setFileURL] = useState<string | null>(null);
@@ -26,6 +27,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
       formData.append("password", password);
       formData.append("firstName", firstName);
       formData.append("lastName", lastName);
+      formData.append("phoneNumber", phoneNumber);
 
       if (file) {
         formData.append("profile-pictures", file);
@@ -113,6 +115,22 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
               onChange={(e) => setEmail(e.target.value)}
               className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               placeholder={t("registration.emailPlaceholder")}
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="phoneNumber" className="sr-only">
+              {t("registration.phoneNumber")}
+            </label>
+            <input
+              id="phoneNumber"
+              name="phoneNumber"
+              type="phoneNumber"
+              autoComplete="phoneNumber"
+              required
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder={t("registration.phoneNumberPlaceholder")}
             />
           </div>
           <div className="space-y-2">

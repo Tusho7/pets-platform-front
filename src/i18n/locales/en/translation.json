@@ -21,6 +21,7 @@
   "registration": {
     "title": "Registration",
     "email": "Email",
+    "phoneNumber": "Phone Number",
     "password": "Password",
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -28,6 +29,7 @@
     "passwordPlaceholder": "Enter your password",
     "firstNamePlaceholder": "Enter your first name",
     "lastNamePlaceholder": "Enter your last name",
+    "phoneNumberPlaceholder": "Enter your phone number",
     "profilePicture": "Profile Picture",
     "submitButton": "Register",
     "haveAccount": "Already have an account?"

@@ -21,6 +21,7 @@
   "registration": {
     "title": "რეგისტრაცია",
     "email": "ელ-ფოსტა",
+    "phoneNumber": "ტელეფონის ნომერი",
     "password": "პაროლი",
     "firstName": "სახელი",
     "lastName": "გვარი",
@@ -28,6 +29,7 @@
     "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
     "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
     "lastNamePlaceholder": "შეიყვანეთ თქვენი გვარი",
+    "phoneNumberPlaceholder": "შეიყვანეთ თქვენი ტელეფონის ნომერი",
     "profilePicture": "პროფილის ფოტო",
     "submitButton": "რეგისტრაცია",
     "haveAccount": "გაქვთ ექაუნთი?"
