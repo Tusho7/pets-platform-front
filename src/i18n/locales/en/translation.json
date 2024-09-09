@@ -135,7 +135,7 @@
     "save": "Save"
   },
   "adminUsers": {
-    "title": "Admin Users",
+    "title": "Users",
     "noUsers": "No users found.",
     "profile": "Profile",
     "name": "Name",
