@@ -1,14 +1,35 @@
 import { Link } from "react-router-dom";
 import { ContentProps } from "../../../types/Admin/ContentProps";
+import { motion } from "framer-motion";
+import {
+  FaInfoCircle,
+  FaQuestionCircle,
+  FaFileContract,
+  FaUsers,
+} from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Content = ({ onClose }: ContentProps) => {
+  const { t } = useTranslation();
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+    <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div
+        className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-xl relative z-10"
+      >
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <svg
             className="w-6 h-6"
@@ -26,17 +47,52 @@ const Content = ({ onClose }: ContentProps) => {
           </svg>
         </button>
 
-        <Link to="/admin_about_us">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">About Us</h1>
-        </Link>
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-8 text-center tracking-wide">
+          {t("adminDashboard.manageContentTitle")}
+        </h1>
 
-        <Link to="/admin_faqs">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">FAQ</h2>
-        </Link>
-        <Link to="/admin_terms">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Terms</h2>
-        </Link>
-      </div>
+        <div className="space-y-6">
+          <Link
+            to="/admin_about_us"
+            className="group flex items-center justify-between bg-gradient-to-r from-teal-500 to-teal-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+          >
+            <span className="text-lg font-semibold group-hover:scale-105 transition-transform duration-200 ease-in-out">
+              {t("adminDashboard.aboutUs")}
+            </span>
+            <FaInfoCircle className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
+          </Link>
+
+          <Link
+            to="/admin_faqs"
+            className="group flex items-center justify-between bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+          >
+            <span className="text-lg font-semibold group-hover:scale-105 transition-transform duration-200 ease-in-out">
+              {t("adminDashboard.faqs")}
+            </span>
+            <FaQuestionCircle className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
+          </Link>
+
+          <Link
+            to="/admin_terms"
+            className="group flex items-center justify-between bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+          >
+            <span className="text-lg font-semibold group-hover:scale-105 transition-transform duration-200 ease-in-out">
+              {t("adminDashboard.termsConditions")}
+            </span>
+            <FaFileContract className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
+          </Link>
+
+          <Link
+            to="/admin_users"
+            className="group flex items-center justify-between bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+          >
+            <span className="text-lg font-semibold group-hover:scale-105 transition-transform duration-200 ease-in-out">
+              {t("adminDashboard.users")}
+            </span>
+            <FaUsers className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
+          </Link>
+        </div>
+      </motion.div>
     </div>
   );
 };
