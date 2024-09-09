@@ -16,7 +16,8 @@
     "submitButton": "Login",
     "or": "or",
     "register": "Register",
-    "error": "Invalid email or password."
+    "error": "Invalid email or password.",
+    "blockedUser": "Your account is blocked."
   },
   "registration": {
     "title": "Registration",

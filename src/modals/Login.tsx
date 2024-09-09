@@ -1,16 +1,30 @@
 import { FormEvent, useState } from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import { getUser } from "../services/api/getUser";
 import { useUser } from "../contexts/UseUser";
 import { loginUser } from "../services/api/auth";
 import Loading from "../components/Loading";
 import { LoginProps } from "../types/Login-Register";
+import { ErrorResponse } from "../types/Error";
 
 const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t } = useTranslation();
   const { setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const translateErrorMessage = (message: string) => {
+    const translationMap: { [key: string]: string } = {
+      "თქვენი მომხმარებელი დაბლოკილია.":
+        t("login.blockedUser") || "Your account is blocked.",
+    };
+
+    return (
+      translationMap[message] ||
+      t("login.error") ||
+      "An unexpected error occurred."
+    );
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,9 +43,21 @@ const Login = ({ onOpenRegistration, onClose }: LoginProps) => {
       const { data } = await getUser();
       setUser(data);
       onClose();
-    } catch (error) {
-      console.log(error);
-      setError(t("login.error") || "Invalid email or password.");
+    } catch (error: unknown) {
+      if (error && typeof error === "object" && "response" in error) {
+        const apiError = error as ErrorResponse;
+        if (
+          apiError.response &&
+          apiError.response.data &&
+          apiError.response.data.message
+        ) {
+          setError(translateErrorMessage(apiError.response.data.message));
+        } else {
+          setError(t("login.error") || "Invalid email or password.");
+        }
+      } else {
+        setError(t("login.error") || "An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }
