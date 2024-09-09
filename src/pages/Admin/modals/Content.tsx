@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import { ContentProps } from "../../../types/Admin/ContentProps";
 import { motion } from "framer-motion";
-import {
-  FaInfoCircle,
-  FaQuestionCircle,
-  FaFileContract,
-  FaUsers,
-} from "react-icons/fa";
+import { FaInfoCircle, FaQuestionCircle, FaFileContract } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 const Content = ({ onClose }: ContentProps) => {
@@ -80,16 +75,6 @@ const Content = ({ onClose }: ContentProps) => {
               {t("adminDashboard.termsConditions")}
             </span>
             <FaFileContract className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
-          </Link>
-
-          <Link
-            to="/admin_users"
-            className="group flex items-center justify-between bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
-          >
-            <span className="text-lg font-semibold group-hover:scale-105 transition-transform duration-200 ease-in-out">
-              {t("adminDashboard.users")}
-            </span>
-            <FaUsers className="text-2xl group-hover:rotate-12 transition-transform duration-200 ease-in-out" />
           </Link>
         </div>
       </motion.div>
