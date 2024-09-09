@@ -103,36 +103,36 @@ const AdminUsers = () => {
       <Header />
       <div className="p-6 relative">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Admin Users
+          {t("adminUsers.title")}
         </h1>
 
         {users.length === 0 ? (
-          <p className="text-center text-gray-600">No users found.</p>
+          <p className="text-center text-gray-600">{t("adminUsers.noUsers")}</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg relative">
               <thead>
                 <tr className="bg-gray-100 text-gray-600">
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Profile
+                    {t("adminUsers.profile")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Name
+                    {t("adminUsers.name")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Email
+                    {t("adminUsers.email")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Phone
+                    {t("adminUsers.phone")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Status
+                    {t("adminUsers.status")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    User ID
+                    {t("adminUsers.userId")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-medium">
-                    Actions
+                    {t("adminUsers.actions")}
                   </th>
                 </tr>
               </thead>
@@ -159,10 +159,12 @@ const AdminUsers = () => {
                     <td className="px-6 py-4">
                       {user.isBlocked ? (
                         <span className="flex items-center text-red-600">
-                          <FaBan className="mr-2" /> Blocked
+                          <FaBan className="mr-2" /> {t("adminUsers.blocked")}
                         </span>
                       ) : (
-                        <span className="text-green-600">Active</span>
+                        <span className="text-green-600">
+                          {t("adminUsers.active")}
+                        </span>
                       )}
                     </td>
                     <td className="px-6 py-4">{user.id}</td>
@@ -190,13 +192,15 @@ const AdminUsers = () => {
                   onClick={() => handleOptionClick(selectedUser, "block")}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                 >
-                  {selectedUser.isBlocked ? "Unblock" : "Block"}
+                  {selectedUser.isBlocked
+                    ? t("adminUsers.unblock")
+                    : t("adminUsers.block")}
                 </button>
                 <button
                   onClick={() => handleOptionClick(selectedUser, "delete")}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                 >
-                  Delete
+                  {t("adminUsers.delete")}
                 </button>
               </div>
             )}

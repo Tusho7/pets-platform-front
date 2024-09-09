@@ -118,21 +118,37 @@
   "deleteSuccess": {
     "title": "წაიშალა!",
     "text": "წარმატებით წაიშალა."
-  }, 
+  },
   "terms": {
     "title": "წესები და პირობები",
     "noTerms": "წესი და პირობა არ არის."
   },
-    "settings": {
-      "title": "პარამეტრები",
-      "email": "ელ-ფოსტა",
-      "password": "პაროლი",
-      "firstName": "სახელი",
-      "lastName": "გვარი",
-      "emailPlaceholder": "შეიყვანეთ თქვენი ელ-ფოსტა",
-      "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
-      "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
-      "lastNamePlaceholder": "შეიყვანეთ თქვენი გვარი",
-      "save": "შენახვა"
-    }
+  "settings": {
+    "title": "პარამეტრები",
+    "email": "ელ-ფოსტა",
+    "password": "პაროლი",
+    "firstName": "სახელი",
+    "lastName": "გვარი",
+    "emailPlaceholder": "შეიყვანეთ თქვენი ელ-ფოსტა",
+    "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
+    "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
+    "lastNamePlaceholder": "შეიყვანეთ თქვენი გვარი",
+    "save": "შენახვა"
+  },
+  "adminUsers": {
+    "title": "ადმინისტრატორი მომხმარებლები",
+    "noUsers": "მომხმარებლები ვერ მოიძებნა.",
+    "profile": "პროფილი",
+    "name": "სახელი",
+    "email": "ელ. ფოსტა",
+    "phone": "ტელეფონი",
+    "status": "სტატუსი",
+    "userId": "მომხმარებლის ID",
+    "actions": "მოქმედებები",
+    "blocked": "ბლოკირებული",
+    "active": "აქტიური",
+    "unblock": "განბლოკვა",
+    "block": "ბლოკირება",
+    "delete": "წაშლა"
+  }
 }
