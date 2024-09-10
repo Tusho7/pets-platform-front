@@ -33,7 +33,7 @@ const Home = () => {
         className="flex-grow flex flex-col items-center justify-center text-center p-6 bg-no-repeat w-full bg-center bg-cover "
         style={{
           backgroundImage: `url(${PetBackground})`,
-          backgroundPosition: `center -190px`,
+          backgroundPosition: `center -350px`,
         }}
       >
         <div className="flex flex-col justify-center items-center -mt-40">
