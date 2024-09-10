@@ -26,14 +26,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <Link to="/terms" className="hover:underline">
                   {t("footer.terms_conditions")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <Link to="/support" className="hover:underline">
                   {t("footer.support")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
