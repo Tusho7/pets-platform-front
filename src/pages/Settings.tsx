@@ -101,9 +101,9 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col bg-gray-100">
       <Header />
-      <main className="flex-grow p-6 md:p-10">
+      <main className="flex-grow p-6 md:p-10 min-h-screen">
         <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
           <h2 className="text-3xl font-semibold mb-6 text-gray-900">
             {t("updateUser.updateDetails")}
