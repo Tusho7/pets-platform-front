@@ -25,7 +25,7 @@ const DropDown = () => {
   };
 
   return (
-    <div className="absolute right-0 mt-80 w-64 bg-white border border-gray-200 text-gray-700 rounded-lg shadow-xl z-10 profile-dropdown">
+    <div className="absolute right-0 mt-80 w-72 bg-white border border-gray-200 text-gray-700 rounded-lg shadow-xl z-10 profile-dropdown">
       <div className="p-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-lg">
         <p className="font-bold text-lg">{user?.firstName}</p>
         <p className="text-sm text-gray-200">{user?.email}</p>
