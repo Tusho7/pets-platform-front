@@ -8,18 +8,17 @@ import Footer from "../components/Footer";
 
 const Settings = () => {
   const { t } = useTranslation();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const id = user?.id;
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [password, setPassword] = useState("");
   const [profilePicturePreview, setProfilePicturePreview] = useState<
     string | null
   >(null);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
@@ -55,7 +54,8 @@ const Settings = () => {
       firstName !== user.firstName ||
       lastName !== user.lastName ||
       phoneNumber !== user.phoneNumber ||
-      profilePicture !== null
+      profilePicture !== null ||
+      password !== ""
     );
   };
 
@@ -79,36 +79,37 @@ const Settings = () => {
     if (profilePicture) {
       formData.append("profile-pictures", profilePicture);
     }
+    formData.append("password", password);
 
     try {
       if (id) {
-        await updateUser(id, formData);
-        setSuccess(t("updateUser.success"));
-        setError(null);
+        const updatedUser = await updateUser(id, formData);
+        Swal.fire({
+          icon: "success",
+          title: t("updateUser.success"),
+        });
+        setUser(updatedUser.updatedUser);
       }
     } catch (error) {
       console.log(error);
-      setError(t("updateUser.error"));
-      setSuccess(null);
+      Swal.fire({
+        icon: "error",
+        title: t("updateUser.error"),
+      });
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <main className="flex-grow p-4 pt-10">
-        <div className="max-w-[1200px] mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+      <main className="flex-grow p-6 md:p-10">
+        <div className="max-w-[800px] mx-auto bg-white rounded-lg shadow-lg p-8">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
             {t("updateUser.updateDetails")}
           </h2>
-          {success && (
-            <p className="text-green-600 mb-4">{t("updateUser.success")}</p>
-          )}
-          {error && (
-            <p className="text-red-600 mb-4">{t("updateUser.error")}</p>
-          )}
+
           <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label
                   htmlFor="email"
@@ -121,7 +122,7 @@ const Settings = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900"
+                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -136,7 +137,7 @@ const Settings = () => {
                   id="firstName"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900"
+                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -151,7 +152,7 @@ const Settings = () => {
                   id="lastName"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900"
+                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
@@ -166,11 +167,11 @@ const Settings = () => {
                   id="phoneNumber"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900"
+                  className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
             </div>
-            <div className="mb-4">
+            <div className="mb-6">
               <label
                 htmlFor="profilePicture"
                 className="block text-sm font-medium text-gray-700 mb-2"
@@ -183,7 +184,7 @@ const Settings = () => {
                 type="file"
                 accept="image/png, image/jpeg, image/jpg"
                 onChange={handleFileChange}
-                className="border border-gray-300 rounded-md p-3 bg-gray-50"
+                className="border border-gray-300 rounded-md p-2 bg-gray-50"
               />
               {profilePicturePreview && (
                 <div className="mt-4 flex items-center">
@@ -195,16 +196,31 @@ const Settings = () => {
                   <button
                     type="button"
                     onClick={handleRemoveFile}
-                    className="ml-4 text-red-600"
+                    className="ml-4 text-red-600 hover:text-red-800 transition duration-200"
                   >
                     {t("updateUser.removeFile")}
                   </button>
                 </div>
               )}
             </div>
+            <div className="mb-6">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                {t("updateUser.password")}
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="border border-gray-300 rounded-md p-3 w-full bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
             <button
               type="submit"
-              className="bg-indigo-500 text-white px-6 py-3 rounded-md hover:bg-indigo-600 transition duration-200"
+              className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition duration-200"
             >
               {t("updateUser.button")}
             </button>

@@ -158,6 +158,7 @@
     "lastName": "Last Name:",
     "phoneNumber": "Phone Number:",
     "profilePicture": "Profile Picture:",
+    "password": "Password",
     "success": "User updated successfully!",
     "error": "Failed to update user.",
     "ops": "Oops",
