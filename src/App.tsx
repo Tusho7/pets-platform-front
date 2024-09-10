@@ -12,6 +12,7 @@ import AdminTerms from "./pages/Admin/AdminTerms";
 import AdminSettings from "./pages/Admin/AdminSettings";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import Settings from "./pages/Settings";
+import Terms from "./pages/Terms";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/terms" element={<Terms />} />
 
         <Route path="/admin_login" element={<AdminLogin />} />
 
