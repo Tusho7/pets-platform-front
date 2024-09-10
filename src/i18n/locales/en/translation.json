@@ -162,6 +162,7 @@
     "error": "Failed to update user.",
     "ops": "Oops",
     "noChanges": "No changes detected!",
-    "button": "Update"
+    "button": "Update",
+    "removeFile": "Remove File"
   }
 }
