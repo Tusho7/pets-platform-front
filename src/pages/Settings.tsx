@@ -10,6 +10,7 @@ const Settings = () => {
   const { t } = useTranslation();
   const { user, setUser } = useUser();
   const id = user?.id;
+  const userProfilePicture = user?.profilePicture;
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -103,8 +104,8 @@ const Settings = () => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
       <main className="flex-grow p-6 md:p-10">
-        <div className="max-w-[800px] mx-auto bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">
+        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-900">
             {t("updateUser.updateDetails")}
           </h2>
 
@@ -178,6 +179,13 @@ const Settings = () => {
               >
                 {t("updateUser.profilePicture")}
               </label>
+              {userProfilePicture && !profilePicturePreview && (
+                <img
+                  src={import.meta.env.VITE_API_STORAGE + userProfilePicture}
+                  className="w-24 h-24 object-cover rounded-md border border-gray-300 mb-4"
+                  alt="Current Profile"
+                />
+              )}
               <input
                 id="profilePicture"
                 name="profile-pictures"
@@ -186,6 +194,7 @@ const Settings = () => {
                 onChange={handleFileChange}
                 className="border border-gray-300 rounded-md p-2 bg-gray-50"
               />
+
               {profilePicturePreview && (
                 <div className="mt-4 flex items-center">
                   <img
