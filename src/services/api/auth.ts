@@ -15,3 +15,11 @@ export const loginUser = async (email: string, password: string) => {
 export const logoutUser = async () => {
   return await axiosInstance.post("/api/auth/logout");
 };
+
+export const updateUser = async (id: number, formData: FormData) => {
+  return await formDataInstance.put(`/api/auth/update_user/${id}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};

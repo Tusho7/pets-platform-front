@@ -150,5 +150,18 @@
     "block": "Block",
     "delete": "Delete",
     "searchPlaceholder": "Search users..."
+  },
+  "updateUser": {
+    "updateDetails": "Update User Details",
+    "email": "Email:",
+    "firstName": "First Name:",
+    "lastName": "Last Name:",
+    "phoneNumber": "Phone Number:",
+    "profilePicture": "Profile Picture:",
+    "success": "User updated successfully!",
+    "error": "Failed to update user.",
+    "ops": "Oops",
+    "noChanges": "No changes detected!",
+    "button": "Update"
   }
 }

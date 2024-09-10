@@ -32,16 +32,22 @@ const DropDown = () => {
       </div>
       <ul className="py-2">
         <li>
-          <button className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
+          <Link
+            to="/profile"
+            className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200"
+          >
             <FontAwesomeIcon icon={faUser} className="mr-3 text-indigo-600" />
             {t("profile.viewProfile")}
-          </button>
+          </Link>
         </li>
         <li>
-          <button className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200">
+          <Link
+            to="/settings"
+            className="flex items-center px-4 py-2 text-sm w-full text-left hover:bg-indigo-100 hover:text-indigo-700 rounded-md transition-all duration-200"
+          >
             <FontAwesomeIcon icon={faCog} className="mr-3 text-indigo-600" />
             {t("profile.settings")}
-          </button>
+          </Link>
         </li>
         <li>
           <Link
