@@ -44,7 +44,7 @@ const Header = ({ openLoginModal }: HeaderProps) => {
           <img src={PetLogo} className="h-9" alt="Pet Logo" />
           <Link
             to="/"
-            className="text-2xl md:text-3xl font-extrabold tracking-wide max-w-[150px] md:max-w-full"
+            className="text-2xl md:text-3xl tracking-wide max-w-[150px] md:max-w-full"
           >
             {t("home.header")}
           </Link>

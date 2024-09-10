@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-wh font-extrabold relative  ">
+    <div className="flex flex-col items-center justify-center text-wh  relative  ">
       <Header openLoginModal={openLoginModal} />
       <main
         className="flex-grow flex flex-col items-center justify-start pt-40 text-center p-6 bg-no-repeat w-full bg-center bg-cover min-h-screen"

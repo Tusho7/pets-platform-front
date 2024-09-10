@@ -97,7 +97,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
           </svg>
         </button>
         {loading && <Loading />}
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
+        <h2 className="text-3xl text-gray-900 text-center mb-6">
           {t("registration.title")}
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit}>

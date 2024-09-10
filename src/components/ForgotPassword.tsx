@@ -40,7 +40,7 @@ const ForgotPassword = ({ onSuccess }: ForgotPasswordProps) => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       {loading && <Loading />}
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
+        <h2 className="text-3xl  text-gray-900 text-center mb-6">
           დაგავიწყდა პაროლი?
         </h2>
         <form className="space-y-4" onSubmit={handleSubmit}>

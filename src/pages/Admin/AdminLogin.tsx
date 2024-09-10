@@ -33,9 +33,7 @@ const AdminLogin = () => {
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">
         {loading && <Loading />}
         <div className="px-6 py-8">
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            შესვლა
-          </h2>
+          <h2 className="text-center text-3xl text-gray-900">შესვლა</h2>
 
           <form className="mt-6" onSubmit={handleSubmit}>
             <div>
