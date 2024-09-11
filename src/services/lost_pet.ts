@@ -1,21 +1,10 @@
-import axios from "axios";
+import { formDataInstance } from "../plugins/axios/index";
 
-export const createLostPet = async (formData) => {
-  try {
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/create-lost-pet`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      }
-    );
+export const createLostPet = async (formData: FormData) => {
+  const response = await formDataInstance.post(
+    "/api/create-lost-pet",
+    formData
+  );
 
-    return response.data;
-  } catch (error) {
-    console.error("Failed to create lost pet:", error);
-    throw error;
-  }
+  return response.data;
 };

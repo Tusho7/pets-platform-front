@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { createLostPet } from "../services/lost_pet";
+import { useTranslation } from "react-i18next";
+import { useUser } from "../contexts/UseUser";
 
 const Lostpet = () => {
+  const { i18n } = useTranslation();
+  const { user } = useUser();
+
+  const userId = user?.id;
   const [formData, setFormData] = useState({
     breed: "",
     age: "",
@@ -9,36 +15,77 @@ const Lostpet = () => {
     description: "",
     title: "",
     help: false,
-    account_number: [],
+    account_number: [""],
     location: "",
     aggresive: false,
     status: "lost",
-    languageCode: "en",
-    userId: 2,
   });
 
-  const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const [images, setImages] = useState<File[]>([]);
+  const [videos, setVideos] = useState<File[]>([]);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value, type } = e.target;
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : false;
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, files } = e.target;
+    const fileArray = Array.from(files || []);
     if (name === "images") {
-      setImages(Array.from(files));
+      setImages((prevImages) => [...prevImages, ...fileArray]);
     } else if (name === "videos") {
-      setVideos(Array.from(files));
+      setVideos((prevVideos) => [...prevVideos, ...fileArray]);
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleRemoveFile = (type: string, index: number) => {
+    if (type === "image") {
+      setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    } else if (type === "video") {
+      setVideos((prevVideos) => prevVideos.filter((_, i) => i !== index));
+    }
+  };
+
+  const handleAccountNumberChange = (index: number, value: string) => {
+    const updatedAccountNumbers = [...formData.account_number];
+    updatedAccountNumbers[index] = value;
+    setFormData((prevData) => ({
+      ...prevData,
+      account_number: updatedAccountNumbers,
+    }));
+  };
+
+  const addAccountNumberField = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      account_number: [...prevData.account_number, ""],
+    }));
+  };
+
+  const removeAccountNumberField = (index: number) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      account_number: prevData.account_number.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!userId) {
+      console.error("User id is required");
+      return;
+    }
 
     const data = new FormData();
     data.append("breed", formData.breed);
@@ -46,13 +93,13 @@ const Lostpet = () => {
     data.append("gender", formData.gender);
     data.append("description", formData.description);
     data.append("title", formData.title);
-    data.append("help", formData.help);
+    data.append("help", formData.help.toString());
     data.append("account_number", formData.account_number.join(", "));
     data.append("location", formData.location);
-    data.append("aggresive", formData.aggresive);
+    data.append("aggresive", formData.aggresive.toString());
     data.append("status", formData.status);
-    data.append("languageCode", formData.languageCode);
-    data.append("userId", formData.userId);
+    data.append("userId", userId.toString());
+    data.append("languageCode", i18n.language);
 
     images.forEach((file) => {
       data.append("images", file);
@@ -71,170 +118,246 @@ const Lostpet = () => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-8 rounded shadow-lg w-full max-w-md relative">
-        <button className="absolute top-2 right-2 text-gray-500">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 z-50 overflow-auto">
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+        <button
+          className="absolute top-3 right-3 text-gray-700 hover:text-gray-900"
+          aria-label="Close"
+        >
           &times;
         </button>
-        <h2 className="text-xl font-bold mb-4">Add Lost Pet</h2>
+        <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900">
+          Add Lost Pet
+        </h2>
         <form onSubmit={handleSubmit}>
-          <label className="block mb-2">
-            Title:
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Breed:
-            <input
-              type="text"
-              name="breed"
-              value={formData.breed}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Age:
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Gender:
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="ხვადი">ხვადი</option>
-              <option value="ძუ">ძუ</option>
-            </select>
-          </label>
-          <label className="block mb-2">
-            Description:
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-            />
-          </label>
-          <label className="block mb-2">
-            Help Needed:
-            <input
-              type="checkbox"
-              name="help"
-              checked={formData.help}
-              onChange={handleChange}
-              className="ml-2"
-            />
-          </label>
-          {formData.help && (
-            <label className="block mb-2">
-              Account Numbers:
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Title
+              </label>
               <input
                 type="text"
-                name="account_number"
-                value={formData.account_number.join(", ")}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    account_number: e.target.value.split(", "),
-                  })
-                }
-                className="mt-1 block w-full"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
               />
-            </label>
-          )}
-          <label className="block mb-2">
-            Location:
-            <input
-              type="text"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Aggressive:
-            <input
-              type="checkbox"
-              name="aggresive"
-              checked={formData.aggresive}
-              onChange={handleChange}
-              className="ml-2"
-            />
-          </label>
-          <label className="block mb-2">
-            Status:
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Breed
+              </label>
+              <input
+                type="text"
+                name="breed"
+                value={formData.breed}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Age
+              </label>
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Gender
+              </label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="flex items-center text-sm font-medium text-gray-800">
+                <input
+                  type="checkbox"
+                  name="help"
+                  checked={formData.help}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Help Needed
+              </label>
+            </div>
+            {formData.help && (
+              <div className="md:col-span-2">
+                <label className="block mb-2 text-sm font-medium text-gray-800">
+                  Account Numbers
+                </label>
+                {formData.account_number.map((account, index) => (
+                  <div key={index} className="flex items-center mb-2">
+                    <input
+                      type="text"
+                      value={account}
+                      onChange={(e) =>
+                        handleAccountNumberChange(index, e.target.value)
+                      }
+                      className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeAccountNumberField(index)}
+                      className="ml-2 text-red-600 hover:text-red-800"
+                      disabled={formData.account_number.length === 1}
+                      aria-label="Remove Account Number"
+                    >
+                      &minus;
+                    </button>
+                    {index === formData.account_number.length - 1 && (
+                      <button
+                        type="button"
+                        onClick={addAccountNumberField}
+                        className="ml-2 text-blue-600 hover:text-blue-800"
+                        aria-label="Add Account Number"
+                      >
+                        +
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="md:col-span-2">
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Location
+              </label>
+              <input
+                type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
+              />
+            </div>
+            <div className="md:col-span-2 flex items-center">
+              <input
+                type="checkbox"
+                name="aggresive"
+                checked={formData.aggresive}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              <span className="text-sm font-medium text-gray-800">
+                Aggressive
+              </span>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Status
+              </label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                required
+              >
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+              </select>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Images
+              </label>
+              <input
+                type="file"
+                name="images"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                multiple
+              />
+              <div className="mt-2">
+                {images.map((file, index) => (
+                  <div key={index} className="flex items-center mt-2">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`Preview ${index}`}
+                      className="w-16 h-16 object-cover mr-2 border border-gray-300 rounded-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFile("image", index)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block mb-2 text-sm font-medium text-gray-800">
+                Videos
+              </label>
+              <input
+                type="file"
+                name="videos"
+                accept="video/*"
+                onChange={handleFileChange}
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                multiple
+              />
+              <div className="mt-2">
+                {videos.map((file, index) => (
+                  <div key={index} className="flex items-center mt-2">
+                    <video
+                      src={URL.createObjectURL(file)}
+                      controls
+                      className="w-24 h-24 object-cover mr-2 border border-gray-300 rounded-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFile("video", index)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
-              <option value="lost">Lost</option>
-              <option value="found">Found</option>
-            </select>
-          </label>
-          <label className="block mb-2">
-            Language Code:
-            <input
-              type="text"
-              name="languageCode"
-              value={formData.languageCode}
-              onChange={handleChange}
-              className="mt-1 block w-full"
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Images:
-            <input
-              type="file"
-              name="images"
-              id="images"
-              multiple
-              onChange={handleFileChange}
-              className="mt-1 block w-full"
-            />
-          </label>
-          <label className="block mb-2">
-            Videos:
-            <input
-              type="file"
-              name="videos"
-              id="videos"
-              multiple
-              onChange={handleFileChange}
-              className="mt-1 block w-full"
-            />
-          </label>
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-          >
-            Submit
-          </button>
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
