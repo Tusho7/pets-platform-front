@@ -13,7 +13,7 @@ const Lostpet = () => {
     age: "",
     gender: "male",
     description: "",
-    title: "",
+    pet_name: "",
     help: false,
     account_number: [""],
     location: "",
@@ -92,7 +92,7 @@ const Lostpet = () => {
     data.append("age", formData.age);
     data.append("gender", formData.gender);
     data.append("description", formData.description);
-    data.append("title", formData.title);
+    data.append("pet_name", formData.pet_name);
     data.append("help", formData.help.toString());
     data.append("account_number", formData.account_number.join(", "));
     data.append("location", formData.location);
@@ -133,15 +133,15 @@ const Lostpet = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.title")}
+                {t("lostPetModal.fields.pet_name")}
               </label>
               <input
                 type="text"
-                name="title"
-                value={formData.title}
+                name="pet_name"
+                value={formData.pet_name}
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
-                placeholder={t("lostPetModal.placeholders.title")}
+                placeholder={t("lostPetModal.placeholders.pet_name")}
                 required
               />
             </div>

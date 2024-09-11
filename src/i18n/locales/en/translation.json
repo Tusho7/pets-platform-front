@@ -169,7 +169,7 @@
   "lostPetModal": {
     "title": "Add Lost Pet",
     "fields": {
-      "title": " Name of the Pet",
+      "pet_name": " Name of the Pet",
       "breed": "Breed",
       "age": "Age",
       "gender": "Gender",
@@ -185,7 +185,7 @@
       "videos": "Videos"
     },
     "placeholders": {
-      "title": "Enter pet title",
+      "pet_name": "Enter pet title",
       "breed": "Enter breed",
       "age": "Enter age",
       "description": "Enter description",
