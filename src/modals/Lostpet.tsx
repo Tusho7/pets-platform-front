@@ -14,7 +14,6 @@ const Lostpet = () => {
     gender: "male",
     description: "",
     pet_name: "",
-    help: false,
     account_number: [""],
     location: "",
     aggresive: false,
@@ -57,29 +56,6 @@ const Lostpet = () => {
     }
   };
 
-  const handleAccountNumberChange = (index: number, value: string) => {
-    const updatedAccountNumbers = [...formData.account_number];
-    updatedAccountNumbers[index] = value;
-    setFormData((prevData) => ({
-      ...prevData,
-      account_number: updatedAccountNumbers,
-    }));
-  };
-
-  const addAccountNumberField = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      account_number: [...prevData.account_number, ""],
-    }));
-  };
-
-  const removeAccountNumberField = (index: number) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      account_number: prevData.account_number.filter((_, i) => i !== index),
-    }));
-  };
-
   const validateForm = () => {
     const newErrors: string[] = [];
 
@@ -117,7 +93,6 @@ const Lostpet = () => {
     data.append("gender", formData.gender);
     data.append("description", formData.description);
     data.append("pet_name", formData.pet_name);
-    data.append("help", formData.help.toString());
     data.append("account_number", formData.account_number.join(", "));
     data.append("location", formData.location);
     data.append("aggresive", formData.aggresive.toString());
@@ -239,56 +214,6 @@ const Lostpet = () => {
                 placeholder={t("lostPetModal.placeholders.description")}
               />
             </div>
-            <div className="md:col-span-2">
-              <label className="flex items-center text-sm font-medium text-gray-800">
-                <input
-                  type="checkbox"
-                  name="help"
-                  checked={formData.help}
-                  onChange={handleChange}
-                  className="mr-2"
-                />
-                {t("lostPetModal.fields.help")}
-              </label>
-            </div>
-            {formData.help && (
-              <div className="md:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-gray-800">
-                  {t("lostPetModal.fields.accountNumber")}
-                </label>
-                {formData.account_number.map((account, index) => (
-                  <div key={index} className="flex items-center mb-2">
-                    <input
-                      type="text"
-                      value={account}
-                      onChange={(e) =>
-                        handleAccountNumberChange(index, e.target.value)
-                      }
-                      className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => removeAccountNumberField(index)}
-                      className="ml-2 text-red-600 hover:text-red-800"
-                      disabled={formData.account_number.length === 1}
-                      aria-label={t("lostPetModal.buttons.removeAccountNumber")}
-                    >
-                      &minus;
-                    </button>
-                    {index === formData.account_number.length - 1 && (
-                      <button
-                        type="button"
-                        onClick={addAccountNumberField}
-                        className="ml-2 text-blue-600 hover:text-blue-800"
-                        aria-label={t("lostPetModal.buttons.addAccountNumber")}
-                      >
-                        +
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
             <div className="md:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-800">
                 {t("lostPetModal.fields.location")}{" "}
