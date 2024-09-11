@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import PetBackground from "/pet_background5.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -44,12 +45,13 @@ const Home = () => {
             {t("home.description")}
           </p>
           <div className="flex gap-4 mt-6">
-            <button
+            <Link
+              to="/lost_pets"
               className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-3 rounded-full shadow-lg transition-all duration-300"
               onClick={() => {}}
             >
               {t("home.lostPets")}
-            </button>
+            </Link>
             <button
               className="bg-gray-500 hover:bg-gray-600 text-white py-3 px-3 rounded-full shadow-lg transition-all duration-300"
               onClick={() => {}}

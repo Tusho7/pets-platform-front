@@ -13,6 +13,7 @@ import AdminSettings from "./pages/Admin/AdminSettings";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import Settings from "./pages/Settings";
 import Terms from "./pages/Terms";
+import LostPets from "./pages/LostPets";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/lost_pets" element={<LostPets />} />
 
         <Route path="/admin_login" element={<AdminLogin />} />
 
