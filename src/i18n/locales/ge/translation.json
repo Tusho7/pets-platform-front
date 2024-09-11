@@ -166,5 +166,38 @@
     "noChanges": "ცვლილებები ვერ მოიძებნა!",
     "button": "განახლება",
     "removeFile": "ფაილის წაშლა"
+  },
+  "lostPetModal": {
+    "title": "დაკარგული ცხოველის დამატება",
+    "fields": {
+      "title": "ცხოველის სახელი",
+      "breed": "ჯიში",
+      "age": "ასაკი",
+      "gender": "სქესი",
+      "genderMale": "ხვადი",
+      "genderFemale": "ძუ",
+      "description": "აღწერა",
+      "help": "დაამატებ ანგარიშის ნომრებს?",
+      "accountNumber": "ანგარიშის ნომერი",
+      "location": "ადგილმდებარეობა",
+      "aggresive": "აგრესიულია ცხოველი?",
+      "status": "სტატუსი",
+      "images": "ფოტოები",
+      "videos": "ვიდეოები"
+    },
+    "placeholders": {
+      "title": "შეიყვანეთ ცხოველის დასახელება",
+      "breed": "შეიყვანეთ ჯიში",
+      "age": "შეიყვანეთ ასაკი",
+      "description": "შეიყვანეთ აღწერა",
+      "location": "შეიყვანეთ ადგილმდებარეობა"
+    },
+    "buttons": {
+      "addAccountNumber": "დამატეთ ანგარიში",
+      "removeAccountNumber": "წაშლილი ანგარიში",
+      "remove": "წაშლა",
+      "submit": "დამატება",
+      "close": "დახურვა"
+    }
   }
 }
