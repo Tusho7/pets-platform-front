@@ -197,6 +197,15 @@
       "remove": "Remove",
       "submit": "Submit",
       "close": "Close"
+    },
+    "errors": {
+      "pet_nameRequired": "Pet name is required.",
+      "breedRequired": "Breed is required.",
+      "ageInvalid": "Age must be a valid number.",
+      "descriptionRequired": "Description is required.",
+      "locationRequired": "Location is required.",
+      "mediaRequired": "At least one image or video is required.",
+      "submitFailed": "Failed to submit the form. Please try again."
     }
   }
 }

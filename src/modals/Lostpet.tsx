@@ -23,6 +23,7 @@ const Lostpet = () => {
 
   const [images, setImages] = useState<File[]>([]);
   const [videos, setVideos] = useState<File[]>([]);
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -79,6 +80,27 @@ const Lostpet = () => {
     }));
   };
 
+  const validateForm = () => {
+    const newErrors: string[] = [];
+
+    if (!formData.pet_name)
+      newErrors.push(t("lostPetModal.errors.pet_nameRequired"));
+    if (!formData.breed) newErrors.push(t("lostPetModal.errors.breedRequired"));
+    if (!formData.age || isNaN(Number(formData.age)))
+      newErrors.push(t("lostPetModal.errors.ageInvalid"));
+    if (!formData.description)
+      newErrors.push(t("lostPetModal.errors.descriptionRequired"));
+    if (!formData.location)
+      newErrors.push(t("lostPetModal.errors.locationRequired"));
+
+    if (images.length === 0 && videos.length === 0) {
+      newErrors.push(t("lostPetModal.errors.mediaRequired"));
+    }
+
+    setErrors(newErrors);
+    return newErrors.length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -86,6 +108,8 @@ const Lostpet = () => {
       console.error("User id is required");
       return;
     }
+
+    if (!validateForm()) return;
 
     const data = new FormData();
     data.append("breed", formData.breed);
@@ -129,11 +153,22 @@ const Lostpet = () => {
         <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900">
           {t("lostPetModal.title")}
         </h2>
+
+        {errors.length > 0 && (
+          <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
+            <ul>
+              {errors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.pet_name")}
+                {t("lostPetModal.fields.pet_name")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -142,12 +177,13 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.pet_name")}
-                required
+                // required
               />
             </div>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.breed")}
+                {t("lostPetModal.fields.breed")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -156,12 +192,13 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.breed")}
-                required
+                // required
               />
             </div>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.age")}
+                {t("lostPetModal.fields.age")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="number"
@@ -170,19 +207,20 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.age")}
-                required
+                // required
               />
             </div>
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.gender")}
+                {t("lostPetModal.fields.gender")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <select
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
-                required
+                // required
               >
                 <option value="male">
                   {t("lostPetModal.fields.genderMale")}
@@ -194,7 +232,8 @@ const Lostpet = () => {
             </div>
             <div className="md:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.description")}
+                {t("lostPetModal.fields.description")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <textarea
                 name="description"
@@ -202,6 +241,7 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.description")}
+                // required
               />
             </div>
             <div className="md:col-span-2">
@@ -256,7 +296,8 @@ const Lostpet = () => {
             )}
             <div className="md:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.location")}
+                {t("lostPetModal.fields.location")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -265,7 +306,7 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.location")}
-                required
+                // required
               />
             </div>
             <div className="md:col-span-2 flex items-center">
@@ -283,7 +324,8 @@ const Lostpet = () => {
 
             <div className="md:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.images")}
+                {t("lostPetModal.fields.images")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="file"
@@ -315,7 +357,8 @@ const Lostpet = () => {
             </div>
             <div className="md:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-800">
-                {t("lostPetModal.fields.videos")}
+                {t("lostPetModal.fields.videos")}{" "}
+                <span className="text-red-600">*</span>
               </label>
               <input
                 type="file"
