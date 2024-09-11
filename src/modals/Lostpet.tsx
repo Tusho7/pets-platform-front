@@ -177,7 +177,6 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.pet_name")}
-                // required
               />
             </div>
             <div>
@@ -192,7 +191,6 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.breed")}
-                // required
               />
             </div>
             <div>
@@ -207,7 +205,6 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.age")}
-                // required
               />
             </div>
             <div>
@@ -220,7 +217,6 @@ const Lostpet = () => {
                 value={formData.gender}
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
-                // required
               >
                 <option value="male">
                   {t("lostPetModal.fields.genderMale")}
@@ -239,9 +235,8 @@ const Lostpet = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
+                className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900 resize-none"
                 placeholder={t("lostPetModal.placeholders.description")}
-                // required
               />
             </div>
             <div className="md:col-span-2">
@@ -306,7 +301,6 @@ const Lostpet = () => {
                 onChange={handleChange}
                 className="block w-full p-2.5 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-gray-900"
                 placeholder={t("lostPetModal.placeholders.location")}
-                // required
               />
             </div>
             <div className="md:col-span-2 flex items-center">
