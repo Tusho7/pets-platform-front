@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 import { updateLostPetByUserId } from "../services/lost_pet";
 import { useUser } from "../contexts/UseUser";
 import Swal from "sweetalert2";
+import { containsIncorrectLanguage } from "../utils/languageValidator";
 
 const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   pet,
   onClose,
   onUpdate,
 }) => {
+  const { i18n } = useTranslation();
   const { user } = useUser();
   const userId = user?.id;
   const { t } = useTranslation();
@@ -22,32 +24,34 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   const [location, setLocation] = useState<string>(pet.location || "");
   const [aggresive, setAggresive] = useState<boolean>(pet.aggresive || false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<string[]>([]);
-
-  const validate = () => {
-    const newErrors: string[] = [];
-
-    if (!petName.trim())
-      newErrors.push(t("lostPetModal.errors.pet_nameRequired"));
-    if (!breed.trim()) newErrors.push(t("lostPetModal.errors.breedRequired"));
-    if (isNaN(age) || age <= 0)
-      newErrors.push(t("lostPetModal.errors.ageInvalid"));
-    if (!description.trim())
-      newErrors.push(t("lostPetModal.errors.descriptionRequired"));
-    if (!location.trim())
-      newErrors.push(t("lostPetModal.errors.locationRequired"));
-
-    setErrors(newErrors);
-    return newErrors.length === 0;
-  };
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validate()) return;
-
     setLoading(true);
-    setErrors([]);
+    setError(null);
+
+    const language = i18n.language;
+    const newErrors: string[] = [];
+
+    if (containsIncorrectLanguage(petName, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguagePetName"));
+    }
+    if (containsIncorrectLanguage(breed, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageBreed"));
+    }
+    if (containsIncorrectLanguage(description, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageDescription"));
+    }
+    if (containsIncorrectLanguage(location, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageLocation"));
+    }
+
+    if (newErrors.length > 0) {
+      setError(newErrors.join(", "));
+      setLoading(false);
+      return;
+    }
 
     const updatedPet: LostPet = {
       id: pet.id,
@@ -72,7 +76,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
       });
       onClose();
     } catch (err) {
-      setErrors([t("lostPetPage.updateError")]);
+      setError(t("lostPetPage.updateError"));
       Swal.fire({
         title: t("error.title"),
         text: t("error.text"),
@@ -92,15 +96,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
           {t("lostPetPage.editButton")}
         </h2>
 
-        {errors.length > 0 && (
-          <div className="mb-4">
-            {errors.map((error, index) => (
-              <p key={index} className="text-red-500">
-                {error}
-              </p>
-            ))}
-          </div>
-        )}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -113,6 +109,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={petName}
               onChange={(e) => setPetName(e.target.value)}
+              required
             />
           </div>
 
@@ -126,6 +123,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={breed}
               onChange={(e) => setBreed(e.target.value)}
+              required
             />
           </div>
 
@@ -139,6 +137,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={age}
               onChange={(e) => setAge(Number(e.target.value))}
+              required
             />
           </div>
 
@@ -151,6 +150,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
+              required
             >
               <option value="lost">{t("lostPetPage.lost")}</option>
               <option value="found">{t("lostPetPage.found")}</option>
@@ -166,6 +166,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
+              required
             >
               <option value="male">{t("lostPetPage.male")}</option>
               <option value="female">{t("lostPetPage.female")}</option>
@@ -184,6 +185,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded resize-none"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              required
             />
           </div>
 
@@ -197,6 +199,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               className="w-full px-3 py-2 border rounded"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              required
             />
           </div>
 

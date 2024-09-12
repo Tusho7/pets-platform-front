@@ -232,6 +232,12 @@
     "saveButton": "Save",
     "saving": "Saving...",
     "updateError": "Failed to update lost pet.",
-    "updateSuccess": "Lost pet updated successfully!"
+    "updateSuccess": "Lost pet updated successfully!",
+    "errors": {
+      "incorrectLanguagePetName": "Pet name contains invalid characters for the selected language.",
+      "incorrectLanguageBreed": "Breed contains invalid characters for the selected language.",
+      "incorrectLanguageDescription": "Description contains invalid characters for the selected language.",
+      "incorrectLanguageLocation": "Location contains invalid characters for the selected language."
+    }
   }
 }

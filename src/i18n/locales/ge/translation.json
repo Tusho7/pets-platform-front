@@ -233,6 +233,12 @@
     "saveButton": "შენახვა",
     "saving": "იტვირთება...",
     "updateError": "განახლება ვერ მოხერხდა.",
-    "updateSuccess": "წარმატებით განახლდა!"
+    "updateSuccess": "წარმატებით განახლდა!",
+    "errors": {
+      "incorrectLanguagePetName": "სახელში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageBreed": "ჯიშში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageDescription": "აღწერაში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageLocation": "ადგილმდებარეობაში აირჩიეთ ენის შესაბამისი ასოები."
+    }
   }
 }
