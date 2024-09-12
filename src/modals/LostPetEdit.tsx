@@ -3,6 +3,7 @@ import { LostPet, LostPetEditModalProps } from "../types/LostPetProps";
 import { useTranslation } from "react-i18next";
 import { updateLostPetByUserId } from "../services/lost_pet";
 import { useUser } from "../contexts/UseUser";
+import Swal from "sweetalert2";
 
 const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   pet,
@@ -43,9 +44,21 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
     try {
       await updateLostPetByUserId(updatedPet, userId!);
       onUpdate(updatedPet);
+      Swal.fire({
+        title: t("success.title"),
+        text: t("success.text"),
+        icon: "success",
+        confirmButtonText: t("success.button"),
+      });
       onClose();
     } catch (err) {
       setError(t("lostPetPage.updateError"));
+      Swal.fire({
+        title: t("error.title"),
+        text: t("error.text"),
+        icon: "error",
+        confirmButtonText: t("error.button"),
+      });
       console.error("Failed to update the pet:", err);
     } finally {
       setLoading(false);
