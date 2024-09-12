@@ -207,5 +207,20 @@
       "mediaRequired": "At least one image or video is required.",
       "submitFailed": "Failed to submit the form. Please try again."
     }
+  },
+  "lostPetPage": {
+    "title": "Lost Pets",
+    "addLostPetButton": "Add Lost Pet",
+    "viewMoreImages": "View More Images",
+    "viewMoreVideos": "View More Videos",
+    "noLostPetsFound": "No lost pets found.",
+    "name": "Name:",
+    "breed": "Breed:",
+    "age": "Age:",
+    "gender": "Gender:",
+    "description": "Description:",
+    "location": "Location:",
+    "aggressive": "Aggressive:",
+    "status": "Status:"
   }
 }
