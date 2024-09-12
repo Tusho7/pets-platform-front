@@ -218,9 +218,14 @@
     "breed": "Breed:",
     "age": "Age:",
     "gender": "Gender:",
+    "male": "Male",
+    "female": "Female",
     "description": "Description:",
     "location": "Location:",
     "aggressive": "Aggressive:",
-    "status": "Status:"
+    "status": "Status:",
+    "editButton": "Edit",
+    "cancelButton": "Cancel",
+    "saveButton": "Save"
   }
 }

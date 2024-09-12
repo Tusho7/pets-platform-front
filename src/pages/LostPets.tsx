@@ -81,7 +81,10 @@ const LostPets: React.FC = () => {
                       <strong>{t("lostPetPage.age")}</strong> {pet.age}
                     </p>
                     <p className="text-gray-700">
-                      <strong>{t("lostPetPage.gender")}</strong> {pet.gender}
+                      <strong>{t("lostPetPage.gender")}</strong>{" "}
+                      {pet.gender === "male"
+                        ? t("lostPetPage.male")
+                        : t("lostPetPage.female")}
                     </p>
                     <p className="text-gray-700">
                       <strong>{t("lostPetPage.description")}</strong>{" "}

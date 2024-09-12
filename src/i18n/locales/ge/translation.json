@@ -219,9 +219,14 @@
     "breed": "ჯიში:",
     "age": "ასაკი:",
     "gender": "სქესი:",
+    "male": "ხვადი",
+    "female": "ძუ",
     "description": "აღწერა:",
     "location": "ადგილმდებარეობა:",
     "aggressive": "აგრესიულია?:",
-    "status": "სტატუსი:"
+    "status": "სტატუსი:",
+    "editButton": "რედაქტირება",
+    "cancelButton": "გაუქმება",
+    "saveButton": "შენახვა"
   }
 }
