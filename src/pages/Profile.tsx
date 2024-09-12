@@ -53,6 +53,14 @@ const Profile: React.FC = () => {
     setVideoModalOpen(true);
   };
 
+  const handlePetUpdate = (updatedPet: LostPet) => {
+    setLostPets((prevPets) =>
+      prevPets.map((pet) =>
+        pet.id === updatedPet.id ? { ...pet, ...updatedPet } : pet
+      )
+    );
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -146,7 +154,11 @@ const Profile: React.FC = () => {
         </div>
 
         {editModalOpen && currentPet && (
-          <LostPetEditModal pet={currentPet} onClose={handleCloseModal} />
+          <LostPetEditModal
+            pet={currentPet}
+            onClose={handleCloseModal}
+            onUpdate={handlePetUpdate}
+          />
         )}
 
         {imageModalOpen &&

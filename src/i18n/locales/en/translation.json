@@ -224,10 +224,13 @@
     "found": "Found",
     "description": "Description:",
     "location": "Location:",
-    "aggressive": "Aggressive:",
+    "aggressive": "Aggressive",
+    "aggresiveDescription": "This pet is aggressive.",
     "status": "Status:",
     "editButton": "Edit",
     "cancelButton": "Cancel",
-    "saveButton": "Save"
+    "saveButton": "Save",
+    "updateError": "Failed to update lost pet.",
+    "updateSuccess": "Lost pet updated successfully!"
   }
 }

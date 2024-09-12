@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { LostPet } from "../types/LostPetProps";
 import { useTranslation } from "react-i18next";
+import { updateLostPetByUserId } from "../services/lost_pet";
+import { useUser } from "../contexts/UseUser";
 
 interface LostPetEditModalProps {
   pet: LostPet;
   onClose: () => void;
+  onUpdate: (updatedPet: LostPet) => void;
 }
 
 const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   pet,
   onClose,
+  onUpdate,
 }) => {
+  const { user } = useUser();
+  const userId = user?.id;
   const { t } = useTranslation();
   const [petName, setPetName] = useState<string>(pet.pet_name || "");
   const [breed, setBreed] = useState<string>(pet.breed || "");
@@ -19,6 +25,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   const [status, setStatus] = useState<string>(pet.status || "");
   const [description, setDescription] = useState<string>(pet.description || "");
   const [location, setLocation] = useState<string>(pet.location || "");
+  const [aggresive, setAggresive] = useState<boolean>(pet.aggresive || false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,18 +34,21 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
     setLoading(true);
     setError(null);
 
-    // const updatedPet = {
-    //   id: pet.id,
-    //   pet_name: petName,
-    //   breed,
-    //   age,
-    //   gender,
-    //   description,
-    //   location,
-    // };
+    const updatedPet: LostPet = {
+      id: pet.id,
+      pet_name: petName,
+      breed,
+      age,
+      gender,
+      status,
+      description,
+      location,
+      aggresive,
+    };
 
     try {
-      //   await updateLostPet(updatedPet);
+      await updateLostPetByUserId(updatedPet, userId!);
+      onUpdate(updatedPet);
       onClose();
     } catch (err) {
       setError(t("lostPetPage.updateError"));
@@ -101,7 +111,7 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="gender">
+            <label className="block text-sm font-bold mb-2" htmlFor="status">
               {t("lostPetPage.status")}
             </label>
             <select
@@ -160,6 +170,21 @@ const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
               onChange={(e) => setLocation(e.target.value)}
               required
             />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="aggresive">
+              {t("lostPetPage.aggressive")} {/* Add a label for `aggresive` */}
+            </label>
+            <input
+              id="aggresive"
+              type="checkbox"
+              className="mr-2"
+              checked={aggresive}
+              onChange={(e) => setAggresive(e.target.checked)}
+            />
+            <span>{t("lostPetPage.aggresiveDescription")}</span>{" "}
+            {/* Optional description */}
           </div>
 
           <div className="flex justify-end">

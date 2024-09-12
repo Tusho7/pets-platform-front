@@ -225,10 +225,13 @@
     "female": "ძუ",
     "description": "აღწერა:",
     "location": "ადგილმდებარეობა:",
-    "aggressive": "აგრესიულია?:",
+    "aggressive": "აგრესიულია?",
+    "aggresiveDescription": "ეს ცხოველი აგრესიულია.",
     "status": "სტატუსი:",
     "editButton": "რედაქტირება",
     "cancelButton": "გაუქმება",
-    "saveButton": "შენახვა"
+    "saveButton": "შენახვა",
+    "updateError": "განახლება ვერ მოხერხდა.",
+    "updateSuccess": "წარმატებით განახლდა!"
   }
 }
