@@ -105,7 +105,7 @@ const LostPets: React.FC = () => {
                   </div>
 
                   <div className="p-4">
-                    {pet.images?.length && pet.images.length > 0 && (
+                    {Array.isArray(pet.images) && pet.images.length > 0 && (
                       <div className="mb-4">
                         <img
                           src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
@@ -124,7 +124,7 @@ const LostPets: React.FC = () => {
                       </div>
                     )}
 
-                    {pet.videos?.length && pet.videos?.length > 0 && (
+                    {Array.isArray(pet.videos) && pet.videos.length > 0 && (
                       <div>
                         <video
                           src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
