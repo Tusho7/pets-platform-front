@@ -220,6 +220,8 @@
     "gender": "Gender:",
     "male": "Male",
     "female": "Female",
+    "lost": "Lost",
+    "found": "Found",
     "description": "Description:",
     "location": "Location:",
     "aggressive": "Aggressive:",

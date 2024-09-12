@@ -16,10 +16,12 @@ export interface LostPetImageModalProps {
   isOpen: boolean;
   images: string[];
   onClose: () => void;
+  fromProfile?: boolean;
 }
 
 export interface LostPetVideosModalProps {
   isOpen: boolean;
   videos: string[];
   onClose: () => void;
+  fromProfile?: boolean;
 }

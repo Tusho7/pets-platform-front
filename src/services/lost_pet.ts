@@ -14,3 +14,8 @@ export const getLostPets = async () => {
   const response = await axiosInstance.get("/api/lost-pets");
   return response.data;
 };
+
+export const getLostPetsByUserId = async (userId: string) => {
+  const response = await axiosInstance.get(`/api/lost-pet/${userId}`);
+  return response.data;
+};

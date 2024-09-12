@@ -14,6 +14,8 @@ import AdminUsers from "./pages/Admin/AdminUsers";
 import Settings from "./pages/Settings";
 import Terms from "./pages/Terms";
 import LostPets from "./pages/LostPets";
+import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -26,6 +28,14 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/lost_pets" element={<LostPets />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
 
         <Route path="/admin_login" element={<AdminLogin />} />
 
