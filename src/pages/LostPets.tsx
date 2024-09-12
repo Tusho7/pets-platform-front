@@ -1,15 +1,170 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Lostpet from "../modals/Lostpet";
+import { getLostPets } from "../services/lost_pet";
+import LostPetImageModal from "../modals/LostPetImages";
+import LostPetVideosModal from "../modals/LostPetVideos";
+import { LostPet } from "../types/LostPetProps";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-const LostPets = () => {
-  const [lostPetModalOpen, setLostPetModalOpen] = useState(false);
+const LostPets: React.FC = () => {
+  const { t } = useTranslation();
+  const [lostPetModalOpen, setLostPetModalOpen] = useState<boolean>(false);
+  const [lostPets, setLostPets] = useState<LostPet[]>([]);
+  const [imageModalOpen, setImageModalOpen] = useState<boolean>(false);
+  const [videoModalOpen, setVideoModalOpen] = useState<boolean>(false);
+  const [currentPet, setCurrentPet] = useState<LostPet | null>(null);
+
+  useEffect(() => {
+    const fetchLostPets = async () => {
+      try {
+        const data = await getLostPets();
+        setLostPets(data);
+      } catch (error) {
+        console.error("Error fetching lost pets:", error);
+      }
+    };
+
+    fetchLostPets();
+  }, []);
+
+  const handleViewMoreImages = (pet: LostPet) => {
+    setCurrentPet(pet);
+    setImageModalOpen(true);
+  };
+
+  const handleViewMoreVideos = (pet: LostPet) => {
+    setCurrentPet(pet);
+    setVideoModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setImageModalOpen(false);
+    setVideoModalOpen(false);
+    setCurrentPet(null);
+  };
 
   return (
-    <div>
-      <button onClick={() => setLostPetModalOpen(true)}>Add Lost Pet</button>
+    <main>
+      <Header />
 
-      {lostPetModalOpen && <Lostpet />}
-    </div>
+      <main className="p-4 pt-10 min-h-screen">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold">{t("lostPetPage.title")}</h1>
+            <button
+              onClick={() => setLostPetModalOpen(true)}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            >
+              {t("lostPetPage.addLostPetButton")}
+            </button>
+          </div>
+
+          {lostPetModalOpen && <Lostpet />}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {lostPets.length > 0 ? (
+              lostPets.map((pet) => (
+                <div
+                  key={pet.id}
+                  className="bg-white shadow-lg rounded-lg overflow-hidden"
+                >
+                  <div className="p-4">
+                    <h3 className="text-gray-700">
+                      <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
+                    </h3>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.age")}</strong> {pet.age}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.gender")}</strong> {pet.gender}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.description")}</strong>{" "}
+                      {pet.description ||
+                        t("lostPetModal.errors.descriptionRequired")}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.location")}</strong>{" "}
+                      {pet.location}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.aggressive")}</strong>{" "}
+                      {pet.aggresive ? t("yes") : t("no")}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.status")}</strong> {pet.status}
+                    </p>
+                  </div>
+
+                  <div className="p-4">
+                    {pet.images?.length && pet.images.length > 0 && (
+                      <div className="mb-4">
+                        <img
+                          src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
+                          alt={t("lostPetModal.fields.images")}
+                          className="w-full h-32 object-cover rounded-lg cursor-pointer"
+                          onClick={() => handleViewMoreImages(pet)}
+                        />
+                        {pet.images.length > 1 && (
+                          <button
+                            className="text-blue-500 mt-2"
+                            onClick={() => handleViewMoreImages(pet)}
+                          >
+                            {t("lostPetPage.viewMoreImages")}
+                          </button>
+                        )}
+                      </div>
+                    )}
+
+                    {pet.videos?.length && pet.videos?.length > 0 && (
+                      <div>
+                        <video
+                          src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
+                          controls
+                          className="w-full h-32 object-cover rounded-lg"
+                          style={{ height: "150px" }}
+                        />
+                        {pet.videos.length > 1 && (
+                          <button
+                            className="text-blue-500 mt-2"
+                            onClick={() => handleViewMoreVideos(pet)}
+                          >
+                            {t("lostPetPage.viewMoreVideos")}
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">
+                {t("lostPetPage.noLostPetsFound")}
+              </p>
+            )}
+          </div>
+
+          <LostPetImageModal
+            isOpen={imageModalOpen}
+            images={currentPet?.images || []}
+            onClose={closeModal}
+          />
+
+          <LostPetVideosModal
+            isOpen={videoModalOpen}
+            videos={currentPet?.videos || []}
+            onClose={closeModal}
+          />
+        </div>
+      </main>
+
+      <Footer />
+    </main>
   );
 };
 
