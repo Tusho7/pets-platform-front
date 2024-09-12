@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import LostPetImageModal from "../modals/LostPetImages";
 import LostPetVideosModal from "../modals/LostPetVideos";
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const { user } = useUser();
   const userId = user?.id;
   const { t } = useTranslation();

@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { LostPet } from "../types/LostPetProps";
+import { LostPet, LostPetEditModalProps } from "../types/LostPetProps";
 import { useTranslation } from "react-i18next";
 import { updateLostPetByUserId } from "../services/lost_pet";
 import { useUser } from "../contexts/UseUser";
-
-interface LostPetEditModalProps {
-  pet: LostPet;
-  onClose: () => void;
-  onUpdate: (updatedPet: LostPet) => void;
-}
 
 const LostPetEditModal: React.FC<LostPetEditModalProps> = ({
   pet,
