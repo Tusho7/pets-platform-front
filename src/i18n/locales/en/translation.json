@@ -230,6 +230,7 @@
     "editButton": "Edit",
     "cancelButton": "Cancel",
     "saveButton": "Save",
+    "saving": "Saving...",
     "updateError": "Failed to update lost pet.",
     "updateSuccess": "Lost pet updated successfully!"
   }

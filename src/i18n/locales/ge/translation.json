@@ -231,6 +231,7 @@
     "editButton": "რედაქტირება",
     "cancelButton": "გაუქმება",
     "saveButton": "შენახვა",
+    "saving": "იტვირთება...",
     "updateError": "განახლება ვერ მოხერხდა.",
     "updateSuccess": "წარმატებით განახლდა!"
   }
