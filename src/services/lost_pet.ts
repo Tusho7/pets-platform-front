@@ -29,3 +29,10 @@ export const updateLostPetByUserId = async (
 
   return response.data;
 };
+
+export const deleteLostPetByUserId = async (userId: string, petId: string) => {
+  const response = await axiosInstance.delete(
+    `/api/lost-pet/${userId}/${petId}`
+  );
+  return response.data;
+};

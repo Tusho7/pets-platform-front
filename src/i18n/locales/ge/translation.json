@@ -234,6 +234,7 @@
     "saving": "იტვირთება...",
     "updateError": "განახლება ვერ მოხერხდა.",
     "updateSuccess": "წარმატებით განახლდა!",
+    "deleteButton": "წაშლა",
     "errors": {
       "incorrectLanguagePetName": "სახელში აირჩიეთ ენის შესაბამისი ასოები.",
       "incorrectLanguageBreed": "ჯიშში აირჩიეთ ენის შესაბამისი ასოები.",

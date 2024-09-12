@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getLostPetsByUserId } from "../services/lost_pet";
+import {
+  getLostPetsByUserId,
+  deleteLostPetByUserId,
+} from "../services/lost_pet";
 import { useTranslation } from "react-i18next";
 import { LostPet } from "../types/LostPetProps";
 import LostPetEditModal from "../modals/LostPetEdit";
@@ -8,6 +11,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LostPetImageModal from "../modals/LostPetImages";
 import LostPetVideosModal from "../modals/LostPetVideos";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const { user } = useUser();
@@ -61,6 +66,17 @@ const Profile = () => {
     );
   };
 
+  const handleDelete = async (petId: number) => {
+    try {
+      if (userId) {
+        await deleteLostPetByUserId(userId.toString(), petId.toString());
+      }
+      setLostPets((prevPets) => prevPets.filter((pet) => pet.id !== petId));
+    } catch (error) {
+      console.error("Error deleting lost pet:", error);
+    }
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -72,7 +88,7 @@ const Profile = () => {
             lostPets.map((pet) => (
               <div
                 key={pet.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden"
+                className="bg-white shadow-lg rounded-lg overflow-hidden relative"
               >
                 <div className="p-4">
                   <h3 className="text-gray-700">
@@ -103,6 +119,14 @@ const Profile = () => {
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
                   >
                     {t("lostPetPage.editButton")}
+                  </button>
+
+                  <button
+                    onClick={() => handleDelete(pet.id)}
+                    className="text-red-500 ml-4"
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />{" "}
+                    {t("lostPetPage.deleteButton")}
                   </button>
                 </div>
                 <div className="p-4">
