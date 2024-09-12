@@ -2,8 +2,10 @@ import { useState } from "react";
 import { createLostPet } from "../services/lost_pet";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../contexts/UseUser";
+import { containsIncorrectLanguage } from "../utils/languageValidator";
+import { LostPetModalProps } from "../types/LostPetProps";
 
-const Lostpet = () => {
+const Lostpet = ({ onClose }: LostPetModalProps) => {
   const { t, i18n } = useTranslation();
   const { user } = useUser();
 
@@ -24,6 +26,8 @@ const Lostpet = () => {
   const [images, setImages] = useState<File[]>([]);
   const [videos, setVideos] = useState<File[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -101,6 +105,30 @@ const Lostpet = () => {
     return newErrors.length === 0;
   };
 
+  const validateLanguage = (): boolean => {
+    const language = i18n.language;
+    const newErrors: string[] = [];
+    if (containsIncorrectLanguage(formData.pet_name, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguagePetName"));
+    }
+    if (containsIncorrectLanguage(formData.breed, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageBreed"));
+    }
+    if (containsIncorrectLanguage(formData.description, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageDescription"));
+    }
+    if (containsIncorrectLanguage(formData.location, language)) {
+      newErrors.push(t("lostPetPage.errors.incorrectLanguageLocation"));
+    }
+
+    if (newErrors.length > 0) {
+      setError(newErrors.join(", "));
+      setLoading(false);
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -110,6 +138,9 @@ const Lostpet = () => {
     }
 
     if (!validateForm()) return;
+    if (!validateLanguage()) {
+      return;
+    }
 
     const data = new FormData();
     data.append("breed", formData.breed);
@@ -146,12 +177,14 @@ const Lostpet = () => {
         <button
           className="absolute top-3 right-3 text-gray-700 hover:text-gray-900"
           aria-label={t("lostPetModal.buttons.close")}
+          onClick={onClose}
         >
-          &times;
+          X
         </button>
         <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900">
           {t("lostPetModal.title")}
         </h2>
+        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
         {errors.length > 0 && (
           <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
@@ -387,7 +420,7 @@ const Lostpet = () => {
               type="submit"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 focus:ring-blue-500 focus:ring-2"
             >
-              {t("lostPetModal.buttons.submit")}
+              {loading ? t("loading") : t("lostPetPage.saveButton")}
             </button>
           </div>
         </form>

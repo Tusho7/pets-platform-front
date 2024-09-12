@@ -31,3 +31,7 @@ export interface LostPetEditModalProps {
   onClose: () => void;
   onUpdate: (updatedPet: LostPet) => void;
 }
+
+export interface LostPetModalProps {
+  onClose: () => void;
+}
