@@ -235,6 +235,12 @@
     "updateError": "განახლება ვერ მოხერხდა.",
     "updateSuccess": "წარმატებით განახლდა!",
     "deleteButton": "წაშლა",
+    "userInfo": {
+      "userInfo": "მომხმარებლის ინფორმაცია",
+      "firstName": "სახელი:",
+      "lastName": "გვარი:",
+      "phoneNumber": "ტელეფონი:"
+    },
     "errors": {
       "incorrectLanguagePetName": "სახელში აირჩიეთ ენის შესაბამისი ასოები.",
       "incorrectLanguageBreed": "ჯიშში აირჩიეთ ენის შესაბამისი ასოები.",

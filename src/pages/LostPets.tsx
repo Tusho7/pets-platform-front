@@ -46,6 +46,8 @@ const LostPets: React.FC = () => {
     setLostPetModalOpen(false);
   };
 
+  console.log(lostPets);
+
   return (
     <main>
       <Header />
@@ -103,6 +105,23 @@ const LostPets: React.FC = () => {
                     <p className="text-gray-700">
                       <strong>{t("lostPetPage.status")}</strong> {pet.status}
                     </p>
+                    <div className="mt-4 border-t border-gray-200 pt-4">
+                      <h4 className="text-gray-800 font-semibold">
+                        {t("lostPetPage.userInfo.userInfo")}
+                      </h4>
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.userInfo.phoneNumber")}</strong>{" "}
+                        {pet?.User?.phoneNumber}
+                      </p>
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.userInfo.firstName")}</strong>{" "}
+                        {pet?.User?.firstName}
+                      </p>
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.userInfo.lastName")}</strong>{" "}
+                        {pet?.User?.lastName}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="p-4">

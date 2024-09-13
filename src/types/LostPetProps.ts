@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface LostPet {
   id: number;
   pet_name: string;
@@ -10,6 +12,7 @@ export interface LostPet {
   status: string;
   images?: string[];
   videos?: string[];
+  User?: User;
 }
 
 export interface LostPetImageModalProps {

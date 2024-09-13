@@ -234,6 +234,12 @@
     "updateError": "Failed to update lost pet.",
     "updateSuccess": "Lost pet updated successfully!",
     "deleteButton": "Delete",
+    "userInfo": {
+      "userInfo": "User Information",
+      "firstName": "First Name:",
+      "lastName": "Last Name:",
+      "phoneNumber": "Phone:"
+    },
     "errors": {
       "incorrectLanguagePetName": "Pet name contains invalid characters for the selected language.",
       "incorrectLanguageBreed": "Breed contains invalid characters for the selected language.",
