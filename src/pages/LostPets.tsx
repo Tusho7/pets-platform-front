@@ -46,8 +46,6 @@ const LostPets: React.FC = () => {
     setLostPetModalOpen(false);
   };
 
-  console.log(lostPets);
-
   return (
     <main>
       <Header />
