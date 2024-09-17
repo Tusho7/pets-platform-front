@@ -130,7 +130,7 @@ const Profile = () => {
                   </button>
                 </div>
                 <div className="p-4">
-                  {pet.images?.length && pet.images.length > 0 && (
+                  {pet.images && pet.images.length > 0 ? (
                     <div className="mb-4">
                       <img
                         src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
@@ -147,9 +147,9 @@ const Profile = () => {
                         </button>
                       )}
                     </div>
-                  )}
+                  ) : null}
 
-                  {pet.videos?.length && pet.videos?.length > 0 && (
+                  {pet.videos && pet.videos.length > 0 ? (
                     <div>
                       <video
                         src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
@@ -166,7 +166,7 @@ const Profile = () => {
                         </button>
                       )}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
             ))
