@@ -20,6 +20,8 @@ export interface LostPetImageModalProps {
   images: string[];
   onClose: () => void;
   fromProfile?: boolean;
+  petId?: number;
+  onUpdate: (updatedImages: string[]) => void;
 }
 
 export interface LostPetVideosModalProps {
