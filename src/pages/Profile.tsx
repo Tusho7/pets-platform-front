@@ -182,7 +182,7 @@ const Profile = () => {
             ))
           ) : (
             <p className="text-center text-gray-500">
-              {t("profilePage.noLostPets")}
+              {t("lostPetPage.noLostPetsFound")}
             </p>
           )}
         </div>
