@@ -80,15 +80,17 @@ const Profile = () => {
   return (
     <React.Fragment>
       <Header />
-      <main className="p-4 min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">{t("profile.viewProfile")}</h1>
+      <main className="p-4 min-h-screen  ">
+        <h1 className="text-2xl font-bold mb-4 max-w-[1200px] mx-auto">
+          {t("profile.viewProfile")}
+        </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
           {lostPets.length > 0 ? (
             lostPets.map((pet) => (
               <div
                 key={pet.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden relative"
+                className="bg-white shadow-lg rounded-lg overflow-hidden "
               >
                 <div className="p-4">
                   <h3 className="text-gray-700">
