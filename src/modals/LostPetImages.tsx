@@ -1,24 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import { LostPetImageModalProps } from "../types/LostPetProps";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useUser } from "../contexts/UseUser";
+import Swal from "sweetalert2";
+import { deleteLostPetImageById } from "../services/lost_pet";
+import { t } from "i18next";
 
 const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
   isOpen,
   images,
   onClose,
   fromProfile,
+  petId,
+  onUpdate,
 }) => {
+  const { user } = useUser();
+  const userId = user?.id;
+  const [editMode, setEditMode] = useState<boolean>(false);
+
   if (!isOpen || !images.length) return null;
+
+  const handleEditClick = () => {
+    setEditMode((prev) => !prev);
+  };
+
+  const handleDeleteImage = async (index: number) => {
+    const fullPath = images[index];
+    const filename = fullPath.split("/").pop();
+
+    const result = await Swal.fire({
+      title: t("lostPetImageModal.areYouSure.title"),
+      text: t("lostPetImageModal.areYouSure.text"),
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: t("lostPetImageModal.areYouSure.cancelButton"),
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: t("lostPetImageModal.areYouSure.confirmButton"),
+    });
+
+    if (result.isConfirmed) {
+      try {
+        if (userId) {
+          if (filename) {
+            await deleteLostPetImageById(
+              petId?.toString() || "",
+              filename,
+              userId
+            );
+          } else {
+            throw new Error(t("lostPetImageModal.filenameError"));
+          }
+          Swal.fire(
+            t("lostPetImageModal.deleteSuccessMessages.title"),
+            t("lostPetImageModal.deleteSuccessMessages.text"),
+            "success"
+          );
+
+          const updatedImages = images.filter((_, i) => i !== index);
+          onUpdate(updatedImages);
+          onClose();
+        }
+      } catch (error) {
+        console.error("Error deleting image:", error);
+        Swal.fire(
+          t("lostPetImageModal.deleteErrorMessages.title"),
+          t("lostPetImageModal.deleteErrorMessages.text"),
+          "error"
+        );
+      }
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
       <div className="relative bg-white p-4 rounded-lg max-w-3xl">
-        <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold mb-4">All Images</h3>
-          <section className="flex gap-5 items-baseline justify-center">
-            <button onClick={onClose}>Close</button>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-semibold">
+            {t("lostPetImageModal.title")}
+          </h3>
+          <section className="flex gap-5 items-baseline">
+            <button onClick={onClose}> {t("lostPetImageModal.close")}</button>
             {fromProfile && (
-              <button onClick={() => console.log("Edit image")}>
+              <button onClick={handleEditClick}>
                 <FaEdit className="text-blue-500" />
               </button>
             )}
@@ -30,11 +94,25 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
               <img
                 src={import.meta.env.VITE_API_STORAGE + image}
                 alt={`Lost pet image ${index + 1}`}
-                className="w-full h-auto rounded-lg object-cover"
+                className="w-full h-28 rounded-lg object-cover"
               />
+              {editMode && (
+                <button
+                  onClick={() => handleDeleteImage(index)}
+                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                >
+                  <FaTrashAlt />
+                </button>
+              )}
             </div>
           ))}
         </div>
+        {editMode && (
+          <input
+            type="file"
+            className="p-2 border border-gray-300 rounded-lg mt-10"
+          />
+        )}
       </div>
     </div>
   );

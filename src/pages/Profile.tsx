@@ -77,6 +77,14 @@ const Profile = () => {
     }
   };
 
+  const handleImageUpdate = (updatedImages: string[]) => {
+    setLostPets((prevPets) =>
+      prevPets.map((pet) =>
+        pet.id === currentPet?.id ? { ...pet, images: updatedImages } : pet
+      )
+    );
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -193,9 +201,11 @@ const Profile = () => {
           currentPet.images.length > 0 && (
             <LostPetImageModal
               isOpen={imageModalOpen}
+              onUpdate={handleImageUpdate}
               images={currentPet.images}
               onClose={() => setImageModalOpen(false)}
               fromProfile={true}
+              petId={currentPet.id}
             />
           )}
 

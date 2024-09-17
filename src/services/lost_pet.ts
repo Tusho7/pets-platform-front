@@ -36,3 +36,14 @@ export const deleteLostPetByUserId = async (userId: string, petId: string) => {
   );
   return response.data;
 };
+
+export const deleteLostPetImageById = async (
+  petId: string,
+  filename: string,
+  userId: number
+) => {
+  const response = await axiosInstance.delete(
+    `/api/lost-pet/${petId}/${filename}/${userId}`
+  );
+  return response.data;
+};
