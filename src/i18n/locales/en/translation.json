@@ -206,7 +206,11 @@
       "locationRequired": "Location is required.",
       "mediaRequired": "At least one image or video is required.",
       "submitFailed": "Failed to submit the form. Please try again."
-    }
+    },
+    "success": "Success",
+    "successMessage": "The lost pet has been created successfully.",
+    "error": "Error",
+    "errorMessage": "Failed to create the lost pet. Please try again."
   },
   "lostPetPage": {
     "title": "Lost Pets",

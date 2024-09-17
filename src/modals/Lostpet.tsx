@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useUser } from "../contexts/UseUser";
 import { containsIncorrectLanguage } from "../utils/languageValidator";
 import { LostPetModalProps } from "../types/LostPetProps";
+import Swal from "sweetalert2";
 
 const Lostpet = ({ onClose }: LostPetModalProps) => {
   const { t, i18n } = useTranslation();
@@ -164,10 +165,19 @@ const Lostpet = ({ onClose }: LostPetModalProps) => {
     });
 
     try {
-      const resp = await createLostPet(data);
-      console.log(resp);
+      createLostPet(data);
+      Swal.fire({
+        icon: "success",
+        title: t("lostPetModal.success"),
+        text: t("lostPetModal.successMessage"),
+      });
     } catch (error) {
       console.error("Failed to create lost pet:", error);
+      Swal.fire({
+        icon: "error",
+        title: t("lostPetModal.error"),
+        text: t("lostPetModal.errorMessage"),
+      });
     }
   };
 
