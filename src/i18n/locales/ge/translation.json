@@ -247,5 +247,26 @@
       "incorrectLanguageDescription": "აღწერაში აირჩიეთ ენის შესაბამისი ასოები.",
       "incorrectLanguageLocation": "ადგილმდებარეობაში აირჩიეთ ენის შესაბამისი ასოები."
     }
+  },
+  "lostPetImageModal": {
+    "title": "ყველა სურათი",
+    "close": "დახურვა",
+    "areYouSure": {
+      "title": "დარწმუნებული ხარ?",
+      "text": "ნამდვილად გსურს ამ სურათის წაშლა?",
+      "confirmButton": "დიახ, წაშალე!",
+      "cancelButton": "გაუქმება"
+    },
+    "filenameError": "ფაილის სახელი აუცილებელია.",
+    "deleteSuccessMessages": {
+      "title": "წაშლილია!",
+      "text": "ცხოველის სურათი წარმატებით წაიშალა.",
+      "confirmButton": "კარგი"
+    },
+    "deleteErrorMessages": {
+      "title": "უი...",
+      "text": "სურათის წაშლა ვერ მოხერხდა.",
+      "confirmButton": "კარგი"
+    }
   }
 }

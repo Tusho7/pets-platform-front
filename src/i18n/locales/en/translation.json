@@ -246,5 +246,26 @@
       "incorrectLanguageDescription": "Description contains invalid characters for the selected language.",
       "incorrectLanguageLocation": "Location contains invalid characters for the selected language."
     }
+  },
+  "lostPetImageModal": {
+    "title": "All Images",
+    "close": "Close",
+    "areYouSure": {
+      "title": "Are you sure?",
+      "text": "Do you really want to delete this image?",
+      "confirmButton": "Yes, delete it!",
+      "cancelButton": "Cancel"
+    },
+    "filenameError": "The filename is required.",
+    "deleteSuccessMessages": {
+      "title": "Deleted!",
+      "text": "The lost pet image has been deleted successfully.",
+      "confirmButton": "OK"
+    },
+    "deleteErrorMessages": {
+      "title": "Oops...",
+      "text": "Failed to delete the lost pet image.",
+      "confirmButton": "OK"
+    }
   }
 }
