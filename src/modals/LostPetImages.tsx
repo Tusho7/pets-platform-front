@@ -25,6 +25,15 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
   };
 
   const handleDeleteImage = async (index: number) => {
+    if (images.length <= 1) {
+      Swal.fire({
+        icon: "warning",
+        title: t("lostPetImageModal.deleteErrorMessages.title"),
+        text: t("lostPetImageModal.deleteErrorMessages.text"),
+      });
+      return;
+    }
+
     const fullPath = images[index];
     const filename = fullPath.split("/").pop();
 
@@ -58,7 +67,9 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
           );
 
           const updatedImages = images.filter((_, i) => i !== index);
-          onUpdate(updatedImages);
+          if (onUpdate) {
+            onUpdate(updatedImages);
+          }
           onClose();
         }
       } catch (error) {
@@ -96,7 +107,7 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
                 alt={`Lost pet image ${index + 1}`}
                 className="w-full h-28 rounded-lg object-cover"
               />
-              {editMode && (
+              {editMode && images.length > 1 && (
                 <button
                   onClick={() => handleDeleteImage(index)}
                   className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
