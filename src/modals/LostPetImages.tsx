@@ -3,7 +3,10 @@ import { LostPetImageModalProps } from "../types/LostPetProps";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useUser } from "../contexts/UseUser";
 import Swal from "sweetalert2";
-import { deleteLostPetImageById } from "../services/lost_pet";
+import {
+  deleteLostPetImageById,
+  updateLostPetImages,
+} from "../services/lost_pet";
 import { t } from "i18next";
 
 const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
@@ -17,6 +20,7 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
   const { user } = useUser();
   const userId = user?.id;
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [newImages, setNewImages] = useState<File[]>([]);
 
   if (!isOpen || !images.length) return null;
 
@@ -83,6 +87,52 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
     }
   };
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files ? Array.from(event.target.files) : [];
+    setNewImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const handleUploadImage = async () => {
+    if (newImages && newImages?.length > 0 && userId && petId) {
+      try {
+        const formData = new FormData();
+        newImages.forEach((image) => formData.append("images", image));
+
+        await updateLostPetImages(formData, petId.toString(), userId);
+
+        const updatedImages = [
+          ...images,
+          ...newImages.map((file) => URL.createObjectURL(file)),
+        ];
+        if (onUpdate) {
+          onUpdate(updatedImages);
+        }
+
+        setNewImages([]);
+        onClose();
+
+        Swal.fire(
+          t("lostPetImageModal.uploadSuccessMessages.title"),
+          t("lostPetImageModal.uploadSuccessMessages.text"),
+          "success"
+        );
+        onClose();
+        window.location.reload();
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        Swal.fire(
+          t("lostPetImageModal.uploadErrorMessages.title"),
+          t("lostPetImageModal.uploadErrorMessages.text"),
+          "error"
+        );
+      }
+    }
+  };
+
+  const handleRemoveNewImage = (index: number) => {
+    setNewImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
       <div className="relative bg-white p-4 rounded-lg max-w-3xl">
@@ -119,10 +169,38 @@ const LostPetImageModal: React.FC<LostPetImageModalProps> = ({
           ))}
         </div>
         {editMode && (
-          <input
-            type="file"
-            className="p-2 border border-gray-300 rounded-lg mt-10"
-          />
+          <div className="mt-10">
+            <input
+              type="file"
+              name="images"
+              multiple
+              className="p-2 border border-gray-300 rounded-lg"
+              onChange={handleFileChange}
+            />
+            <div className="flex gap-4 mt-4">
+              {newImages.map((image, index) => (
+                <div key={index} className="relative">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt={`New image ${index + 1}`}
+                    className="w-28 h-28 object-cover rounded-lg"
+                  />
+                  <button
+                    onClick={() => handleRemoveNewImage(index)}
+                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                  >
+                    <FaTrashAlt />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={handleUploadImage}
+              className="mt-4 p-2 bg-blue-500 text-white rounded-lg"
+            >
+              {t("lostPetImageModal.uploadButton")}
+            </button>
+          </div>
         )}
       </div>
     </div>

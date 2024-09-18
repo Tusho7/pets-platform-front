@@ -47,3 +47,16 @@ export const deleteLostPetImageById = async (
   );
   return response.data;
 };
+
+export const updateLostPetImages = async (
+  formData: FormData,
+  petId: string,
+  userId: number
+) => {
+  const response = await formDataInstance.put(
+    `/api/lost-pet/${petId}/${userId}`,
+    formData
+  );
+
+  return response.data;
+};
