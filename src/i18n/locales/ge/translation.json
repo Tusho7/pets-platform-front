@@ -256,21 +256,30 @@
     "title": "ყველა სურათი",
     "close": "დახურვა",
     "areYouSure": {
-      "title": "დარწმუნებული ხარ?",
-      "text": "ნამდვილად გსურს ამ სურათის წაშლა?",
+      "title": "დარწმუნებული ხართ?",
+      "text": "რეალურად გსურთ ამ სურათის წაშლა?",
       "confirmButton": "დიახ, წაშალე!",
       "cancelButton": "გაუქმება"
     },
     "filenameError": "ფაილის სახელი აუცილებელია.",
     "deleteSuccessMessages": {
-      "title": "წაშლილია!",
-      "text": "ცხოველის სურათი წარმატებით წაიშალა.",
-      "confirmButton": "კარგი"
+      "title": "წაშლილი!",
+      "text": "სურათი წარმატებით წაიშალა.",
+      "confirmButton": "OK"
     },
     "deleteErrorMessages": {
-      "title": "უი...",
+      "title": "ოჰ... რაღაც ვერ მოხერხდა",
       "text": "სურათის წაშლა ვერ მოხერხდა.",
-      "confirmButton": "კარგი"
-    }
+      "confirmButton": "OK"
+    },
+    "uploadSuccessMessages": {
+      "title": "ატვირთულია!",
+      "text": "ახალი სურათები წარმატებით აიტვირთა."
+    },
+    "uploadErrorMessages": {
+      "title": "დაფიქსირდა შეცდომა",
+      "text": "ახალი სურათების ატვირთვა ვერ მოხერხდა."
+    },
+    "uploadButton": "სურათის ატვირთვა"
   }
 }

@@ -270,6 +270,15 @@
       "title": "Oops...",
       "text": "Failed to delete the lost pet image.",
       "confirmButton": "OK"
-    }
+    },
+    "uploadSuccessMessages": {
+      "title": "Uploaded!",
+      "text": "The new pet images have been uploaded successfully."
+    },
+    "uploadErrorMessages": {
+      "title": "Upload Failed",
+      "text": "Failed to upload the new pet images."
+    },
+    "uploadButton": "Upload Images"
   }
 }
