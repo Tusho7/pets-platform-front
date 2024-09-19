@@ -46,6 +46,15 @@ const LostPets: React.FC = () => {
     setLostPetModalOpen(false);
   };
 
+  const handleUpdateLostPets = async () => {
+    try {
+      const data = await getLostPets();
+      setLostPets(data);
+    } catch (error) {
+      console.error("Error updating lost pets:", error);
+    }
+  };
+
   return (
     <main>
       <Header />
@@ -62,7 +71,9 @@ const LostPets: React.FC = () => {
             </button>
           </div>
 
-          {lostPetModalOpen && <Lostpet onClose={closeModal} />}
+          {lostPetModalOpen && (
+            <Lostpet onClose={closeModal} onUpdate={handleUpdateLostPets} />
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {lostPets.length > 0 ? (

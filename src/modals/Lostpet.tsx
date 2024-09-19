@@ -6,7 +6,7 @@ import { containsIncorrectLanguage } from "../utils/languageValidator";
 import { LostPetModalProps } from "../types/LostPetProps";
 import Swal from "sweetalert2";
 
-const Lostpet = ({ onClose }: LostPetModalProps) => {
+const Lostpet = ({ onClose, onUpdate }: LostPetModalProps) => {
   const { t, i18n } = useTranslation();
   const { user } = useUser();
 
@@ -171,6 +171,8 @@ const Lostpet = ({ onClose }: LostPetModalProps) => {
         title: t("lostPetModal.success"),
         text: t("lostPetModal.successMessage"),
       });
+      onUpdate();
+      onClose();
     } catch (error) {
       console.error("Failed to create lost pet:", error);
       Swal.fire({
