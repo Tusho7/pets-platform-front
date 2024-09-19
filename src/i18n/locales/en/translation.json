@@ -37,6 +37,7 @@
   },
   "profile": {
     "viewProfile": "View Profile",
+    "profile": "Profile",
     "settings": "Settings",
     "logout": "Logout",
     "support": "Support"
