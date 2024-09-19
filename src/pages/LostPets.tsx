@@ -109,10 +109,15 @@ const LostPets: React.FC = () => {
                     </p>
                     <p className="text-gray-700">
                       <strong>{t("lostPetPage.aggressive")}</strong>{" "}
-                      {pet.aggresive ? t("yes") : t("no")}
+                      {pet.aggresive
+                        ? t("lostPetPage.isAggressive")
+                        : t("lostPetPage.notAggressive")}
                     </p>
                     <p className="text-gray-700">
-                      <strong>{t("lostPetPage.status")}</strong> {pet.status}
+                      <strong>{t("lostPetPage.status")}</strong>{" "}
+                      {pet.status === "lost"
+                        ? t("lostPetPage.lost")
+                        : t("lostPetPage.found")}
                     </p>
                     <div className="mt-4 border-t border-gray-200 pt-4">
                       <h4 className="text-gray-800 font-semibold">

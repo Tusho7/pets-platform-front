@@ -230,6 +230,8 @@
     "description": "Description:",
     "location": "Location:",
     "aggressive": "Aggressive",
+    "isAggressive": "Yes",
+    "notAggressive": "No",
     "aggresiveDescription": "This pet is aggressive.",
     "status": "Status:",
     "editButton": "Edit",
