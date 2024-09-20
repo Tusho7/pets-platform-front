@@ -19,12 +19,7 @@ export const logoutUser = async () => {
 export const updateUser = async (id: number, formData: FormData) => {
   const response = await formDataInstance.put(
     `/api/auth/update_user/${id}`,
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
+    formData
   );
   return response.data;
 };
