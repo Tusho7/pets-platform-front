@@ -239,6 +239,7 @@ const Registration = ({ onClose, openLogin }: RegisterProps) => {
             <button
               onClick={openLogin}
               className="font-medium text-indigo-600 hover:text-indigo-500"
+              type="button"
             >
               {t("registration.haveAccount")}
             </button>
