@@ -283,5 +283,9 @@
       "text": "Failed to upload the new pet images."
     },
     "uploadButton": "Upload Images"
+  },
+  "userIsRequired": {
+    "title": "User is required",
+    "text": "Please Login or SignUp."
   }
 }

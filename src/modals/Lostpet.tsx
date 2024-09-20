@@ -133,6 +133,14 @@ const Lostpet = ({ onClose, onUpdate }: LostPetModalProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        title: t("userIsRequired.title"),
+        text: t("userIsRequired.text"),
+      });
+    }
+
     if (!userId) {
       console.error("User id is required");
       return;
