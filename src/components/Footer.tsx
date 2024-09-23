@@ -1,9 +1,19 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PetLogo from "/pet-logo.png";
+import { smoothScrollToTop } from "../utils/scrollToTop";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
+    event.preventDefault();
+    smoothScrollToTop(1000, () => navigate(path));
+  };
 
   return (
     <footer className="dark:bg-gray-900 w-full">
@@ -17,21 +27,39 @@ const Footer = () => {
           </div>
           <div>
             <ul className="text-gray-500 dark:text-gray-400 font-medium flex flex-col lg:flex-row justify-between gap-5">
-              <Link to="/faqs" className="hover:underline">
-                {t("footer.faqs")}
-              </Link>
               <li>
-                <Link to="/about_us" className="hover:underline">
+                <Link
+                  to="/faqs"
+                  className="hover:underline"
+                  onClick={(e) => handleLinkClick(e, "/faqs")}
+                >
+                  {t("footer.faqs")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about_us"
+                  className="hover:underline"
+                  onClick={(e) => handleLinkClick(e, "/about_us")}
+                >
                   {t("footer.about_us")}
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="hover:underline">
+                <Link
+                  to="/terms"
+                  className="hover:underline"
+                  onClick={(e) => handleLinkClick(e, "/terms")}
+                >
                   {t("footer.terms_conditions")}
                 </Link>
               </li>
               <li>
-                <Link to="/support" className="hover:underline">
+                <Link
+                  to="/support"
+                  className="hover:underline"
+                  onClick={(e) => handleLinkClick(e, "/support")}
+                >
                   {t("footer.support")}
                 </Link>
               </li>
