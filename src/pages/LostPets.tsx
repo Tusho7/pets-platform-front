@@ -7,6 +7,9 @@ import LostPetVideosModal from "../modals/LostPetVideos";
 import { LostPet } from "../types/LostPetProps";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import useModal from "../hooks/useModal";
+import Login from "../modals/Login";
+import Registration from "../modals/Registration";
 
 const LostPets: React.FC = () => {
   const { t } = useTranslation();
@@ -15,6 +18,15 @@ const LostPets: React.FC = () => {
   const [imageModalOpen, setImageModalOpen] = useState<boolean>(false);
   const [videoModalOpen, setVideoModalOpen] = useState<boolean>(false);
   const [currentPet, setCurrentPet] = useState<LostPet | null>(null);
+
+  const {
+    openLoginModal,
+    isLoginModalOpen,
+    closeLoginModal,
+    openRegistrationModal,
+    closeRegistrationModal,
+    isRegistrationModalOpen,
+  } = useModal();
 
   useEffect(() => {
     const fetchLostPets = async () => {
@@ -57,7 +69,7 @@ const LostPets: React.FC = () => {
 
   return (
     <main>
-      <Header />
+      <Header openLoginModal={openLoginModal} />
 
       <main className="p-4 pt-10 min-h-screen">
         <div className="max-w-[1200px] mx-auto">
@@ -199,6 +211,20 @@ const LostPets: React.FC = () => {
           />
         </div>
       </main>
+
+      {isLoginModalOpen && (
+        <Login
+          onOpenRegistration={openRegistrationModal}
+          onClose={closeLoginModal}
+        />
+      )}
+
+      {isRegistrationModalOpen && (
+        <Registration
+          onClose={closeRegistrationModal}
+          openLogin={openLoginModal}
+        />
+      )}
 
       <Footer />
     </main>
