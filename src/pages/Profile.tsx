@@ -13,6 +13,7 @@ import LostPetImageModal from "../modals/LostPetImages";
 import LostPetVideosModal from "../modals/LostPetVideos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const Profile = () => {
   const { user } = useUser();
@@ -67,14 +68,37 @@ const Profile = () => {
   };
 
   const handleDelete = async (petId: number) => {
-    try {
-      if (userId) {
-        await deleteLostPetByUserId(userId.toString(), petId.toString());
+    Swal.fire({
+      title: t("lostPetPage.confirmDeleteTitle"),
+      text: t("lostPetPage.confirmDeleteText"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: t("lostPetPage.confirmDeleteButton"),
+      cancelButtonText: t("lostPetPage.cancelDeleteButton"),
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          if (userId) {
+            await deleteLostPetByUserId(userId.toString(), petId.toString());
+          }
+          setLostPets((prevPets) => prevPets.filter((pet) => pet.id !== petId));
+          Swal.fire(
+            t("lostPetPage.deleted"),
+            t("lostPetPage.deleteSuccessMessage"),
+            "success"
+          );
+        } catch (error) {
+          console.error("Error deleting lost pet:", error);
+          Swal.fire(
+            t("lostPetPage.error"),
+            t("lostPetPage.deleteErrorMessage"),
+            "error"
+          );
+        }
       }
-      setLostPets((prevPets) => prevPets.filter((pet) => pet.id !== petId));
-    } catch (error) {
-      console.error("Error deleting lost pet:", error);
-    }
+    });
   };
 
   const handleImageUpdate = (updatedImages: string[]) => {

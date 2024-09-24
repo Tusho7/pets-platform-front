@@ -253,7 +253,15 @@
       "incorrectLanguageBreed": "ჯიშში აირჩიეთ ენის შესაბამისი ასოები.",
       "incorrectLanguageDescription": "აღწერაში აირჩიეთ ენის შესაბამისი ასოები.",
       "incorrectLanguageLocation": "ადგილმდებარეობაში აირჩიეთ ენის შესაბამისი ასოები."
-    }
+    },
+    "confirmDeleteTitle": "დარწმუნებული ხართ, რომ გსურთ ცხოველის წაშლა?",
+    "confirmDeleteText": "ეს ქმედება ვერ აღდგება.",
+    "confirmDeleteButton": "კი, წაშალეთ!",
+    "cancelDeleteButton": "გაუქმება",
+    "deleted": "წაშლილი!",
+    "deleteSuccessMessage": "ცხოველი წარმატებით წაიშალა.",
+    "error": "შეცდომა!",
+    "deleteErrorMessage": "ცხოველის წაშლისას მოხდა შეცდომა."
   },
   "lostPetImageModal": {
     "title": "ყველა სურათი",
