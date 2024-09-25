@@ -65,7 +65,7 @@
     "all_rights_reserved": "ყველა უფლება დაცულია."
   },
   "about_us": {
-    "introductionOverview": "შესავლელი მიმოხილვა",
+    "introductionOverview": "მიმოხილვა",
     "missionStatement": "მისია",
     "historyBackground": "ისტორია და ფონური ინფორმაცია",
     "foundingStory": "დამფუძნებლების ისტორია",
@@ -82,7 +82,7 @@
     "overviewDescription": "კეთილი იყოს თქვენი მობრძანება ადმინისტრატორის პანელში. მართეთ თქვენი აპლიკაცია, გადახედეთ სტატისტიკას და დაარეგულირეთ პარამეტრები.",
     "manageUsersButton": "მომხმარებლების მართვა",
     "manageContentTitle": "კონტენტის მართვა",
-    "manageContentDescription": "გაასწორეთ კონტენტი, მართეთ About Us და FAQs განყოფილებები და სხვა.",
+    "manageContentDescription": "გაასწორეთ კონტენტი, მართეთ About Us, FAQs და სხვა განყოფილებები.",
     "manageContentButton": "კონტენტის მართვა",
     "aboutUs": "ჩვენ შესახებ",
     "faqs": "ხშირად დასმული კითხვები",
