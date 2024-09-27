@@ -263,6 +263,55 @@
     "error": "შეცდომა!",
     "deleteErrorMessage": "ცხოველის წაშლისას მოხდა შეცდომა."
   },
+  "streetPetPage": {
+    "title": "ქუჩის ცხოველები",
+    "addStreetPetButton": "დაამატე ქუჩის ცხოველი",
+    "viewMoreImages": "მეტი სურათების ნახვა",
+    "viewMoreVideos": "მეტი ვიდეოების ნახვა",
+    "noLostPetsFound": "განცხადებები ვერ მოიძებნა.",
+    "name": "სახელი:",
+    "breed": "ჯიში:",
+    "age": "ასაკი:",
+    "gender": "სქესი:",
+    "lost": "დაკარგული",
+    "found": "ნაპოვნი",
+    "male": "ხვადი",
+    "female": "ძუ",
+    "description": "აღწერა:",
+    "location": "ადგილმდებარეობა:",
+    "aggressive": "აგრესიულია?",
+    "isAggressive": "კი",
+    "notAggressive": "არა",
+    "aggresiveDescription": "ეს ცხოველი აგრესიულია.",
+    "status": "სტატუსი:",
+    "editButton": "რედაქტირება",
+    "cancelButton": "გაუქმება",
+    "saveButton": "შენახვა",
+    "saving": "იტვირთება...",
+    "updateError": "განახლება ვერ მოხერხდა.",
+    "updateSuccess": "წარმატებით განახლდა!",
+    "deleteButton": "წაშლა",
+    "userInfo": {
+      "userInfo": "მომხმარებლის ინფორმაცია",
+      "firstName": "სახელი:",
+      "lastName": "გვარი:",
+      "phoneNumber": "ტელეფონი:"
+    },
+    "errors": {
+      "incorrectLanguagePetName": "სახელში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageBreed": "ჯიშში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageDescription": "აღწერაში აირჩიეთ ენის შესაბამისი ასოები.",
+      "incorrectLanguageLocation": "ადგილმდებარეობაში აირჩიეთ ენის შესაბამისი ასოები."
+    },
+    "confirmDeleteTitle": "დარწმუნებული ხართ, რომ გსურთ ცხოველის წაშლა?",
+    "confirmDeleteText": "ეს ქმედება ვერ აღდგება.",
+    "confirmDeleteButton": "კი, წაშალეთ!",
+    "cancelDeleteButton": "გაუქმება",
+    "deleted": "წაშლილი!",
+    "deleteSuccessMessage": "ცხოველი წარმატებით წაიშალა.",
+    "error": "შეცდომა!",
+    "deleteErrorMessage": "ცხოველის წაშლისას მოხდა შეცდომა."
+  },
   "lostPetImageModal": {
     "title": "ყველა სურათი",
     "close": "დახურვა",
@@ -292,6 +341,55 @@
       "text": "ახალი სურათების ატვირთვა ვერ მოხერხდა."
     },
     "uploadButton": "სურათის ატვირთვა"
+  },
+  "streetPetModal": {
+    "title": "ქუჩის ცხოველის დამატება",
+    "fields": {
+      "pet_name": "ცხოველის სახელი",
+      "breed": "ჯიში",
+      "age": "ასაკი",
+      "gender": "სქესი",
+      "genderMale": "ხვადი",
+      "genderFemale": "ძუ",
+      "description": "აღწერა",
+      "help": "დაამატებ ანგარიშის ნომრებს?",
+      "accountNumber": "ანგარიშის ნომერი",
+      "location": "ადგილმდებარეობა",
+      "aggresive": "აგრესიულია ცხოველი?",
+      "status": "სტატუსი",
+      "images": "ფოტოები",
+      "videos": "ვიდეოები",
+      "statusPlaceholder": "სტატუსის არჩევა",
+      "statusHelp": "დახმარება",
+      "statusGiveAway": "გაჩუქება"
+    },
+    "placeholders": {
+      "pet_name": "შეიყვანეთ ცხოველის სახელი",
+      "breed": "შეიყვანეთ ჯიში",
+      "age": "შეიყვანეთ ასაკი",
+      "description": "შეიყვანეთ აღწერა",
+      "location": "შეიყვანეთ ადგილმდებარეობა"
+    },
+    "buttons": {
+      "addAccountNumber": "დამატეთ ანგარიში",
+      "removeAccountNumber": "წაშლილი ანგარიში",
+      "remove": "წაშლა",
+      "submit": "დამატება",
+      "close": "დახურვა"
+    },
+    "errors": {
+      "pet_nameRequired": "ცხოველის სახელი აუცილებელია.",
+      "breedRequired": "ჯიში აუცილებელია.",
+      "ageInvalid": "წელი უნდა იყოს ვალიდური რიცხვი.",
+      "descriptionRequired": "აღწერა აუცილებელია.",
+      "locationRequired": "ადგილმდებარეობა აუცილებელია.",
+      "mediaRequired": "ფოტოს ან ვიდეოს ატვირთვა აუცილებელია.",
+      "submitFailed": "ფორმის გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან."
+    },
+    "success": "წარმატება",
+    "successMessage": "ქუჩის ცხოველი წარმატებით დაემატა.",
+    "error": "შეცდომა",
+    "errorMessage": "ქუჩის ცხოველის დამატება ვერ მოხერხდა. გთხოვთ სცადოთ კვლავ."
   },
   "userIsRequired": {
     "title": "მომხმარებელი აუცილებელია",

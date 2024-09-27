@@ -262,6 +262,55 @@
     "error": "Error!",
     "deleteErrorMessage": "There was an error deleting the lost pet."
   },
+  "streetPetPage": {
+    "title": "Street Pets",
+    "addStreetPetButton": "Add Street Pet",
+    "viewMoreImages": "View More Images",
+    "viewMoreVideos": "View More Videos",
+    "noLostPetsFound": "No ads found.",
+    "name": "Name:",
+    "breed": "Breed:",
+    "age": "Age:",
+    "gender": "Gender:",
+    "male": "Male",
+    "female": "Female",
+    "lost": "Lost",
+    "found": "Found",
+    "description": "Description:",
+    "location": "Location:",
+    "aggressive": "Aggressive",
+    "isAggressive": "Yes",
+    "notAggressive": "No",
+    "aggresiveDescription": "This pet is aggressive.",
+    "status": "Status:",
+    "editButton": "Edit",
+    "cancelButton": "Cancel",
+    "saveButton": "Save",
+    "saving": "Saving...",
+    "updateError": "Failed to update street pet.",
+    "updateSuccess": "Street pet updated successfully!",
+    "deleteButton": "Delete",
+    "userInfo": {
+      "userInfo": "User Information",
+      "firstName": "First Name:",
+      "lastName": "Last Name:",
+      "phoneNumber": "Phone:"
+    },
+    "errors": {
+      "incorrectLanguagePetName": "Pet name contains invalid characters for the selected language.",
+      "incorrectLanguageBreed": "Breed contains invalid characters for the selected language.",
+      "incorrectLanguageDescription": "Description contains invalid characters for the selected language.",
+      "incorrectLanguageLocation": "Location contains invalid characters for the selected language."
+    },
+    "confirmDeleteTitle": "Are you sure you want to delete this street pet?",
+    "confirmDeleteText": "This action cannot be undone.",
+    "confirmDeleteButton": "Yes, delete it!",
+    "cancelDeleteButton": "Cancel",
+    "deleted": "Deleted!",
+    "deleteSuccessMessage": "The street pet has been deleted successfully.",
+    "error": "Error!",
+    "deleteErrorMessage": "There was an error deleting the street pet."
+  },
   "lostPetImageModal": {
     "title": "All Images",
     "close": "Close",
@@ -291,6 +340,55 @@
       "text": "Failed to upload the new pet images."
     },
     "uploadButton": "Upload Images"
+  },
+  "streetPetModal": {
+    "title": "Add Street Pet",
+    "fields": {
+      "pet_name": " Name of the Pet",
+      "breed": "Breed",
+      "age": "Age",
+      "gender": "Gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "description": "Description",
+      "help": "Help Needed",
+      "accountNumber": "Account Numbers",
+      "location": "Location",
+      "aggresive": "Aggressive",
+      "status": "Status",
+      "images": "Images",
+      "videos": "Videos",
+      "statusPlaceholder": "Select Status",
+      "statusHelp": "Help",
+      "statusGiveAway": "Give Away"
+    },
+    "placeholders": {
+      "pet_name": "Enter pet title",
+      "breed": "Enter breed",
+      "age": "Enter age",
+      "description": "Enter description",
+      "location": "Enter location"
+    },
+    "buttons": {
+      "addAccountNumber": "Add Account Number",
+      "removeAccountNumber": "Remove Account Number",
+      "remove": "Remove",
+      "submit": "Submit",
+      "close": "Close"
+    },
+    "errors": {
+      "pet_nameRequired": "Pet name is required.",
+      "breedRequired": "Breed is required.",
+      "ageInvalid": "Age must be a valid number.",
+      "descriptionRequired": "Description is required.",
+      "locationRequired": "Location is required.",
+      "mediaRequired": "At least one image or video is required.",
+      "submitFailed": "Failed to submit the form. Please try again."
+    },
+    "success": "Success",
+    "successMessage": "The street pet has been created successfully.",
+    "error": "Error",
+    "errorMessage": "Failed to create the street pet. Please try again."
   },
   "userIsRequired": {
     "title": "User is required",
