@@ -16,6 +16,7 @@ import Terms from "./pages/Terms";
 import LostPets from "./pages/LostPets";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
+import StreetPets from "./pages/StreetPets";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/lost_pets" element={<LostPets />} />
+        <Route path="/street_pets" element={<StreetPets />} />
         <Route
           path="/profile"
           element={

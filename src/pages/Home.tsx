@@ -42,12 +42,12 @@ const Home = () => {
             >
               {t("home.lostPets")}
             </Link>
-            <button
+            <Link
+              to="/street_pets"
               className="bg-gray-500 hover:bg-gray-600 text-white py-3 px-3 rounded-full shadow-lg transition-all duration-300"
-              onClick={() => {}}
             >
               {t("home.streetPets")}
-            </button>
+            </Link>
           </div>
         </div>
       </main>
