@@ -28,7 +28,9 @@ export interface StreetPetImageModalProps {
 export interface StreetPetVideosModalProps {
   isOpen: boolean;
   videos: string[];
+  petId?: number;
   onClose: () => void;
+  onUpdate?: (updatedVIdeos: string[]) => void;
   fromProfile?: boolean;
 }
 

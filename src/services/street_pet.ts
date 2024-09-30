@@ -66,3 +66,26 @@ export const updateStreetPetImages = async (
 
   return response.data;
 };
+
+export const deleteStreetPetVideoById = async (
+  petId: string,
+  filename: string,
+  userId: number
+) => {
+  const response = await axiosInstance.delete(
+    `/api/street-pet-video/${petId}/${filename}/${userId}`
+  );
+  return response.data;
+};
+
+export const updateStreetPetVideos = async (
+  formData: FormData,
+  petId: string,
+  userId: number
+) => {
+  const response = await formDataInstance.put(
+    `/api/street-pet-video/${petId}/${userId}`,
+    formData
+  );
+  return response.data;
+};

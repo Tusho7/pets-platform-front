@@ -175,6 +175,24 @@ const Profile = () => {
     }
   };
 
+  const handleVideoUpdate = (updatedVideos: string[]) => {
+    if (showLostPets) {
+      setLostPets((prevPets) =>
+        prevPets.map((pet) =>
+          pet.id === currentPet?.id ? { ...pet, videos: updatedVideos } : pet
+        )
+      );
+    } else {
+      setStreetPets((prevPets) =>
+        prevPets.map((pet) =>
+          pet.id === currentPet?.id ? { ...pet, videos: updatedVideos } : pet
+        )
+      );
+    }
+  };
+
+  console.log(streetPets);
+
   return (
     <React.Fragment>
       <Header />
@@ -235,7 +253,7 @@ const Profile = () => {
                     {"account_number" in pet && !showLostPets && (
                       <p className="text-gray-700">
                         <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
-                        {pet.account_number}
+                        GE5872384TB321789
                       </p>
                     )}
 
@@ -274,24 +292,17 @@ const Profile = () => {
                       </div>
                     ) : null}
 
-                    {pet.videos && pet.videos.length > 0 ? (
+                    {pet.videos && pet.videos.length > 0 && (
                       <div>
                         <video
                           src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
                           controls
                           className="w-full h-32 object-cover rounded-lg"
                           style={{ height: "150px" }}
+                          onClick={() => handleViewMoreVideos(pet)}
                         />
-                        {pet.videos.length > 1 && (
-                          <button
-                            className="text-blue-500 mt-2"
-                            onClick={() => handleViewMoreVideos(pet)}
-                          >
-                            {t("lostPetPage.viewMoreVideos")}
-                          </button>
-                        )}
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               )
@@ -354,6 +365,8 @@ const Profile = () => {
           <StreetPetVideos
             isOpen={streetVideoModalOpen}
             videos={currentPet.videos || []}
+            onUpdate={handleVideoUpdate}
+            petId={currentPet.id}
             onClose={() => setStreetVideoModalOpen(false)}
             fromProfile={true}
           />
