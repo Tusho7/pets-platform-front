@@ -160,11 +160,19 @@ const Profile = () => {
   };
 
   const handleImageUpdate = (updatedImages: string[]) => {
-    setLostPets((prevPets) =>
-      prevPets.map((pet) =>
-        pet.id === currentPet?.id ? { ...pet, images: updatedImages } : pet
-      )
-    );
+    if (showLostPets) {
+      setLostPets((prevPets) =>
+        prevPets.map((pet) =>
+          pet.id === currentPet?.id ? { ...pet, images: updatedImages } : pet
+        )
+      );
+    } else {
+      setStreetPets((prevPets) =>
+        prevPets.map((pet) =>
+          pet.id === currentPet?.id ? { ...pet, images: updatedImages } : pet
+        )
+      );
+    }
   };
 
   return (

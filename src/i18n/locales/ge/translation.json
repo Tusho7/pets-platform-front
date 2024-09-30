@@ -346,6 +346,36 @@
     },
     "uploadButton": "სურათის ატვირთვა"
   },
+  "streetPetImageModal": {
+    "title": "ყველა სურათი",
+    "close": "დახურვა",
+    "areYouSure": {
+      "title": "დარწმუნებული ხართ?",
+      "text": "რეალურად გსურთ ამ სურათის წაშლა?",
+      "confirmButton": "დიახ, წაშალე!",
+      "cancelButton": "გაუქმება"
+    },
+    "filenameError": "ფაილის სახელი აუცილებელია.",
+    "deleteSuccessMessages": {
+      "title": "წაშლილი!",
+      "text": "სურათი წარმატებით წაიშალა.",
+      "confirmButton": "OK"
+    },
+    "deleteErrorMessages": {
+      "title": "ოჰ... რაღაც ვერ მოხერხდა",
+      "text": "სურათის წაშლა ვერ მოხერხდა.",
+      "confirmButton": "OK"
+    },
+    "uploadSuccessMessages": {
+      "title": "ატვირთულია!",
+      "text": "ახალი სურათები წარმატებით აიტვირთა."
+    },
+    "uploadErrorMessages": {
+      "title": "დაფიქსირდა შეცდომა",
+      "text": "ახალი სურათების ატვირთვა ვერ მოხერხდა."
+    },
+    "uploadButton": "სურათის ატვირთვა"
+  },
   "streetPetModal": {
     "title": "ქუჩის ცხოველის დამატება",
     "fields": {

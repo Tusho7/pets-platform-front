@@ -345,6 +345,36 @@
     },
     "uploadButton": "Upload Images"
   },
+  "streetPetImageModal": {
+    "title": "All Images",
+    "close": "Close",
+    "areYouSure": {
+      "title": "Are you sure?",
+      "text": "Do you really want to delete this image?",
+      "confirmButton": "Yes, delete it!",
+      "cancelButton": "Cancel"
+    },
+    "filenameError": "The filename is required.",
+    "deleteSuccessMessages": {
+      "title": "Deleted!",
+      "text": "The lost pet image has been deleted successfully.",
+      "confirmButton": "OK"
+    },
+    "deleteErrorMessages": {
+      "title": "Oops...",
+      "text": "Failed to delete the street pet image.",
+      "confirmButton": "OK"
+    },
+    "uploadSuccessMessages": {
+      "title": "Uploaded!",
+      "text": "The new pet images have been uploaded successfully."
+    },
+    "uploadErrorMessages": {
+      "title": "Upload Failed",
+      "text": "Failed to upload the new pet images."
+    },
+    "uploadButton": "Upload Images"
+  },
   "streetPetModal": {
     "title": "Add Street Pet",
     "fields": {
