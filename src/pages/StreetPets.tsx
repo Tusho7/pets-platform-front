@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LostPetImageModal from "../modals/LostPetImages";
 import LostPetVideosModal from "../modals/LostPetVideos";
-import { LostPet } from "../types/LostPetProps";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import useModal from "../hooks/useModal";
@@ -42,12 +41,12 @@ const StreetPets: React.FC = () => {
     fetchStreetPets();
   }, []);
 
-  const handleViewMoreImages = (pet: LostPet) => {
+  const handleViewMoreImages = (pet: StreetPet) => {
     setCurrentPet(pet);
     setImageModalOpen(true);
   };
 
-  const handleViewMoreVideos = (pet: LostPet) => {
+  const handleViewMoreVideos = (pet: StreetPet) => {
     setCurrentPet(pet);
     setVideoModalOpen(true);
   };
