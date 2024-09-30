@@ -8,6 +8,7 @@ export interface StreetPet {
   gender: string;
   description?: string;
   location: string;
+  account_number: string[];
   aggresive: boolean;
   status: string;
   images?: string[];
