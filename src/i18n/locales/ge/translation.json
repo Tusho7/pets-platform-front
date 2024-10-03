@@ -376,6 +376,39 @@
     },
     "uploadButton": "სურათის ატვირთვა"
   },
+  "streetPetVideoModal": {
+    "title": "ყველა ვიდეო",
+    "close": "დახურვა",
+    "delete": "წაშლა",
+    "areYouSure": {
+      "title": "დარწმუნებული ხართ?",
+      "text": "რეალურად გსურთ ამ ვიდეოს წაშლა?",
+      "confirmButton": "დიახ, წაშალე!",
+      "cancelButton": "გაუქმება"
+    },
+    "filenameError": "ფაილის სახელი აუცილებელია.",
+    "deleteSuccessMessages": {
+      "title": "წაშლილი!",
+      "text": "ვიდეო წარმატებით წაიშალა.",
+      "confirmButton": "OK"
+    },
+    "deleteErrorMessages": {
+      "title": "ოჰ... რაღაც ვერ მოხერხდა",
+      "text": "ვიდეოს წაშლა ვერ მოხერხდა.",
+      "confirmButton": "OK"
+    },
+    "uploadSuccessMessages": {
+      "title": "ატვირთულია!",
+      "text": "ახალი ვიდეოები წარმატებით აიტვირთა."
+    },
+    "uploadErrorMessages": {
+      "title": "დაფიქსირდა შეცდომა",
+      "text": "ახალი ვიდეოების ატვირთვა ვერ მოხერხდა."
+    },
+    "uploadButton": "ვიდეოს ატვირთვა",
+    "newVideos": "ახალი ვიდეოები",
+    "remove": "წაშლა"
+  },
   "lostPetVideoModal": {
     "title": "ყველა ვიდეო",
     "close": "დახურვა",
