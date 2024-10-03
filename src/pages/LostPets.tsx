@@ -192,7 +192,7 @@ const LostPets: React.FC = () => {
                 </div>
               ))
             ) : (
-              <p className="text-center text-gray-500">
+              <p className="text-start text-gray-500">
                 {t("lostPetPage.noLostPetsFound")}
               </p>
             )}
