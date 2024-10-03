@@ -29,6 +29,8 @@ export interface LostPetVideosModalProps {
   videos: string[];
   onClose: () => void;
   fromProfile?: boolean;
+  petId?: number;
+  onUpdate?: (updatedVideos: string[]) => void;
 }
 
 export interface LostPetEditModalProps {

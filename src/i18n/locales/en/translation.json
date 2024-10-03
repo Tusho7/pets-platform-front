@@ -345,6 +345,39 @@
     },
     "uploadButton": "Upload Images"
   },
+  "lostPetVideoModal": {
+    "title": "All Videos",
+    "close": "Close",
+    "delete": "Delete",
+    "areYouSure": {
+      "title": "Are you sure?",
+      "text": "Do you really want to delete this video?",
+      "confirmButton": "Yes, delete it!",
+      "cancelButton": "Cancel"
+    },
+    "filenameError": "The filename is required.",
+    "deleteSuccessMessages": {
+      "title": "Deleted!",
+      "text": "The lost pet video has been deleted successfully.",
+      "confirmButton": "OK"
+    },
+    "deleteErrorMessages": {
+      "title": "Oops...",
+      "text": "Failed to delete the lost pet video.",
+      "confirmButton": "OK"
+    },
+    "uploadSuccessMessages": {
+      "title": "Uploaded!",
+      "text": "The new pet videos have been uploaded successfully."
+    },
+    "uploadErrorMessages": {
+      "title": "Upload Failed",
+      "text": "Failed to upload the new pet videos."
+    },
+    "uploadButton": "Upload videos",
+    "newVideos": "New Videos",
+    "remove": "Remove"
+  },
   "streetPetImageModal": {
     "title": "All Images",
     "close": "Close",

@@ -60,3 +60,26 @@ export const updateLostPetImages = async (
 
   return response.data;
 };
+
+export const deleteLostPetVideoById = async (
+  petId: string,
+  filename: string,
+  userId: number
+) => {
+  const response = await axiosInstance.delete(
+    `/api/lost-pet-video/${petId}/${filename}/${userId}`
+  );
+  return response.data;
+};
+
+export const updateLostPetVideos = async (
+  formData: FormData,
+  petId: string,
+  userId: number
+) => {
+  const response = await formDataInstance.put(
+    `/api/lost-pet-video/${petId}/${userId}`,
+    formData
+  );
+  return response.data;
+};

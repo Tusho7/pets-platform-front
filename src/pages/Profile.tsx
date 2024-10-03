@@ -354,6 +354,8 @@ const Profile = () => {
           <LostPetVideosModal
             isOpen={videoModalOpen}
             videos={currentPet.videos || []}
+            onUpdate={handleVideoUpdate}
+            petId={currentPet.id}
             onClose={() => setVideoModalOpen(false)}
             fromProfile={true}
           />
