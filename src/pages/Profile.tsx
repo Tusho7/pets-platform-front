@@ -248,6 +248,12 @@ const Profile = () => {
                       <strong>{t("lostPetPage.location")}</strong>{" "}
                       {pet.location}
                     </p>
+                    <p className="text-gray-700">
+                      <strong>{t("streetPetPage.aggressive")}</strong>{" "}
+                      {pet.aggresive
+                        ? t("streetPetPage.isAggressive")
+                        : t("streetPetPage.notAggressive")}
+                    </p>
                     {"account_number" in pet && !showLostPets && (
                       <p className="text-gray-700">
                         <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
