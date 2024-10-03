@@ -133,9 +133,11 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
       <div className="relative bg-white p-4 rounded-lg max-w-3xl">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold">All Videos</h3>
+          <h3 className="text-lg font-semibold">
+            {t("streetPetVideoModal.title")}
+          </h3>
           <section className="flex gap-5 items-baseline">
-            <button onClick={onClose}>Close</button>
+            <button onClick={onClose}>{t("streetPetVideoModal.close")}</button>
             {fromProfile && (
               <button onClick={handleEditClick}>
                 <FaEdit className="text-blue-500" />
@@ -143,13 +145,18 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
             )}
           </section>
         </div>
-        <div className="space-y-4 flex ">
+
+        {/* Scrollable video container with grid layout */}
+        <div
+          className="grid grid-cols-2 gap-4 overflow-y-auto"
+          style={{ maxHeight: "400px" }}
+        >
           {videos.map((video, index) => (
             <div key={index} className="relative">
               <video
                 controls
                 className="w-full rounded-lg"
-                style={{ height: "300px" }}
+                style={{ height: "200px" }}
               >
                 <source
                   src={import.meta.env.VITE_API_STORAGE + video}
@@ -161,12 +168,13 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
                   onClick={() => handleDeleteVideo(index)}
                   className="absolute top-2 right-2 text-red-500"
                 >
-                  Delete
+                  {t("streetPetVideoModal.delete")}
                 </button>
               )}
             </div>
           ))}
         </div>
+
         {editMode && (
           <div className="mt-4">
             <input
@@ -177,13 +185,15 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
               onChange={handleFileChange}
             />
             <button onClick={handleUploadVideos} className="ml-2">
-              Upload Videos
+              {t("streetPetVideoModal.uploadButton")}
             </button>
           </div>
         )}
         {newVideos.length > 0 && (
           <div className="mt-4">
-            <h4 className="font-semibold">New Videos:</h4>
+            <h4 className="font-semibold">
+              {t("streetPetVideoModal.newVideos")}
+            </h4>
             <ul>
               {newVideos.map((video, index) => (
                 <li key={index} className="flex justify-between items-center">
@@ -192,7 +202,7 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
                     onClick={() => handleRemoveNewVideo(index)}
                     className="text-red-500"
                   >
-                    Remove
+                    {t("streetPetVideoModal.remove")}
                   </button>
                 </li>
               ))}
