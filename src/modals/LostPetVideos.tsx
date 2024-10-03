@@ -24,8 +24,6 @@ const LostPetVideosModal: React.FC<LostPetVideosModalProps> = ({
 
   if (!isOpen || !videos.length) return null;
 
-  if (!isOpen || !videos.length) return null;
-
   const handleEditClick = () => {
     setEditMode((prev) => !prev);
   };
@@ -146,13 +144,17 @@ const LostPetVideosModal: React.FC<LostPetVideosModalProps> = ({
             )}
           </section>
         </div>
-        <div className="space-y-4 flex ">
+
+        <div
+          className="grid grid-cols-2 gap-4 overflow-y-auto"
+          style={{ maxHeight: "400px" }}
+        >
           {videos.map((video, index) => (
             <div key={index} className="relative">
               <video
                 controls
                 className="w-full rounded-lg"
-                style={{ height: "300px" }}
+                style={{ height: "200px" }}
               >
                 <source
                   src={import.meta.env.VITE_API_STORAGE + video}
@@ -170,6 +172,7 @@ const LostPetVideosModal: React.FC<LostPetVideosModalProps> = ({
             </div>
           ))}
         </div>
+
         {editMode && (
           <div className="mt-4">
             <input
