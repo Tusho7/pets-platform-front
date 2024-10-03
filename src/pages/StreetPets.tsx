@@ -127,11 +127,10 @@ const StreetPets: React.FC = () => {
                         : t("streetPetPage.notAggressive")}
                     </p>
                     <p className="text-gray-700">
-                      <strong>{t("streetPetPage.status")}</strong>{" "}
-                      {pet.status === "lost"
-                        ? t("streetPetPage.lost")
-                        : t("streetPetPage.found")}
+                      <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
+                      GE5872384TB321789
                     </p>
+
                     <div className="mt-4 border-t border-gray-200 pt-4">
                       <h4 className="text-gray-800 font-semibold">
                         {t("streetPetPage.userInfo.userInfo")}
@@ -155,40 +154,36 @@ const StreetPets: React.FC = () => {
 
                   <div className="p-4">
                     {Array.isArray(pet.images) && pet.images.length > 0 && (
-                      <div className="mb-4">
+                      <div className="mb-4 flex flex-col gap-3 items-start justify-start">
                         <img
                           src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
                           alt={t("lostPetModal.fields.images")}
                           className="w-full h-32 object-cover rounded-lg cursor-pointer"
                           onClick={() => handleViewMoreImages(pet)}
                         />
-                        {pet.images.length > 1 && (
-                          <button
-                            className="text-blue-500 mt-2"
-                            onClick={() => handleViewMoreImages(pet)}
-                          >
-                            {t("streetPetPage.viewMoreImages")}
-                          </button>
-                        )}
+                        <button
+                          className="text-blue-500 mt-2"
+                          onClick={() => handleViewMoreImages(pet)}
+                        >
+                          {t("streetPetPage.viewMoreImages")}
+                        </button>
                       </div>
                     )}
 
                     {Array.isArray(pet.videos) && pet.videos.length > 0 && (
-                      <div>
+                      <div className="flex flex-col gap-3 items-start justify-start">
                         <video
                           src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
                           controls
                           className="w-full h-32 object-cover rounded-lg"
                           style={{ height: "150px" }}
                         />
-                        {pet.videos.length > 1 && (
-                          <button
-                            className="text-blue-500 mt-2"
-                            onClick={() => handleViewMoreVideos(pet)}
-                          >
-                            {t("streetPetPage.viewMoreVideos")}
-                          </button>
-                        )}
+                        <button
+                          className="text-blue-500 mt-2"
+                          onClick={() => handleViewMoreVideos(pet)}
+                        >
+                          {t("streetPetPage.viewMoreVideos")}
+                        </button>
                       </div>
                     )}
                   </div>
