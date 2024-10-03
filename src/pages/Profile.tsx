@@ -191,8 +191,6 @@ const Profile = () => {
     }
   };
 
-  console.log(streetPets);
-
   return (
     <React.Fragment>
       <Header />
