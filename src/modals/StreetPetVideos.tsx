@@ -146,7 +146,6 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
           </section>
         </div>
 
-        {/* Scrollable video container with grid layout */}
         <div
           className="grid grid-cols-2 gap-4 overflow-y-auto"
           style={{ maxHeight: "400px" }}
