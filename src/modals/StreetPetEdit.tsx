@@ -180,12 +180,6 @@ const StreetPetEdit: React.FC<StreetPetEditModalProps> = ({
           </div>
 
           <div>
-            <label
-              className="block text-sm font-medium"
-              htmlFor="accountNumbers"
-            >
-              {t("streetPetPage.accountNumbers")}
-            </label>
             {account_number.map((number, index) => (
               <div key={index} className="flex items-center space-x-2 mb-2">
                 <input
