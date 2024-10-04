@@ -94,7 +94,6 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
         const formData = new FormData();
         newVideos.forEach((video) => formData.append("videos", video));
 
-        console.log(newVideos);
         await updateStreetPetVideos(formData, petId.toString(), userId);
 
         const updatedVideos = [
