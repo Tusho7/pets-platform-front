@@ -182,9 +182,6 @@ const LostPetVideosModal: React.FC<LostPetVideosModalProps> = ({
               multiple
               onChange={handleFileChange}
             />
-            <button onClick={handleUploadVideos} className="ml-2">
-              {t("lostPetVideoModal.uploadButton")}
-            </button>
           </div>
         )}
         {newVideos.length > 0 && (
@@ -207,6 +204,12 @@ const LostPetVideosModal: React.FC<LostPetVideosModalProps> = ({
             </ul>
           </div>
         )}
+        <button
+          onClick={handleUploadVideos}
+          className="mt-4 p-2 bg-blue-500 text-white rounded-lg"
+        >
+          {t("lostPetVideoModal.uploadButton")}
+        </button>
       </div>
     </div>
   );

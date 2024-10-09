@@ -182,9 +182,6 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
               multiple
               onChange={handleFileChange}
             />
-            <button onClick={handleUploadVideos} className="ml-2">
-              {t("streetPetVideoModal.uploadButton")}
-            </button>
           </div>
         )}
         {newVideos.length > 0 && (
@@ -207,6 +204,12 @@ const StreetPetVideos: React.FC<StreetPetVideosModalProps> = ({
             </ul>
           </div>
         )}
+        <button
+          onClick={handleUploadVideos}
+          className="mt-4 p-2 bg-blue-500 text-white rounded-lg"
+        >
+          {t("streetPetVideoModal.uploadButton")}
+        </button>
       </div>
     </div>
   );
