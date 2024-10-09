@@ -298,7 +298,8 @@
       "userInfo": "User Information",
       "firstName": "First Name:",
       "lastName": "Last Name:",
-      "phoneNumber": "Phone:"
+      "phoneNumber": "Phone:",
+      "accountNumbers": "Account Numbers:"
     },
     "errors": {
       "incorrectLanguagePetName": "Pet name contains invalid characters for the selected language.",

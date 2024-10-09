@@ -299,7 +299,8 @@
       "userInfo": "მომხმარებლის ინფორმაცია",
       "firstName": "სახელი:",
       "lastName": "გვარი:",
-      "phoneNumber": "ტელეფონი:"
+      "phoneNumber": "ტელეფონი:",
+      "accountNumbers": "მომხმარებლის ანგარიშის ნომრები:"
     },
     "errors": {
       "incorrectLanguagePetName": "სახელში აირჩიეთ ენის შესაბამისი ასოები.",

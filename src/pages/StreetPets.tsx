@@ -149,6 +149,21 @@ const StreetPets: React.FC = () => {
                         <strong>{t("streetPetPage.userInfo.lastName")}</strong>{" "}
                         {pet?.User?.lastName}
                       </p>
+
+                      {pet.account_number && pet.account_number.length > 0 && (
+                        <div className="text-gray-600">
+                          <strong>
+                            {t("streetPetPage.userInfo.accountNumbers")}
+                          </strong>
+                          <ul className="list-disc pl-5 mt-2">
+                            {pet.account_number.map((account, index) => (
+                              <li key={index} className="mt-1">
+                                {account}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
 
