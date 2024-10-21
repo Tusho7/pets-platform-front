@@ -1,18 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FaUsers, FaFileAlt, FaCog, FaPen } from "react-icons/fa"; // Import FaPen for posts
+import { FaUsers, FaFileAlt, FaCog, FaPen } from "react-icons/fa";
 import Header from "./components/Header";
 import { useState } from "react";
 import Content from "./modals/Content";
+import Posts from "./modals/Posts";
 
 const AdminDashboard = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [isContentModalOpen, setIsContentModalOpen] = useState(false);
+  const [isPostsModalOpen, setIsPostsModalOpen] = useState(false);
 
   const handleCloseContentModal = () => {
     setIsContentModalOpen(false);
+  };
+
+  const handleClosePostsModal = () => {
+    setIsPostsModalOpen(false);
   };
 
   return (
@@ -86,7 +92,7 @@ const AdminDashboard = () => {
                 {t("adminDashboard.managePostsDescription")}
               </p>
               <button
-                onClick={() => navigate("/admin_posts")}
+                onClick={() => setIsPostsModalOpen(true)}
                 className="mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all duration-300"
               >
                 {t("adminDashboard.managePostsButton")}
@@ -95,6 +101,8 @@ const AdminDashboard = () => {
           </div>
 
           {isContentModalOpen && <Content onClose={handleCloseContentModal} />}
+
+          {isPostsModalOpen && <Posts onClose={handleClosePostsModal} />}
         </main>
       </div>
     </div>
