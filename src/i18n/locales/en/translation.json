@@ -93,7 +93,9 @@
 
     "managePostsTitle": "Manage Posts",
     "managePostsDescription": "See all posts here.",
-    "managePostsButton": "Manage Posts"
+    "managePostsButton": "Manage Posts",
+    "streetPets":"Street Pets",
+    "lostPets":"Lost Pets"
   },
   "languageAlert": {
     "title": "Language Alert",

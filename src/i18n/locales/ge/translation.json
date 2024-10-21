@@ -93,7 +93,9 @@
     "settingsButton": "ზოგადი პარამეტრები",
     "managePostsTitle": "პოსტების მართვა",
     "managePostsDescription": "ნახეთ ყველა პოსტი აქ.",
-    "managePostsButton": "პოსტების მართვა"
+    "managePostsButton": "პოსტების მართვა",
+    "streetPets":"ქუჩის ცხოველები",
+    "lostPets":"დაკარგული ცხოველები"
   },
   "languageAlert": {
     "title": "ენების გაფრთხილება",
