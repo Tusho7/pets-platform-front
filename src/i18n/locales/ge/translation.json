@@ -90,7 +90,10 @@
     "users": "მომხმარებლები",
     "settingsTitle": "პარამეტრები",
     "settingsDescription": "კონფიგურაციები და ზოგადი პარამეტრების დაყენება აპლიკაციისთვის.",
-    "settingsButton": "ზოგადი პარამეტრები"
+    "settingsButton": "ზოგადი პარამეტრები",
+    "managePostsTitle": "პოსტების მართვა",
+    "managePostsDescription": "ნახეთ ყველა პოსტი აქ.",
+    "managePostsButton": "პოსტების მართვა"
   },
   "languageAlert": {
     "title": "ენების გაფრთხილება",

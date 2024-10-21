@@ -89,7 +89,11 @@
     "users": "Users",
     "settingsTitle": "Settings",
     "settingsDescription": "Configure general settings and preferences for the application.",
-    "settingsButton": "General Settings"
+    "settingsButton": "General Settings",
+
+    "managePostsTitle": "Manage Posts",
+    "managePostsDescription": "See all posts here.",
+    "managePostsButton": "Manage Posts"
   },
   "languageAlert": {
     "title": "Language Alert",
