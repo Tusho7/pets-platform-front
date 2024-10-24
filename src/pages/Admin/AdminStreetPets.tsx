@@ -6,12 +6,14 @@ import Header from "./components/Header";
 import StreetPetMedia from "./modals/StreetPetMedia";
 import { useTranslation } from "react-i18next";
 import { deleteStreetPetById } from "../../services/admin/street_pets";
+import { FaEye, FaTrash } from 'react-icons/fa';
 
 const AdminStreetPets = () => {
   const { t } = useTranslation();
   const [streetPets, setStreetPets] = useState<StreetPet[]>([]);
   const [selectedPet, setSelectedPet] = useState<StreetPet | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expandedPetId, setExpandedPetId] = useState<number | null>(null); 
 
   useEffect(() => {
     const fetchStreetPets = async () => {
@@ -66,49 +68,57 @@ const AdminStreetPets = () => {
     }
   };
 
+  const toggleExpand = (petId: number) => {
+    setExpandedPetId(expandedPetId === petId ? null : petId);
+  };
+
   return (
     <main className="min-h-screen bg-gray-100">
       <Header />
-      <div className="py-4 min-h-screen max-w-[1200px] mx-auto">
-        <h2 className="text-2xl font-semibold mb-4">{t("streetPetMediaAdmin.title")}</h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100 border-b">
-                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.id")}</th>
-                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.pet_name")}</th>
-                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.age")}</th>
-                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.breed")}</th>
-                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.description")}</th>
-                <th className="text-left p-2">{t("streetPetMediaAdmin.location")}</th>
-                <th className="text-left p-2">{t("streetPetMediaAdmin.media")}</th>
-                <th className="text-left p-2">{t("streetPetMediaAdmin.actions")}</th>
+      <div className="py-4 max-w-[1200px] mx-auto">
+        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">{t("streetPetMediaAdmin.title")}</h2>
+        <div className="overflow-x-auto rounded-lg shadow-lg border border-gray-300">
+          <table className="min-w-full bg-white border border-gray-200">
+            <thead className="bg-gray-200 text-gray-700">
+              <tr>
+                {["id", "pet_name", "age", "breed", "description", "location", "media", "actions"].map((header, index) => (
+                  <th key={index} className="p-4 border-b text-left text-sm font-medium">{t(`streetPetMediaAdmin.${header}`)}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {streetPets.length > 0 ? (
-                streetPets.map((pet) => (
-                  <tr key={pet.id} className="border-b hover:bg-gray-50">
-                    <td className="p-2 border-r">{pet.id}</td>
-                    <td className="p-2 border-r">{pet.pet_name}</td>
-                    <td className="p-2 border-r">{pet.age}</td>
-                    <td className="p-2 border-r">{pet.breed}</td>
-                    <td className="p-2 border-r">{pet.description}</td>
-                    <td className="p-2">{pet.location}</td>
-                    <td className="p-2">
+                streetPets.map((pet, index) => (
+                  <tr key={pet.id} className={`border-b hover:bg-gray-50 ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}>
+                    <td className="p-4">{pet.id}</td>
+                    <td className="p-4">{pet.pet_name}</td>
+                    <td className="p-4">{pet.age}</td>
+                    <td className="p-4">{pet.breed}</td>
+                    <td className="p-4">
+                      <div className="relative">
+                        <p className={`overflow-hidden ${expandedPetId === pet.id ? "max-h-none" : "max-h-12"} transition-all duration-300`}>
+                          {pet.description}
+                        </p>
+                        <button onClick={() => toggleExpand(pet.id)} className="text-blue-500 hover:underline mt-1">
+                          {expandedPetId === pet.id ? t("streetPetMediaAdmin.readLess") : t("streetPetMediaAdmin.readMore")}
+                        </button>
+                      </div>
+                    </td>
+                    <td className="p-4">{pet.location}</td>
+                    <td className="p-4">
                       <button
                         onClick={() => openModal(pet)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
                       >
-                        {t("streetPetMediaAdmin.viewMedia")}
+                        <FaEye className="inline-block mr-1" /> {t("streetPetMediaAdmin.viewMedia")}
                       </button>
                     </td>
-                    <td className="p-2">
+                    <td className="p-4">
                       <button
                         onClick={() => handleDelete(pet.id)} 
-                        className="ml-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
                       >
-                        {t("streetPetMediaAdmin.delete")}
+                        <FaTrash className="inline-block mr-1" /> {t("streetPetMediaAdmin.delete")}
                       </button>
                     </td>
                   </tr>
