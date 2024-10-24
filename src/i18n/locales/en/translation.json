@@ -510,14 +510,12 @@
     "description": "Description",
     "location": "Location",
     "media": "Media",
-    "actions":"Actions",
+    "actions": "Actions",
     "viewMedia": "View Media",
     "noStreetPetFound": "  No street pets available.",
-    "delete":"Delete",
+    "delete": "Delete",
     "readMore": "Read More",
     "readLess": "Read Less",
-
-
 
     "confirmDeleteTitle": "Are you sure?",
     "confirmDeleteText": "This action cannot be undone.",
