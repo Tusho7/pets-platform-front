@@ -19,8 +19,8 @@ const StreetPetMedia: React.FC<StreetPetMediaProps> = ({
             <h3 className="font-medium mb-2">
               {t("streetPetMedia.imagesTitle")}
             </h3>
-            <div className="flex space-x-2 overflow-x-auto">
-              {selectedPet.images.map((image: string, index: number) => (
+            <div className="overflow-x-auto flex space-x-2 max-h-48">
+              {selectedPet.images.slice(0, 3).map((image: string, index: number) => (
                 <img
                   key={index}
                   src={import.meta.env.VITE_API_STORAGE + image}
@@ -28,6 +28,11 @@ const StreetPetMedia: React.FC<StreetPetMediaProps> = ({
                   className="w-24 h-24 object-cover rounded"
                 />
               ))}
+              {selectedPet.images.length > 3 && (
+                <button className="px-2 py-1 bg-blue-500 text-white rounded">
+                  {t("streetPetMedia.showMore")}
+                </button>
+              )}
             </div>
           </div>
         ) : (
@@ -39,8 +44,8 @@ const StreetPetMedia: React.FC<StreetPetMediaProps> = ({
             <h3 className="font-medium mb-2">
               {t("streetPetMedia.videosTitle")}
             </h3>
-            <div className="flex flex-col space-y-2">
-              {selectedPet.videos.map((video: string, index: number) => (
+            <div className="flex flex-col space-y-2 max-h-48 overflow-y-auto">
+              {selectedPet.videos.slice(0, 2).map((video: string, index: number) => (
                 <video key={index} controls className="w-full rounded">
                   <source
                     src={import.meta.env.VITE_API_STORAGE + video}
