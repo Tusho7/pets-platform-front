@@ -511,7 +511,19 @@
     "location": "Location",
     "media": "Media",
     "viewMedia": "View Media",
-    "noStreetPetFound": "  No street pets available."
+    "noStreetPetFound": "  No street pets available.",
+    "delete":"Delete",
+
+
+
+    "confirmDeleteTitle": "Are you sure?",
+    "confirmDeleteText": "This action cannot be undone.",
+    "confirm": "Yes, delete it!",
+    "cancel": "Cancel",
+    "deleted": "Deleted!",
+    "deleteSuccessText": "The street pet has been deleted.",
+    "error": "Error!",
+    "deleteErrorText": "There was a problem deleting the street pet."
   },
   "streetPetMedia": {
     "mediaTitle": "{{petName}} - Media",

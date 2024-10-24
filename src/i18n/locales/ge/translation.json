@@ -511,7 +511,19 @@
     "location": "ლოკაცია",
     "media": "მედია",
     "viewMedia": "იხილეთ მედია",
-    "noStreetPetFound": "ქუჩის ცხოველები არ არის."
+    "noStreetPetFound": "ქუჩის ცხოველები არ არის.",
+    "delete":"წაშლა",
+
+
+
+    "confirmDeleteTitle": "დარწმუნებული ხართ?",
+    "confirmDeleteText": "ეს ქმედება აღარ იქნება შესაძლებელი.",
+    "confirm": "დიახ, წაშლა!",
+    "cancel": "გაუქმება",
+    "deleted": "წაიშალა!",
+    "deleteSuccessText": "street pet წარმატებით წაიშალა.",
+    "error": "შეცდომა!",
+    "deleteErrorText": "street pet-ის წაშლაში მოხდა პრობლემა."
   },
   "streetPetMedia": {
     "mediaTitle": "{{petName}} - მედია",
