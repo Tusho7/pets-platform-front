@@ -17,6 +17,8 @@ import LostPets from "./pages/LostPets";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
 import StreetPets from "./pages/StreetPets";
+import AdminStreetPets from "./pages/Admin/AdminStreetPets";
+import AdminLostPets from "./pages/Admin/AdminLostPets";
 
 function App() {
   return (
@@ -91,6 +93,24 @@ function App() {
           element={
             <PrivateAdminRoute>
               <AdminUsers />
+            </PrivateAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin_street_pets"
+          element={
+            <PrivateAdminRoute>
+              <AdminStreetPets />
+            </PrivateAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin_lost_pets"
+          element={
+            <PrivateAdminRoute>
+              <AdminLostPets />
             </PrivateAdminRoute>
           }
         />
