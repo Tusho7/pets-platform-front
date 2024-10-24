@@ -94,8 +94,8 @@
     "managePostsTitle": "Manage Posts",
     "managePostsDescription": "See all posts here.",
     "managePostsButton": "Manage Posts",
-    "streetPets":"Street Pets",
-    "lostPets":"Lost Pets"
+    "streetPets": "Street Pets",
+    "lostPets": "Lost Pets"
   },
   "languageAlert": {
     "title": "Language Alert",
@@ -284,7 +284,7 @@
     "found": "Found",
     "help": "Help",
     "accountNumbers": "Organization Account Number:",
-    "addAccountNumber":"Add Account Number",
+    "addAccountNumber": "Add Account Number",
     "giveaway": "Give Away",
     "description": "Description:",
     "location": "Location:",
@@ -507,10 +507,18 @@
     "pet_name": "Pet Name",
     "age": "Age",
     "breed": "Breed",
-    "description":"Description",
-    "location":"Location",
+    "description": "Description",
+    "location": "Location",
     "media": "Media",
     "viewMedia": "View Media",
     "noStreetPetFound": "  No street pets available."
+  },
+  "streetPetMedia": {
+    "mediaTitle": "{{petName}} - Media",
+    "imagesTitle": "Images:",
+    "noImages": "No images available",
+    "videosTitle": "Videos:",
+    "noVideos": "No videos available",
+    "closeButton": "Close"
   }
 }

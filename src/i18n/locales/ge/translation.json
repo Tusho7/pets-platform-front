@@ -94,8 +94,8 @@
     "managePostsTitle": "პოსტების მართვა",
     "managePostsDescription": "ნახეთ ყველა პოსტი აქ.",
     "managePostsButton": "პოსტების მართვა",
-    "streetPets":"ქუჩის ცხოველები",
-    "lostPets":"დაკარგული ცხოველები"
+    "streetPets": "ქუჩის ცხოველები",
+    "lostPets": "დაკარგული ცხოველები"
   },
   "languageAlert": {
     "title": "ენების გაფრთხილება",
@@ -282,7 +282,7 @@
     "found": "ნაპოვნი",
     "help": "დახმარება",
     "accountNumbers": "ორგანიზაციის ანგარიშის ნომერი:",
-    "addAccountNumber":"დამატეთ ანგარიში",
+    "addAccountNumber": "დამატეთ ანგარიში",
     "giveaway": "გაჩუქება",
     "male": "ხვადი",
     "female": "ძუ",
@@ -502,16 +502,23 @@
     "text": "გთხოვთ გაიარეთ ავტორიზაცია ან რეგისტრაცია."
   },
   "streetPetMediaAdmin": {
-  "title": "ქუჩის ცხოველები",
-  "id": "ID",
-  "pet_name": "ცხოველის სახელი",
-  "age": "ასაკი",
-  "breed": "ჯიში",
-  "description": "აღწერა",
-  "location": "ლოკაცია",
-  "media": "მედია",
-  "viewMedia": "იხილეთ მედია",
-  "noStreetPetFound": "ქუჩის ცხოველები არ არის."
-}
-
+    "title": "ქუჩის ცხოველები",
+    "id": "ID",
+    "pet_name": "ცხოველის სახელი",
+    "age": "ასაკი",
+    "breed": "ჯიში",
+    "description": "აღწერა",
+    "location": "ლოკაცია",
+    "media": "მედია",
+    "viewMedia": "იხილეთ მედია",
+    "noStreetPetFound": "ქუჩის ცხოველები არ არის."
+  },
+  "streetPetMedia": {
+    "mediaTitle": "{{petName}} - მედია",
+    "imagesTitle": "სურათები:",
+    "noImages": "სურათები არ არის ხელმისაწვდომი",
+    "videosTitle": "ვიდეოები:",
+    "noVideos": "ვიდეოები არ არის ხელმისაწვდომი",
+    "closeButton": "დახურვა"
+  }
 }
