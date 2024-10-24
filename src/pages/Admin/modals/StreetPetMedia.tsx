@@ -1,22 +1,24 @@
-import { StreetPet } from "../../../types/StreetPetProps";
+import { StreetPetMediaProps } from "../../../types/Admin/MediaProps";
 import { useTranslation } from "react-i18next";
 
-interface StreetPetMediaProps {
-  selectedPet: StreetPet;
-  closeModal: () => void;
-}
-
-const StreetPetMedia: React.FC<StreetPetMediaProps> = ({ selectedPet, closeModal }) => {
+const StreetPetMedia: React.FC<StreetPetMediaProps> = ({
+  selectedPet,
+  closeModal,
+}) => {
   const { t } = useTranslation();
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-4 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-xl font-semibold mb-4">{t("streetPetMedia.mediaTitle", { petName: selectedPet.pet_name })}</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {t("streetPetMedia.mediaTitle", { petName: selectedPet.pet_name })}
+        </h2>
 
         {selectedPet?.images && selectedPet.images.length > 0 ? (
           <div className="mb-4">
-            <h3 className="font-medium mb-2">{t("streetPetMedia.imagesTitle")}</h3>
+            <h3 className="font-medium mb-2">
+              {t("streetPetMedia.imagesTitle")}
+            </h3>
             <div className="flex space-x-2 overflow-x-auto">
               {selectedPet.images.map((image: string, index: number) => (
                 <img
@@ -34,11 +36,16 @@ const StreetPetMedia: React.FC<StreetPetMediaProps> = ({ selectedPet, closeModal
 
         {selectedPet?.videos && selectedPet.videos.length > 0 ? (
           <div className="mb-4">
-            <h3 className="font-medium mb-2">{t("streetPetMedia.videosTitle")}</h3>
+            <h3 className="font-medium mb-2">
+              {t("streetPetMedia.videosTitle")}
+            </h3>
             <div className="flex flex-col space-y-2">
               {selectedPet.videos.map((video: string, index: number) => (
                 <video key={index} controls className="w-full rounded">
-                  <source src={import.meta.env.VITE_API_STORAGE + video} type="video/mp4" />
+                  <source
+                    src={import.meta.env.VITE_API_STORAGE + video}
+                    type="video/mp4"
+                  />
                   Your browser does not support the video tag.
                 </video>
               ))}
