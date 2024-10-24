@@ -3,8 +3,10 @@ import { getStreetPets } from "../../services/street_pet";
 import { StreetPet } from "../../types/StreetPetProps";
 import Header from "./components/Header";
 import StreetPetMedia from "./modals/StreetPetMedia";
+import { useTranslation } from "react-i18next";
 
 const AdminStreetPets = () => {
+  const { t } = useTranslation();
   const [streetPets, setStreetPets] = useState<StreetPet[]>([]);
   const [selectedPet, setSelectedPet] = useState<StreetPet | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,18 +38,18 @@ const AdminStreetPets = () => {
     <main className="min-h-screen bg-gray-100">
       <Header />
       <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-2xl font-semibold mb-4">Street Pets</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t("streetPetMediaAdmin.title")}</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-gray-100 border-b">
-                <th className="text-left p-2 border-r">ID</th>
-                <th className="text-left p-2 border-r">Pet Name</th>
-                <th className="text-left p-2 border-r">Age</th>
-                <th className="text-left p-2 border-r">Breed</th>
-                <th className="text-left p-2 border-r">Description</th>
-                <th className="text-left p-2">Location</th>
-                <th className="text-left p-2">Media</th>
+                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.id")}</th>
+                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.pet_name")}</th>
+                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.age")}</th>
+                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.breed")}</th>
+                <th className="text-left p-2 border-r">{t("streetPetMediaAdmin.description")}</th>
+                <th className="text-left p-2">{t("streetPetMediaAdmin.location")}</th>
+                <th className="text-left p-2">{t("streetPetMediaAdmin.media")}</th>
               </tr>
             </thead>
             <tbody>
@@ -65,7 +67,7 @@ const AdminStreetPets = () => {
                         onClick={() => openModal(pet)}
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                       >
-                        View Media
+                        {t("streetPetMediaAdmin.viewMedia")}
                       </button>
                     </td>
                   </tr>
@@ -73,7 +75,7 @@ const AdminStreetPets = () => {
               ) : (
                 <tr>
                   <td colSpan={7} className="p-4 text-center text-gray-500">
-                    No street pets available.
+                    {t("streetPetMediaAdmin.noStreetPetFound")}
                   </td>
                 </tr>
               )}

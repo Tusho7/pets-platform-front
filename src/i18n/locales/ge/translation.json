@@ -500,5 +500,18 @@
   "userIsRequired": {
     "title": "მომხმარებელი აუცილებელია",
     "text": "გთხოვთ გაიარეთ ავტორიზაცია ან რეგისტრაცია."
-  }
+  },
+  "streetPetMediaAdmin": {
+  "title": "ქუჩის ცხოველები",
+  "id": "ID",
+  "pet_name": "ცხოველის სახელი",
+  "age": "ასაკი",
+  "breed": "ჯიში",
+  "description": "აღწერა",
+  "location": "ლოკაცია",
+  "media": "მედია",
+  "viewMedia": "იხილეთ მედია",
+  "noStreetPetFound": "ქუჩის ცხოველები არ არის."
+}
+
 }

@@ -500,5 +500,17 @@
   "userIsRequired": {
     "title": "User is required",
     "text": "Please Login or SignUp."
+  },
+  "streetPetMediaAdmin": {
+    "title": "Street Pets",
+    "id": "ID",
+    "pet_name": "Pet Name",
+    "age": "Age",
+    "breed": "Breed",
+    "description":"Description",
+    "location":"Location",
+    "media": "Media",
+    "viewMedia": "View Media",
+    "noStreetPetFound": "  No street pets available."
   }
 }
