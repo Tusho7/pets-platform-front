@@ -37,7 +37,7 @@ const AdminStreetPets = () => {
   return (
     <main className="min-h-screen bg-gray-100">
       <Header />
-      <div className="max-w-[1200px] mx-auto">
+      <div className="py-4 min-h-screen max-w-[1200px] mx-auto">
         <h2 className="text-2xl font-semibold mb-4">{t("streetPetMediaAdmin.title")}</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-300">
