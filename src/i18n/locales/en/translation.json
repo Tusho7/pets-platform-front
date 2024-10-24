@@ -510,9 +510,12 @@
     "description": "Description",
     "location": "Location",
     "media": "Media",
+    "actions":"Actions",
     "viewMedia": "View Media",
     "noStreetPetFound": "  No street pets available.",
     "delete":"Delete",
+    "readMore": "Read More",
+    "readLess": "Read Less",
 
 
 

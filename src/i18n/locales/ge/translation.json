@@ -510,9 +510,12 @@
     "description": "აღწერა",
     "location": "ლოკაცია",
     "media": "მედია",
+    "actions":"მოქმედებები",
     "viewMedia": "იხილეთ მედია",
     "noStreetPetFound": "ქუჩის ცხოველები არ არის.",
     "delete":"წაშლა",
+    "readMore": "წაიკითხე მეტი",
+    "readLess": "წაიკითხე ნაკლები",
 
 
 
