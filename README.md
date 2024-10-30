@@ -25,7 +25,7 @@
 - <img src="./readme/sweetalert.png" width="25" style="top: 8px" /> sweetalert2 @ 11.13.1 - A beautiful replacement for JavaScript's alert.
 - <img src="./readme/framer-motion.jpeg" width="25" style="top: 8px" /> Framer Motion @ 11.5.4 - Animation library for React.
 - <img src="./readme/react-router.png" width="25" style="top: 8px" /> React Router DOM @ 6.26.1 - Declarative routing for React.js.
-- <img src="./readme/i18n.png" width="25" style="top: 8px" />
+- <img src="./readme/i18n.png" width="25" style="top: 8px" /> i18next @ 23.14.0 - Internationalization framework for JavaScript.
 
 #
 
@@ -63,7 +63,7 @@ npm run start
 src
 ├── components      # React components
 ├── contexts        # Page contexts
-├── hookds          # Page hooks
+├── hooks          # Page hooks
 ├── i18n            # Language
 ├── modals          # Page modals
 ├── pages           # Page components
