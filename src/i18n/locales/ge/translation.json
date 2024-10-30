@@ -557,7 +557,7 @@
     "deleted": "წაიშალა!",
     "deleteSuccessText": "ცხოველი წარმატებით წაიშალა.",
     "error": "შეცდომა!",
-    "deleteErrorText": "ცხოველის-ის წაშლაში მოხდა პრობლემა."
+    "deleteErrorText": "ცხოველისის წაშლისას მოხდა პრობლემა."
   },
   "lostPetMedia": {
     "mediaTitle": "{{petName}} - მედია",
