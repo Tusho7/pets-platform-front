@@ -63,7 +63,7 @@ npm run start
 src
 ├── components      # React components
 ├── contexts        # Page contexts
-├── hooks          # Page hooks
+├── hooks           # Page hooks
 ├── i18n            # Language
 ├── modals          # Page modals
 ├── pages           # Page components
