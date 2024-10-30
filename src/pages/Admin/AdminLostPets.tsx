@@ -102,7 +102,7 @@ const AdminLostPets = () => {
                       <td className="p-4">{pet.pet_name}</td>
                       <td className="p-4">{pet.age}</td>
                       <td className="p-4">{pet.breed}</td>
-                      <td className="p-4">
+                      <td className="p-4 max-w-[500px]">
                         <div className="relative">
                           <p className={`overflow-hidden transition-all duration-300 ${expandedPetId === pet.id ? "max-h-none" : "max-h-12"}`}>
                             {pet.description}
