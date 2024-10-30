@@ -522,11 +522,44 @@
     "confirm": "დიახ, წაშლა!",
     "cancel": "გაუქმება",
     "deleted": "წაიშალა!",
-    "deleteSuccessText": "street pet წარმატებით წაიშალა.",
+    "deleteSuccessText": "ცხოველი წარმატებით წაიშალა.",
     "error": "შეცდომა!",
-    "deleteErrorText": "street pet-ის წაშლაში მოხდა პრობლემა."
+    "deleteErrorText": "ცხოველ-ის წაშლაში მოხდა პრობლემა."
   },
   "streetPetMedia": {
+    "mediaTitle": "{{petName}} - მედია",
+    "imagesTitle": "სურათები:",
+    "noImages": "სურათები არ არის ხელმისაწვდომი",
+    "videosTitle": "ვიდეოები:",
+    "noVideos": "ვიდეოები არ არის ხელმისაწვდომი",
+    "closeButton": "დახურვა"
+  },
+  "lostPetMediaAdmin": {
+    "title": "დაკარგული ცხოველები",
+    "id": "ID",
+    "pet_name": "ცხოველის სახელი",
+    "age": "ასაკი",
+    "breed": "ჯიში",
+    "description": "აღწერა",
+    "location": "ლოკაცია",
+    "media": "მედია",
+    "actions": "მოქმედებები",
+    "viewMedia": "იხილეთ მედია",
+    "noLostPetFound": "დაკარგული ცხოველები არ არის.",
+    "delete": "წაშლა",
+    "readMore": "წაიკითხე მეტი",
+    "readLess": "წაიკითხე ნაკლები",
+
+    "confirmDeleteTitle": "დარწმუნებული ხართ?",
+    "confirmDeleteText": "ეს ქმედება აღარ იქნება შესაძლებელი.",
+    "confirm": "დიახ, წაშლა!",
+    "cancel": "გაუქმება",
+    "deleted": "წაიშალა!",
+    "deleteSuccessText": "ცხოველი წარმატებით წაიშალა.",
+    "error": "შეცდომა!",
+    "deleteErrorText": "ცხოველის-ის წაშლაში მოხდა პრობლემა."
+  },
+  "lostPetMedia": {
     "mediaTitle": "{{petName}} - მედია",
     "imagesTitle": "სურათები:",
     "noImages": "სურათები არ არის ხელმისაწვდომი",

@@ -533,5 +533,38 @@
     "videosTitle": "Videos:",
     "noVideos": "No videos available",
     "closeButton": "Close"
+  },
+  "lostPetMediaAdmin": {
+    "title": "Lost Pets",
+    "id": "ID",
+    "pet_name": "Pet Name",
+    "age": "Age",
+    "breed": "Breed",
+    "description": "Description",
+    "location": "Location",
+    "media": "Media",
+    "actions": "Actions",
+    "viewMedia": "View Media",
+    "noLostPetFound": "  No lost pets available.",
+    "delete": "Delete",
+    "readMore": "Read More",
+    "readLess": "Read Less",
+
+    "confirmDeleteTitle": "Are you sure?",
+    "confirmDeleteText": "This action cannot be undone.",
+    "confirm": "Yes, delete it!",
+    "cancel": "Cancel",
+    "deleted": "Deleted!",
+    "deleteSuccessText": "The lost pet has been deleted.",
+    "error": "Error!",
+    "deleteErrorText": "There was a problem deleting the lost pet."
+  },
+  "lostPetMedia": {
+    "mediaTitle": "{{petName}} - Media",
+    "imagesTitle": "Images:",
+    "noImages": "No images available",
+    "videosTitle": "Videos:",
+    "noVideos": "No videos available",
+    "closeButton": "Close"
   }
 }
