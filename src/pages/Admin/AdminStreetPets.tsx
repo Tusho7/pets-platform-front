@@ -76,7 +76,7 @@ const AdminStreetPets = () => {
     <main className="min-h-screen bg-gray-100">
       <Header />
       <div className="p-4">
-        <div className="py-4 max-w-7xl mx-auto">
+        <div className="py-4 max-w-[1200px] mx-auto">
           <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">
             {t("streetPetMediaAdmin.title")}
           </h2>
@@ -102,7 +102,7 @@ const AdminStreetPets = () => {
                       <td className="p-4">{pet.pet_name}</td>
                       <td className="p-4">{pet.age}</td>
                       <td className="p-4">{pet.breed}</td>
-                      <td className="p-4 max-w-[500px]">
+                      <td className="p-4 max-w-[400px]">
                         <div className="relative">
                           <p className={`overflow-hidden transition-all duration-300 ${expandedPetId === pet.id ? "max-h-none" : "max-h-12"}`}>
                             {pet.description}
