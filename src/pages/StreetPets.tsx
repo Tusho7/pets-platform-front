@@ -95,6 +95,7 @@ const StreetPets: React.FC = () => {
                   className="bg-white shadow-lg rounded-lg overflow-hidden"
                 >
                   <div className="p-4">
+                    <section className="h-[300px]">
                     <h3 className="text-gray-700">
                       <strong>{t("streetPetPage.name")}</strong> {pet.pet_name}
                     </h3>
@@ -130,6 +131,8 @@ const StreetPets: React.FC = () => {
                       <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
                       GE5872384TB321789
                     </p>
+                    </section>
+                   
 
                     <div className="mt-4 border-t border-gray-200 pt-4">
                       <h4 className="text-gray-800 font-semibold">
