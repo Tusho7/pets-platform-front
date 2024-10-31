@@ -169,7 +169,7 @@ const AdminAboutUs = () => {
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow">
-        <div className="container mx-auto px-6 py-12">
+        <div className="max-w-[1200px] mx-auto py-12">
           {aboutUsContent.length === 0 ? (
             <div className="text-center text-lg">
               No About Us data available.
