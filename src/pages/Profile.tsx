@@ -224,61 +224,64 @@ const Profile = () => {
                   key={pet.id}
                   className="bg-white shadow-lg rounded-lg overflow-hidden"
                 >
-                  <div className="p-4 flex flex-col gap-4">
-                    <section className="h-[220px]">
-                      <h3 className="text-gray-700">
-                        <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
-                      </h3>
+                  <div className="p-4 flex flex-col gap-9">
+                    <section className="h-[280px]">
+                    <h3 className="text-gray-700">
+                      <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
+                    </h3>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.age")}</strong> {pet.age}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.gender")}</strong>{" "}
+                      {pet.gender === "male"
+                        ? t("lostPetPage.male")
+                        : t("lostPetPage.female")}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.description")}</strong>{" "}
+                      {pet.description}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("lostPetPage.location")}</strong>{" "}
+                      {pet.location}
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>{t("streetPetPage.aggressive")}</strong>{" "}
+                      {pet.aggresive
+                        ? t("streetPetPage.isAggressive")
+                        : t("streetPetPage.notAggressive")}
+                    </p>
+                    {"account_number" in pet && !showLostPets && (
                       <p className="text-gray-700">
-                        <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
+                        <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
+                        GE5872384TB321789
                       </p>
-                      <p className="text-gray-700">
-                        <strong>{t("lostPetPage.age")}</strong> {pet.age}
-                      </p>
-                      <p className="text-gray-700">
-                        <strong>{t("lostPetPage.gender")}</strong>{" "}
-                        {pet.gender === "male"
-                          ? t("lostPetPage.male")
-                          : t("lostPetPage.female")}
-                      </p>
-                      <p className="text-gray-700">
-                        <strong>{t("lostPetPage.description")}</strong>{" "}
-                        {pet.description}
-                      </p>
-                      <p className="text-gray-700">
-                        <strong>{t("lostPetPage.location")}</strong>{" "}
-                        {pet.location}
-                      </p>
-                      <p className="text-gray-700">
-                        <strong>{t("streetPetPage.aggressive")}</strong>{" "}
-                        {pet.aggresive
-                          ? t("streetPetPage.isAggressive")
-                          : t("streetPetPage.notAggressive")}
-                      </p>
-                      {"account_number" in pet && !showLostPets && (
-                        <p className="text-gray-700">
-                          <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
-                          GE5872384TB321789
-                        </p>
-                      )}
+                    )}
                     </section>
+                 
 
-                    <section>
-                      <button
-                        onClick={() => handleEdit(pet)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
-                      >
-                        {t("lostPetPage.editButton")}
-                      </button>
+                 <section>
+                 <button
+                      onClick={() => handleEdit(pet)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
+                    >
+                      {t("lostPetPage.editButton")}
+                    </button>
 
-                      <button
-                        onClick={() => handleDelete(pet.id)}
-                        className="text-red-500 ml-4"
-                      >
-                        <FontAwesomeIcon icon={faTrashAlt} />{" "}
-                        {t("lostPetPage.deleteButton")}
-                      </button>
-                    </section>
+                    <button
+                      onClick={() => handleDelete(pet.id)}
+                      className="text-red-500 ml-4"
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />{" "}
+                      {t("lostPetPage.deleteButton")}
+                    </button>
+                 </section>
+
+                   
                   </div>
 
                   <div className="p-4">
