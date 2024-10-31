@@ -95,6 +95,7 @@ const LostPets: React.FC = () => {
                   className="bg-white shadow-lg rounded-lg overflow-hidden"
                 >
                   <div className="p-4">
+                    <section className="h-[250px]">
                     <h3 className="text-gray-700">
                       <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
                     </h3>
@@ -131,6 +132,8 @@ const LostPets: React.FC = () => {
                         ? t("lostPetPage.lost")
                         : t("lostPetPage.found")}
                     </p>
+                    </section>
+                   
                     <div className="mt-4 border-t border-gray-200 pt-4">
                       <h4 className="text-gray-800 font-semibold">
                         {t("lostPetPage.userInfo.userInfo")}
