@@ -95,7 +95,7 @@ const StreetPets: React.FC = () => {
                   className="bg-white shadow-lg rounded-lg overflow-hidden"
                 >
                   <div className="p-4">
-                    <section className="h-[300px]">
+                    <section className="h-[340px]">
                     <h3 className="text-gray-700">
                       <strong>{t("streetPetPage.name")}</strong> {pet.pet_name}
                     </h3>
@@ -128,13 +128,17 @@ const StreetPets: React.FC = () => {
                         : t("streetPetPage.notAggressive")}
                     </p>
                     <p className="text-gray-700">
+                      <strong>{t("streetPetPage.status")}</strong>{" "}
+                      {pet.status === "help" ? t("streetPetPage.help") : t("streetPetPage.giveaway")}
+                    </p>
+                    <p className="text-gray-700">
                       <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
                       GE5872384TB321789
                     </p>
                     </section>
                    
 
-                    <div className="mt-4 border-t border-gray-200 pt-4">
+                    <div className="mt-4 border-t border-gray-200 pt-4 h-[200px]">
                       <h4 className="text-gray-800 font-semibold">
                         {t("streetPetPage.userInfo.userInfo")}
                       </h4>
