@@ -15,9 +15,11 @@ const StreetPets: React.FC = () => {
   const { t } = useTranslation();
   const [streetPetModalOpen, setStreetPetModalOpen] = useState<boolean>(false);
   const [streetPets, setStreetPets] = useState<StreetPet[]>([]);
+  const [filteredPets, setFilteredPets] = useState<StreetPet[]>([]);
   const [imageModalOpen, setImageModalOpen] = useState<boolean>(false);
   const [videoModalOpen, setVideoModalOpen] = useState<boolean>(false);
   const [currentPet, setCurrentPet] = useState<StreetPet | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<string>("");
 
   const {
     openLoginModal,
@@ -33,6 +35,7 @@ const StreetPets: React.FC = () => {
       try {
         const data = await getStreetPets();
         setStreetPets(data);
+        setFilteredPets(data);
       } catch (error) {
         console.error("Error fetching street pets:", error);
       }
@@ -40,6 +43,17 @@ const StreetPets: React.FC = () => {
 
     fetchStreetPets();
   }, []);
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const status = e.target.value;
+    setSelectedStatus(status);
+
+    if (status === "") {
+      setFilteredPets(streetPets);
+    } else {
+      setFilteredPets(streetPets.filter((pet) => pet.status === status));
+    }
+  };
 
   const handleViewMoreImages = (pet: StreetPet) => {
     setCurrentPet(pet);
@@ -62,6 +76,7 @@ const StreetPets: React.FC = () => {
     try {
       const data = await getStreetPets();
       setStreetPets(data);
+      setFilteredPets(data);
     } catch (error) {
       console.error("Error updating street pets:", error);
     }
@@ -75,12 +90,24 @@ const StreetPets: React.FC = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold">{t("streetPetPage.title")}</h1>
-            <button
-              onClick={() => setStreetPetModalOpen(true)}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-            >
-              {t("streetPetPage.addStreetPetButton")}
-            </button>
+            <div>
+              <button
+                onClick={() => setStreetPetModalOpen(true)}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              >
+                {t("streetPetPage.addStreetPetButton")}
+              </button>
+
+              <select
+                value={selectedStatus}
+                onChange={handleFilterChange}
+                className="ml-4 p-2 border rounded"
+              >
+                <option value="">{t("streetPetPage.selectStatus")}</option>
+                <option value="help">{t("streetPetPage.help")}</option>
+                <option value="giveaway">{t("streetPetPage.giveaway")}</option>
+              </select>
+            </div>
           </div>
 
           {streetPetModalOpen && (
@@ -88,57 +115,79 @@ const StreetPets: React.FC = () => {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {streetPets.length > 0 ? (
-              streetPets.map((pet) => (
+            {filteredPets.length > 0 ? (
+              filteredPets.map((pet) => (
                 <div
                   key={pet.id}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden"
+                  className="bg-white rounded-lg overflow-hidden  shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
                 >
+                  {Array.isArray(pet.images) && pet.images.length > 0 && (
+                    <div
+                      className="relative hover:cursor-pointer"
+                      onClick={() => handleViewMoreImages(pet)}
+                    >
+                      <img
+                        src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
+                        alt={t("lostPetModal.fields.images")}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      <div className="absolute inset-0 bg-black opacity-30"></div>
+                      <div className="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 className="text-lg font-semibold">
+                          {pet.pet_name}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
+
+                  {Array.isArray(pet.videos) && pet.videos.length > 0 && (
+                    <div className="p-4">
+                      <button
+                        onClick={() => handleViewMoreVideos(pet)}
+                        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                      >
+                        {t("streetPetPage.viewMoreVideos")}
+                      </button>
+                    </div>
+                  )}
+
                   <div className="p-4">
-                    <section className="h-[340px]">
-                    <h3 className="text-gray-700">
-                      <strong>{t("streetPetPage.name")}</strong> {pet.pet_name}
-                    </h3>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.breed")}</strong> {pet.breed}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.age")}</strong> {pet.age}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.gender")}</strong>{" "}
-                      {pet.gender === "male"
-                        ? t("streetPetPage.male")
-                        : t("streetPetPage.female")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.description")}</strong>{" "}
-                      {pet.description ||
-                        t("lostPetModal.errors.descriptionRequired")}
-                    </p>
+                    <section className="h-auto overflow-y-auto">
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.breed")}</strong> {pet.breed}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.age")}</strong> {pet.age}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.gender")}</strong>{" "}
+                        {pet.gender === "male"
+                          ? t("streetPetPage.male")
+                          : t("streetPetPage.female")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.description")}</strong>{" "}
+                        {pet.description ||
+                          t("lostPetModal.errors.descriptionRequired")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.location")}</strong>{" "}
+                        {pet.location}
+                      </p>
 
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.location")}</strong>{" "}
-                      {pet.location}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.aggressive")}</strong>{" "}
-                      {pet.aggresive
-                        ? t("streetPetPage.isAggressive")
-                        : t("streetPetPage.notAggressive")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.status")}</strong>{" "}
-                      {pet.status === "help" ? t("streetPetPage.help") : t("streetPetPage.giveaway")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
-                      GE5872384TB321789
-                    </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.status")}</strong>{" "}
+                        {pet.status === "help"
+                          ? t("streetPetPage.help")
+                          : t("streetPetPage.giveaway")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
+                        GE5872384TB321789
+                      </p>
                     </section>
-                   
 
-                    <div className="mt-4 border-t border-gray-200 pt-4 h-[200px]">
+                    <div className="mt-4 border-t border-gray-200 pt-2">
                       <h4 className="text-gray-800 font-semibold">
                         {t("streetPetPage.userInfo.userInfo")}
                       </h4>
@@ -148,6 +197,7 @@ const StreetPets: React.FC = () => {
                         </strong>{" "}
                         {pet?.User?.phoneNumber}
                       </p>
+
                       <p className="text-gray-600">
                         <strong>{t("streetPetPage.userInfo.firstName")}</strong>{" "}
                         {pet?.User?.firstName}
@@ -156,65 +206,12 @@ const StreetPets: React.FC = () => {
                         <strong>{t("streetPetPage.userInfo.lastName")}</strong>{" "}
                         {pet?.User?.lastName}
                       </p>
-
-                      {pet.account_number && pet.account_number.length > 0 && (
-                        <div className="text-gray-600">
-                          <strong>
-                            {t("streetPetPage.userInfo.accountNumbers")}
-                          </strong>
-                          <ul className="list-disc pl-5 mt-2">
-                            {pet.account_number.map((account, index) => (
-                              <li key={index} className="mt-1">
-                                {account}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
                     </div>
-                  </div>
-
-                  <div className="p-4">
-                    {Array.isArray(pet.images) && pet.images.length > 0 && (
-                      <div className="mb-4 flex flex-col gap-3 items-start justify-start">
-                        <img
-                          src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
-                          alt={t("lostPetModal.fields.images")}
-                          className="w-full h-32 object-cover rounded-lg cursor-pointer"
-                          onClick={() => handleViewMoreImages(pet)}
-                        />
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreImages(pet)}
-                        >
-                          {t("streetPetPage.viewMoreImages")}
-                        </button>
-                      </div>
-                    )}
-
-                    {Array.isArray(pet.videos) && pet.videos.length > 0 && (
-                      <div className="flex flex-col gap-3 items-start justify-start">
-                        <video
-                          src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
-                          controls
-                          className="w-full h-32 object-cover rounded-lg"
-                          style={{ height: "150px" }}
-                        />
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreVideos(pet)}
-                        >
-                          {t("streetPetPage.viewMoreVideos")}
-                        </button>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))
             ) : (
-              <p className="text-start text-gray-500">
-                {t("streetPetPage.noLostPetsFound")}
-              </p>
+              <p>{t("streetPetPage.noPetsFound")}</p>
             )}
           </div>
 
@@ -232,6 +229,7 @@ const StreetPets: React.FC = () => {
         </div>
       </main>
 
+      <Footer />
       {isLoginModalOpen && (
         <Login
           onOpenRegistration={openRegistrationModal}
@@ -245,8 +243,6 @@ const StreetPets: React.FC = () => {
           openLogin={openLoginModal}
         />
       )}
-
-      <Footer />
     </main>
   );
 };
