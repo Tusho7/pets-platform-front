@@ -38,7 +38,7 @@ const Header = ({ openLoginModal }: HeaderProps) => {
   }, [dropdownOpen]);
 
   return (
-    <header className="sticky top-0 left-0 w-full bg-gray-900 text-headerText flex justify-between items-center p-4 shadow-md">
+    <header className="sticky top-0 left-0 w-full bg-gray-900 text-headerText flex justify-between items-center p-4 shadow-md z-50">
       <div className="max-w-[1200px] mx-auto flex justify-between w-full">
         <div className="flex gap-2 items-center justify-center">
           <img src={PetLogo} className="h-9" alt="Pet Logo" />
