@@ -194,203 +194,164 @@ const Profile = () => {
   return (
     <React.Fragment>
       <Header />
-      <main className="py-4 min-h-screen max-w-[1200px] mx-auto">
-        <h1 className="text-2xl font-bold mb-4 ">{t("profile.profile")}</h1>
+      <main className="py-8 min-h-screen max-w-[1200px] mx-auto">
+        <h1 className="text-3xl font-bold mb-6">{t("profile.profile")}</h1>
 
-        <div className="mb-4">
+        <div className="mb-6 flex justify-center">
           <button
             onClick={() => setShowLostPets(true)}
-            className={`py-2 px-4 rounded ${
-              showLostPets ? "bg-blue-500" : "bg-gray-300"
-            }`}
+            className={`py-3 px-6 rounded-lg transition duration-300 ${
+              showLostPets ? "bg-blue-600 text-white" : "bg-gray-300"
+            } hover:bg-blue-500`}
           >
             {t("lostPetPage.title")}
           </button>
           <button
             onClick={() => setShowLostPets(false)}
-            className={`py-2 px-4 rounded ${
-              !showLostPets ? "bg-blue-500" : "bg-gray-300"
-            } ml-2`}
+            className={`py-3 px-6 rounded-lg transition duration-300 ${
+              !showLostPets ? "bg-blue-600 text-white" : "bg-gray-300"
+            } ml-4 hover:bg-blue-500`}
           >
             {t("streetPetPage.title")}
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {(showLostPets ? lostPets : streetPets).length > 0 ? (
             (showLostPets ? lostPets : streetPets).map(
               (pet: StreetPet | LostPet) => (
                 <div
                   key={pet.id}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden"
+                  className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
                 >
-                  <div className="p-4 flex flex-col gap-9">
-                    <section className="h-[280px]">
-                    <h3 className="text-gray-700">
-                      <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
-                    </h3>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.age")}</strong> {pet.age}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.gender")}</strong>{" "}
-                      {pet.gender === "male"
-                        ? t("lostPetPage.male")
-                        : t("lostPetPage.female")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.description")}</strong>{" "}
-                      {pet.description}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.location")}</strong>{" "}
-                      {pet.location}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("streetPetPage.aggressive")}</strong>{" "}
-                      {pet.aggresive
-                        ? t("streetPetPage.isAggressive")
-                        : t("streetPetPage.notAggressive")}
-                    </p>
-                    {"account_number" in pet && !showLostPets && (
-                      <p className="text-gray-700">
-                        <strong>{t("streetPetPage.accountNumbers")}</strong>{" "}
-                        GE5872384TB321789
+                  <div
+                    className="relative hover:cursor-pointer"
+                    onClick={() => handleViewMoreImages(pet)}
+                  >
+                    <img
+                      src={
+                        import.meta.env.VITE_API_STORAGE +
+                        (pet.images ? pet.images[0] : "")
+                      }
+                      alt="First Pet"
+                      className="w-full h-48 object-cover rounded-t-lg"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-30"></div>
+                    <div className="absolute bottom-0 left-0 p-4 text-white">
+                      <h3 className="text-lg font-semibold">{pet.pet_name}</h3>
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col gap-4">
+                    <section className="h-[200px]">
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
                       </p>
-                    )}
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.age")}</strong> {pet.age}
+                      </p>
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.gender")}</strong>{" "}
+                        {pet.gender === "male"
+                          ? t("lostPetPage.male")
+                          : t("lostPetPage.female")}
+                      </p>
+                      <p className="text-gray-600">
+                        <strong>{t("lostPetPage.description")}</strong>{" "}
+                        {pet.description}
+                      </p>
                     </section>
-                 
 
-                 <section>
-                 <button
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleViewMoreVideos(pet)}
+                        className="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition"
+                      >
+                        {t("lostPetPage.viewMoreVideos")}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex justify-between p-4">
+                    <button
                       onClick={() => handleEdit(pet)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-2"
+                      className="text-blue-600 hover:underline"
                     >
                       {t("lostPetPage.editButton")}
                     </button>
-
                     <button
                       onClick={() => handleDelete(pet.id)}
-                      className="text-red-500 ml-4"
+                      className="text-red-600 hover:underline"
                     >
-                      <FontAwesomeIcon icon={faTrashAlt} />{" "}
-                      {t("lostPetPage.deleteButton")}
+                      <FontAwesomeIcon icon={faTrashAlt} />
                     </button>
-                 </section>
-
-                   
-                  </div>
-
-                  <div className="p-4">
-                    {pet.images && pet.images.length > 0 ? (
-                      <div className="mb-4 flex flex-col gap-3 items-start justify-start">
-                        <img
-                          src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
-                          alt={t("lostPetModal.fields.images")}
-                          className="w-full h-32 object-cover rounded-lg cursor-pointer"
-                          onClick={() => handleViewMoreImages(pet)}
-                        />
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreImages(pet)}
-                        >
-                          {t("lostPetPage.viewMoreImages")}
-                        </button>
-                      </div>
-                    ) : null}
-
-                    {pet.videos && pet.videos.length > 0 && (
-                      <div className="flex flex-col gap-3 items-start justify-start">
-                        <video
-                          src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
-                          controls
-                          className="w-full h-32 object-cover rounded-lg"
-                          style={{ height: "150px" }}
-                          onClick={() => handleViewMoreVideos(pet)}
-                        />
-
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreVideos(pet)}
-                        >
-                          {t("lostPetPage.viewMoreVideos")}
-                        </button>
-                      </div>
-                    )}
                   </div>
                 </div>
               )
             )
           ) : (
-            <p className="text-start text-gray-500">
-              {t("lostPetPage.noLostPetsFound")}
+            <p className="text-gray-500 text-center col-span-full">
+              {t("lostPetPage.noPets")}
             </p>
           )}
         </div>
-
-        {editModalOpen && currentPet && (
-          <LostPetEditModal
-            pet={currentPet}
-            onClose={handleCloseModal}
-            onUpdate={handlePetUpdate}
-          />
-        )}
-
-        {streetEditModalOpen && currentPet && (
-          <StreetPetEdit
-            pet={currentPet as StreetPet}
-            onClose={handleCloseModal}
-            onUpdate={handlePetUpdate}
-          />
-        )}
-
-        {imageModalOpen && currentPet && (
-          <LostPetImageModal
-            isOpen={imageModalOpen}
-            onUpdate={handleImageUpdate}
-            images={currentPet.images || []}
-            onClose={() => setImageModalOpen(false)}
-            fromProfile={true}
-            petId={currentPet.id}
-          />
-        )}
-
-        {streetImageModalOpen && currentPet && (
-          <StreetPetImages
-            isOpen={streetImageModalOpen}
-            onUpdate={handleImageUpdate}
-            images={currentPet.images || []}
-            onClose={() => setStreetImageModalOpen(false)}
-            fromProfile={true}
-            petId={currentPet.id}
-          />
-        )}
-
-        {videoModalOpen && currentPet && (
-          <LostPetVideosModal
-            isOpen={videoModalOpen}
-            videos={currentPet.videos || []}
-            onUpdate={handleVideoUpdate}
-            petId={currentPet.id}
-            onClose={() => setVideoModalOpen(false)}
-            fromProfile={true}
-          />
-        )}
-
-        {streetVideoModalOpen && currentPet && (
-          <StreetPetVideos
-            isOpen={streetVideoModalOpen}
-            videos={currentPet.videos || []}
-            onUpdate={handleVideoUpdate}
-            petId={currentPet.id}
-            onClose={() => setStreetVideoModalOpen(false)}
-            fromProfile={true}
-          />
-        )}
       </main>
+
+      {editModalOpen && currentPet && (
+        <LostPetEditModal
+          pet={currentPet}
+          onClose={handleCloseModal}
+          onUpdate={handlePetUpdate}
+        />
+      )}
+
+      {streetEditModalOpen && currentPet && (
+        <StreetPetEdit
+          pet={currentPet as StreetPet}
+          onClose={handleCloseModal}
+          onUpdate={handlePetUpdate}
+        />
+      )}
+      {imageModalOpen && currentPet && (
+        <LostPetImageModal
+          isOpen={imageModalOpen}
+          onUpdate={handleImageUpdate}
+          images={currentPet.images || []}
+          onClose={() => setImageModalOpen(false)}
+          fromProfile={true}
+          petId={currentPet.id}
+        />
+      )}
+
+      {streetImageModalOpen && currentPet && (
+        <StreetPetImages
+          isOpen={streetImageModalOpen}
+          onUpdate={handleImageUpdate}
+          images={currentPet.images || []}
+          onClose={() => setStreetImageModalOpen(false)}
+          fromProfile={true}
+          petId={currentPet.id}
+        />
+      )}
+      {videoModalOpen && currentPet && (
+        <LostPetVideosModal
+          isOpen={videoModalOpen}
+          videos={currentPet.videos || []}
+          onUpdate={handleVideoUpdate}
+          petId={currentPet.id}
+          onClose={() => setVideoModalOpen(false)}
+          fromProfile={true}
+        />
+      )}
+
+      {streetVideoModalOpen && currentPet && (
+        <StreetPetVideos
+          isOpen={streetVideoModalOpen}
+          videos={currentPet.videos || []}
+          onUpdate={handleVideoUpdate}
+          petId={currentPet.id}
+          onClose={() => setStreetVideoModalOpen(false)}
+          fromProfile={true}
+        />
+      )}
       <Footer />
     </React.Fragment>
   );
