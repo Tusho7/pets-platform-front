@@ -80,8 +80,19 @@ const AdminTerms = () => {
         const response = await getTerms(i18n.language);
         setTerms(response.data);
         setEditTermId(null);
+        Swal.fire({
+          icon: "success",
+          title: t("success.title"),
+          text: t("success.text"),
+          confirmButtonText: t("success.button"),
+        });
       } catch (error) {
         console.error("Error updating term:", error);
+        Swal.fire({
+          icon: "error",
+          title: t("error.title"),
+          text: t("error.text"),
+        });
       }
     }
   };
@@ -162,7 +173,7 @@ const AdminTerms = () => {
                       onClick={handleSaveClick}
                       className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md"
                     >
-                      {t("save")}
+                      {t("terms.save")}
                     </button>
                     <button
                       onClick={() => setEditTermId(null)}
