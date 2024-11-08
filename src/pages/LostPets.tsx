@@ -92,49 +92,79 @@ const LostPets: React.FC = () => {
               lostPets.map((pet) => (
                 <div
                   key={pet.id}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden"
+                  className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
                 >
+                  {Array.isArray(pet.images) && pet.images.length > 0 && (
+                    <div
+                      className="relative hover:cursor-pointer"
+                      onClick={() => handleViewMoreImages(pet)}
+                    >
+                      <img
+                        src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
+                        alt={t("lostPetModal.fields.images")}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      <div className="absolute inset-0 bg-black opacity-30"></div>
+                      <div className="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 className="text-lg font-semibold">
+                          {pet.pet_name}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
+
+                  {Array.isArray(pet.videos) && pet.videos.length > 0 && (
+                    <div className="p-4">
+                      <button
+                        onClick={() => handleViewMoreVideos(pet)}
+                        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                      >
+                        {t("streetPetPage.viewMoreVideos")}
+                      </button>
+                    </div>
+                  )}
+
                   <div className="p-4">
-                    <section className="h-[250px]">
-                    <h3 className="text-gray-700">
-                      <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
-                    </h3>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.age")}</strong> {pet.age}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.gender")}</strong>{" "}
-                      {pet.gender === "male"
-                        ? t("lostPetPage.male")
-                        : t("lostPetPage.female")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.description")}</strong>{" "}
-                      {pet.description ||
-                        t("lostPetModal.errors.descriptionRequired")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.location")}</strong>{" "}
-                      {pet.location}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.aggressive")}</strong>{" "}
-                      {pet.aggresive
-                        ? t("lostPetPage.isAggressive")
-                        : t("lostPetPage.notAggressive")}
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>{t("lostPetPage.status")}</strong>{" "}
-                      {pet.status === "lost"
-                        ? t("lostPetPage.lost")
-                        : t("lostPetPage.found")}
-                    </p>
+                    <section className="h-auto overflow-y-auto">
+                      <h3 className="text-gray-700">
+                        <strong>{t("lostPetPage.name")}</strong> {pet.pet_name}
+                      </h3>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.breed")}</strong> {pet.breed}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.age")}</strong> {pet.age}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.gender")}</strong>{" "}
+                        {pet.gender === "male"
+                          ? t("lostPetPage.male")
+                          : t("lostPetPage.female")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.description")}</strong>{" "}
+                        {pet.description ||
+                          t("lostPetModal.errors.descriptionRequired")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.location")}</strong>{" "}
+                        {pet.location}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.aggressive")}</strong>{" "}
+                        {pet.aggresive
+                          ? t("lostPetPage.isAggressive")
+                          : t("lostPetPage.notAggressive")}
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>{t("lostPetPage.status")}</strong>{" "}
+                        {pet.status === "lost"
+                          ? t("lostPetPage.lost")
+                          : t("lostPetPage.found")}
+                      </p>
                     </section>
-                   
-                    <div className="mt-4 border-t border-gray-200 pt-4">
+
+                    <div className="mt-4 border-t border-gray-200 pt-2">
                       <h4 className="text-gray-800 font-semibold">
                         {t("lostPetPage.userInfo.userInfo")}
                       </h4>
@@ -151,42 +181,6 @@ const LostPets: React.FC = () => {
                         {pet?.User?.lastName}
                       </p>
                     </div>
-                  </div>
-
-                  <div className="p-4">
-                    {Array.isArray(pet.images) && pet.images.length > 0 && (
-                      <div className="mb-4 flex flex-col gap-3 items-start justify-start">
-                        <img
-                          src={import.meta.env.VITE_API_STORAGE + pet.images[0]}
-                          alt={t("lostPetModal.fields.images")}
-                          className="w-full h-32 object-cover rounded-lg cursor-pointer"
-                          onClick={() => handleViewMoreImages(pet)}
-                        />
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreImages(pet)}
-                        >
-                          {t("lostPetPage.viewMoreImages")}
-                        </button>
-                      </div>
-                    )}
-
-                    {Array.isArray(pet.videos) && pet.videos.length > 0 && (
-                      <div className="flex flex-col gap-3 items-start justify-start">
-                        <video
-                          src={import.meta.env.VITE_API_STORAGE + pet.videos[0]}
-                          controls
-                          className="w-full h-32 object-cover rounded-lg"
-                          style={{ height: "150px" }}
-                        />
-                        <button
-                          className="text-blue-500 mt-2"
-                          onClick={() => handleViewMoreVideos(pet)}
-                        >
-                          {t("lostPetPage.viewMoreVideos")}
-                        </button>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))
