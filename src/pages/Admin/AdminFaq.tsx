@@ -207,7 +207,7 @@ const Faq = () => {
                           onClick={handleSaveClick}
                           className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md"
                         >
-                          Save
+                          {t("faq.save")}
                         </button>
                       </div>
                     ) : (
