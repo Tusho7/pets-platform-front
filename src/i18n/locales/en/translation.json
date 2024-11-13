@@ -54,7 +54,8 @@
     "submit": "Submit"
   },
   "faq": {
-    "title": "Frequently Asked Questions"
+    "title": "Frequently Asked Questions",
+    "save":"Save"
   },
   "footer": {
     "faqs": "Faqs",
@@ -127,7 +128,8 @@
   },
   "terms": {
     "title": "Terms & Conditions",
-    "noTerms": "No terms and conditions available."
+    "noTerms": "No terms and conditions available.",
+    "save":"Save"
   },
   "settings": {
     "title": "Settings",
@@ -293,6 +295,7 @@
     "notAggressive": "No",
     "aggresiveDescription": "This pet is aggressive.",
     "status": "Status:",
+    "selectStatus": "Select Status",
     "editButton": "Edit",
     "cancelButton": "Cancel",
     "saveButton": "Save",
